@@ -1,0 +1,248 @@
+<title>UX-вайрфрейм — Сайт 1 UL-COM (ulcm.ru)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --page:#EAEEF3; --frame:#FFFFFF; --line:#DCE3EC;
+  --g1:#D9E0EA; --g2:#C6D0DD; --g3:#EDF1F6;
+  --navy:#013F78; --navyL:#AEC4DD; --red:#EE3A23; --redL:#F6C7BF;
+  --ink:#2A3746; --muted:#6C7A8A; --faint:#93A0AE;
+  --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.head{max-width:1120px;margin:0 auto;padding:40px 24px 8px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:600}
+h1{font-size:26px;color:var(--navy);margin:10px 0 6px;font-weight:800;letter-spacing:-.01em}
+.head p{color:var(--muted);max-width:80ch}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:12.5px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:22px;height:11px;border-radius:3px;display:inline-block}
+.tabs{max-width:1120px;margin:22px auto 0;padding:0 24px;display:flex;gap:8px}
+.tab{font-family:var(--mono);font-size:12px;font-weight:600;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--frame);color:var(--muted)}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.stage{max-width:1120px;margin:18px auto;padding:0 24px 80px}
+.blk{background:var(--frame);border:1px solid var(--line);border-radius:14px;padding:16px 16px 18px;margin-bottom:14px;position:relative}
+.blk>.lab{position:absolute;top:-9px;left:14px;background:var(--navy);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;letter-spacing:.02em}
+.note{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:8px}
+.inner{padding:14px 6px 4px}
+
+/* wf primitives */
+.bar{background:var(--g1);border-radius:5px;height:12px}
+.bar.sm{height:9px}.bar.tall{height:20px}.bar.xl{height:34px}
+.bar.navy{background:var(--navyL)}.bar.red{background:var(--redL)}
+.row{display:flex;gap:10px;align-items:center}
+.col{display:flex;flex-direction:column;gap:9px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.box{background:var(--g3);border:1px dashed var(--line);border-radius:9px;padding:12px}
+.btn{height:30px;border-radius:7px;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;padding:0 14px}
+.btn.ghost{background:transparent;border:1.5px solid var(--navyL);color:var(--navy)}
+.pill{height:24px;border-radius:999px;background:var(--g2);display:inline-flex;align-items:center;padding:0 12px;font-size:11px;color:var(--muted)}
+.lbl{font-size:12px;color:var(--muted)}
+.lbl.n{color:var(--navy);font-weight:600}
+.num{font-size:30px;font-weight:800;color:var(--navy);font-family:var(--sans);letter-spacing:-.02em}
+.num em{color:var(--red);font-style:normal}
+.logo{width:96px;height:34px;border:1.5px solid var(--navyL);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--navy);font-weight:700}
+.map{border:1px dashed var(--navyL);border-radius:10px;min-height:220px;background:
+  repeating-linear-gradient(135deg,#EAF0F6 0 9px,#F2F6FA 9px 18px);position:relative;overflow:hidden}
+.map .route{position:absolute;left:12%;top:64%;width:56%;height:3px;background:var(--red);transform:rotate(-15deg);border-radius:3px}
+.map .dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--navy);border:2px solid #fff}
+.map .dot.r{background:var(--red)}
+.map .cap{position:absolute;left:14px;top:12px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.side{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--g3)}
+.field{border:1px solid var(--line);border-radius:8px;height:38px;background:#fff;display:flex;align-items:center;padding:0 12px;font-size:12px;color:var(--faint)}
+.nav-i{font-size:12px;color:var(--muted)}
+.h-hero{font-size:40px;line-height:1.02;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.h-hero em{color:var(--red);font-style:normal}
+.h2{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+
+/* mobile phone frame */
+.phones{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+.phone{width:340px;border:10px solid #1B2733;border-radius:34px;background:var(--frame);overflow:hidden;box-shadow:0 10px 30px rgba(20,30,45,.12)}
+.phone .scr{padding:0}
+.pblk{border-bottom:1px solid var(--line);padding:14px}
+.pblk .plab{font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:8px;letter-spacing:.04em}
+.burger{width:22px;height:14px;display:flex;flex-direction:column;justify-content:space-between}
+.burger i{height:2px;background:var(--navy);border-radius:2px}
+
+.hidden{display:none}
+@media(max-width:560px){.grid4{grid-template-columns:1fr 1fr}.h-hero{font-size:30px}}
+</style>
+
+<div class="head">
+  <div class="eyebrow">Договор №114 · Этап 1 · Сайт 1 UL-COM · вайрфрейм экранов</div>
+  <h1>UX-вайрфрейм главной ulcm.ru — десктоп и мобайл</h1>
+  <p>Структурный прототип по утверждённому UX-блупринту (11 блоков). Показывает расположение и наполнение блоков без финального дизайна — визуальный слой придёт на шаге «Дизайн» (направление A). Наполнение реальное: услуги, цифры, карта с RTT, форма ТКП.</p>
+  <div class="legend">
+    <span><i style="background:var(--g1)"></i> контент / текст</span>
+    <span><i style="background:var(--navyL)"></i> заголовки, цифры, узлы сети</span>
+    <span><i style="background:var(--red)"></i> CTA, акценты, маршрут RTT</span>
+    <span><i style="background:var(--g3);border:1px dashed var(--line)"></i> контейнер / карта</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab on" data-t="desk" onclick="sw('desk')">Десктоп</div>
+  <div class="tab" data-t="mob" onclick="sw('mob')">Мобайл</div>
+</div>
+
+<!-- ================= DESKTOP ================= -->
+<div class="stage" id="desk">
+
+  <!-- 01 header -->
+  <div class="blk"><span class="lab">01 · Хедер (sticky)</span>
+    <div class="inner"><div class="row">
+      <div class="logo">ЮЛ-ком Медиа</div>
+      <div class="row" style="gap:16px;margin-left:8px"><span class="nav-i">Операторам</span><span class="nav-i">Бизнесу</span><span class="nav-i">Сеть</span><span class="nav-i">О компании</span><span class="nav-i">Контакты</span></div>
+      <div style="margin-left:auto" class="row"><span class="lbl n">+7 495 748-13-49</span><div class="btn">Получить ТКП</div></div>
+    </div></div>
+    <div class="note">Аудиторное меню сверху · телефон и один главный CTA закреплены</div>
+  </div>
+
+  <!-- 02 hero -->
+  <div class="blk"><span class="lab">02 · Hero — один оффер</span>
+    <div class="inner">
+      <div class="bar red" style="width:38%;height:10px;margin-bottom:14px"></div>
+      <div class="h-hero">Собственная магистральная ВОЛС<br>от Москвы до <em>западной границы</em> области</div>
+      <div class="col" style="max-width:640px;margin-top:16px"><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div>
+      <div class="row" style="margin-top:18px"><div class="btn">Получить ТКП</div><div class="btn ghost">Карта сети</div></div>
+    </div>
+    <div class="note">Один тезис вместо слайдера · вторичный CTA ведёт в «продукт» — карту</div>
+  </div>
+
+  <!-- 03 stats -->
+  <div class="blk"><span class="lab">03 · Витрина цифр</span>
+    <div class="inner grid4">
+      <div class="box"><div class="num">1 200<em>+</em></div><div class="lbl" style="margin-top:6px">км собственной ВОЛС</div></div>
+      <div class="box"><div class="num">17</div><div class="lbl" style="margin-top:6px">узлов, вкл. М9 / М10</div></div>
+      <div class="box"><div class="num"><em>&lt;3</em> мс</div><div class="lbl" style="margin-top:6px">задержка до М9</div></div>
+      <div class="box"><div class="num">2011</div><div class="lbl" style="margin-top:6px">на рынке связи</div></div>
+    </div>
+    <div class="note">Доверие цифрами сразу под оффером · данные — заглушки, уточняются у заказчика</div>
+  </div>
+
+  <!-- 04 audience -->
+  <div class="blk"><span class="lab">04 · Развилка аудиторий</span>
+    <div class="inner grid2">
+      <div class="box"><div class="lbl n" style="font-size:15px">Операторам (B2O)</div><div class="col" style="margin-top:12px">
+        <div class="bar sm"></div><div class="bar sm"></div><div class="bar sm"></div><div class="bar sm" style="width:70%"></div></div>
+        <div class="btn ghost" style="margin-top:14px;width:180px">Запросить ТКП оператора</div></div>
+      <div class="box"><div class="lbl n" style="font-size:15px">Бизнесу (B2B)</div><div class="col" style="margin-top:12px">
+        <div class="bar sm"></div><div class="bar sm"></div><div class="bar sm"></div><div class="bar sm" style="width:70%"></div></div>
+        <div class="btn ghost" style="margin-top:14px;width:180px">Запросить подключение</div></div>
+    </div>
+    <div class="note">Два покупателя → два маршрута · услуги: каналы/волокно/стык М9 vs интернет/VPN/IPTV</div>
+  </div>
+
+  <!-- 05 map -->
+  <div class="blk"><span class="lab">05 · Карта сети + расчёт RTT (ключевой)</span>
+    <div class="inner row" style="align-items:stretch;gap:14px">
+      <div class="map" style="flex:2">
+        <span class="cap">карта Москвы и области · узлы + магистрали</span>
+        <div class="dot" style="left:16%;top:30%"></div><div class="dot" style="left:34%;top:40%"></div>
+        <div class="dot r" style="left:60%;top:55%"></div><div class="dot" style="left:74%;top:48%"></div>
+        <div class="dot" style="left:80%;top:70%"></div><div class="route"></div>
+      </div>
+      <div class="side" style="flex:1"><div class="lbl n">Маршрут по сети</div>
+        <div class="num" style="margin-top:8px"><em>4.8</em> мс</div>
+        <div class="col" style="margin-top:10px"><div class="bar sm"></div><div class="bar sm" style="width:60%"></div></div>
+        <div class="btn" style="margin-top:14px">Запросить ТКП по маршруту</div></div>
+    </div>
+    <div class="note">Клик по двум узлам → кратчайший маршрут + суммарный RTT (наш дифференциатор)</div>
+  </div>
+
+  <!-- 06 why -->
+  <div class="blk"><span class="lab">06 · Почему мы</span>
+    <div class="inner grid3">
+      <div class="box"><div class="bar navy" style="width:26px;height:26px;border-radius:7px"></div><div class="lbl n" style="margin:10px 0 6px">Своя оптика</div><div class="col"><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div></div>
+      <div class="box"><div class="bar navy" style="width:26px;height:26px;border-radius:7px"></div><div class="lbl n" style="margin:10px 0 6px">Резервирование</div><div class="col"><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div></div>
+      <div class="box"><div class="bar navy" style="width:26px;height:26px;border-radius:7px"></div><div class="lbl n" style="margin:10px 0 6px">Задержка до М9</div><div class="col"><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div></div>
+    </div>
+    <div class="note">Снятие возражений B2B: не перепродажа, независимые маршруты, срок, SLA</div>
+  </div>
+
+  <!-- 07 magnets -->
+  <div class="blk"><span class="lab">07 · Страницы-магниты (SEO)</span>
+    <div class="inner row" style="flex-wrap:wrap;gap:10px">
+      <span class="pill">Канал до М9</span><span class="pill">Резервирование маршрута</span><span class="pill">ВОЛС до любого ЦОД</span><span class="pill">Интернет в Зубцове</span><span class="pill">Интернет в Ржеве</span>
+    </div>
+    <div class="note">Нишевые посадочные под конкретный спрос · уникальная география по трассе на запад</div>
+  </div>
+
+  <!-- 08 trust -->
+  <div class="blk"><span class="lab">08 · Клиенты и лицензии</span>
+    <div class="inner">
+      <div class="row" style="gap:12px"><div class="logo" style="width:80px;border-style:dashed">лого</div><div class="logo" style="width:80px;border-style:dashed">лого</div><div class="logo" style="width:80px;border-style:dashed">лого</div><div class="logo" style="width:80px;border-style:dashed">лого</div><div class="logo" style="width:80px;border-style:dashed">лого</div></div>
+      <div class="lbl" style="margin-top:12px">Лицензии Роскомнадзора № 122208 · 122209 · 122210 · 122211</div>
+    </div>
+    <div class="note">Соц-доказательство + compliance перед формой · список клиентов — у заказчика</div>
+  </div>
+
+  <!-- 09 news -->
+  <div class="blk"><span class="lab">09 · Новости (опционально)</span>
+    <div class="inner grid3">
+      <div class="box"><div class="bar" style="height:56px"></div><div class="bar sm" style="margin-top:10px"></div><div class="bar sm" style="width:60%;margin-top:6px"></div></div>
+      <div class="box"><div class="bar" style="height:56px"></div><div class="bar sm" style="margin-top:10px"></div><div class="bar sm" style="width:60%;margin-top:6px"></div></div>
+      <div class="box"><div class="bar" style="height:56px"></div><div class="bar sm" style="margin-top:10px"></div><div class="bar sm" style="width:60%;margin-top:6px"></div></div>
+    </div>
+    <div class="note">Ставим, только если заказчик готов вести ленту · старые новости 2013-2016 не переносим</div>
+  </div>
+
+  <!-- 10 form -->
+  <div class="blk"><span class="lab">10 · Форма ТКП (конверсия)</span>
+    <div class="inner grid2" style="gap:20px">
+      <div class="col">
+        <div class="grid2"><div class="field">Точка А</div><div class="field">Точка Б</div></div>
+        <div class="grid2"><div class="field">Ёмкость</div><div class="field">Услуга</div></div>
+        <div class="field">Контакт для ответа</div>
+        <div class="btn" style="width:200px">Отправить запрос ТКП</div>
+      </div>
+      <div class="col" style="justify-content:center"><div class="lbl n" style="font-size:15px">Запрос ТКП вместо «звонка менеджера»</div><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div>
+    </div>
+    <div class="note">Поля маршрута квалифицируют лид · реальная отправка на почту/CRM (старая форма была муляжом)</div>
+  </div>
+
+  <!-- 11 footer -->
+  <div class="blk"><span class="lab">11 · Футер</span>
+    <div class="inner grid3">
+      <div class="col"><div class="logo">ЮЛ-ком Медиа</div><div class="bar sm" style="margin-top:8px"></div><div class="bar sm" style="width:70%"></div></div>
+      <div class="col"><div class="lbl n">Компании группы</div><div class="bar sm" style="width:60%"></div><div class="bar sm" style="width:60%"></div><div class="bar sm" style="width:60%"></div></div>
+      <div class="col"><div class="lbl n">Контакты</div><div class="bar sm" style="width:70%"></div><div class="bar sm" style="width:70%"></div><div class="bar sm" style="width:50%"></div></div>
+    </div>
+    <div class="note">Реквизиты (ИНН/ОГРН), лицензии, связка группы (Связь-Коннект, ЮЛ-ком), слоган «Нам по пути»</div>
+  </div>
+</div>
+
+<!-- ================= MOBILE ================= -->
+<div class="stage hidden" id="mob">
+  <div class="phones">
+    <div class="phone"><div class="scr">
+      <div class="pblk"><div class="plab">01 · Хедер</div><div class="row"><div class="logo" style="width:80px;height:28px;font-size:10px">ЮЛ-ком</div><div style="margin-left:auto" class="row" style="gap:10px"><div class="btn" style="height:26px;font-size:11px">ТКП</div><div class="burger"><i></i><i></i><i></i></div></div></div></div>
+      <div class="pblk"><div class="plab">02 · Hero</div><div class="bar red" style="width:50%;height:9px;margin-bottom:10px"></div><div class="h-hero" style="font-size:26px">Своя ВОЛС от Москвы до <em>границы</em> области</div><div class="col" style="margin-top:12px"><div class="bar sm"></div><div class="bar sm" style="width:80%"></div></div><div class="btn" style="margin-top:14px">Получить ТКП</div><div class="btn ghost" style="margin-top:8px">Карта сети</div></div>
+      <div class="pblk"><div class="plab">03 · Цифры (2×2)</div><div class="grid2"><div class="box"><div class="num" style="font-size:22px">1 200<em>+</em></div><div class="lbl">км ВОЛС</div></div><div class="box"><div class="num" style="font-size:22px">17</div><div class="lbl">узлов</div></div><div class="box"><div class="num" style="font-size:22px"><em>&lt;3</em>мс</div><div class="lbl">до М9</div></div><div class="box"><div class="num" style="font-size:22px">2011</div><div class="lbl">с года</div></div></div></div>
+      <div class="pblk"><div class="plab">04 · Аудитории (стек)</div><div class="col"><div class="box"><div class="lbl n">Операторам</div><div class="col" style="margin-top:8px"><div class="bar sm"></div><div class="bar sm" style="width:70%"></div></div><div class="btn ghost" style="margin-top:10px">ТКП оператора</div></div><div class="box"><div class="lbl n">Бизнесу</div><div class="col" style="margin-top:8px"><div class="bar sm"></div><div class="bar sm" style="width:70%"></div></div><div class="btn ghost" style="margin-top:10px">Подключение</div></div></div></div>
+      <div class="pblk"><div class="plab">05 · Карта сети + RTT</div><div class="map" style="min-height:150px"><span class="cap">карта · узлы</span><div class="dot r" style="left:50%;top:50%"></div><div class="dot" style="left:24%;top:34%"></div><div class="dot" style="left:74%;top:64%"></div><div class="route" style="top:52%"></div></div><div class="side" style="margin-top:10px"><div class="lbl n">Маршрут</div><div class="num" style="font-size:24px"><em>4.8</em> мс</div><div class="btn" style="margin-top:10px">ТКП по маршруту</div></div></div>
+    </div></div>
+
+    <div class="phone"><div class="scr">
+      <div class="pblk"><div class="plab">06 · Почему мы</div><div class="col"><div class="box"><div class="row"><div class="bar navy" style="width:22px;height:22px;border-radius:6px"></div><div class="lbl n">Своя оптика</div></div></div><div class="box"><div class="row"><div class="bar navy" style="width:22px;height:22px;border-radius:6px"></div><div class="lbl n">Резервирование</div></div></div><div class="box"><div class="row"><div class="bar navy" style="width:22px;height:22px;border-radius:6px"></div><div class="lbl n">Задержка до М9</div></div></div></div></div>
+      <div class="pblk"><div class="plab">07 · Магниты</div><div class="row" style="flex-wrap:wrap;gap:8px"><span class="pill">Канал до М9</span><span class="pill">До ЦОД</span><span class="pill">Зубцов</span><span class="pill">Ржев</span></div></div>
+      <div class="pblk"><div class="plab">08 · Клиенты + лицензии</div><div class="row" style="gap:8px"><div class="logo" style="width:52px;height:26px;font-size:9px;border-style:dashed">лого</div><div class="logo" style="width:52px;height:26px;font-size:9px;border-style:dashed">лого</div><div class="logo" style="width:52px;height:26px;font-size:9px;border-style:dashed">лого</div></div><div class="lbl" style="margin-top:8px">Лицензии № 122208-122211</div></div>
+      <div class="pblk"><div class="plab">09 · Новости</div><div class="col"><div class="box"><div class="bar" style="height:44px"></div><div class="bar sm" style="margin-top:8px"></div></div><div class="box"><div class="bar" style="height:44px"></div><div class="bar sm" style="margin-top:8px"></div></div></div></div>
+      <div class="pblk"><div class="plab">10 · Форма ТКП</div><div class="col"><div class="field">Точка А</div><div class="field">Точка Б</div><div class="field">Ёмкость</div><div class="field">Контакт</div><div class="btn">Отправить ТКП</div></div></div>
+      <div class="pblk"><div class="plab">11 · Футер</div><div class="col"><div class="logo" style="width:80px;height:28px;font-size:10px">ЮЛ-ком</div><div class="bar sm" style="width:70%"></div><div class="bar sm" style="width:60%"></div><div class="lbl">Нам по пути</div></div></div>
+    </div></div>
+  </div>
+  <div class="note" style="text-align:center;margin-top:16px">Мобайл: меню → бургер · цифры 2×2 · аудитории и форма стеком · карта на всю ширину, панель RTT под ней</div>
+</div>
+
+<script>
+function sw(t){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x.dataset.t===t)});
+  document.getElementById('desk').classList.toggle('hidden',t!=='desk');
+  document.getElementById('mob').classList.toggle('hidden',t!=='mob');
+}
+</script>

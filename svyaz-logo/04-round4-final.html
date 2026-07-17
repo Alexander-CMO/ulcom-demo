@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>СвязьКоннект — финальные логотипы</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --blue:#2A6FF2;
+  --green:#10B981;
+  --graphite:#16202B;
+  --paper:#FFFFFF;
+  --panel:#F5F7FA;
+  --line:#E3E8EF;
+  --ink:#16202B;
+  --ink-soft:#3C4a58;
+  --muted:#7A8794;
+  --sans:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:16px;line-height:1.6}
+svg{font-family:var(--sans)}
+svg text{font-family:var(--sans)}
+.wrap{max-width:1080px;margin:0 auto;padding:56px 28px 90px}
+.eyebrow{font-weight:700;font-size:12px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+h1{font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 18px;color:var(--ink)}
+.lead{font-size:18px;max-width:760px;margin:0 0 14px;color:var(--ink-soft)}
+.lead b{color:var(--ink)}
+
+/* общая палитра */
+.palette{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 8px}
+.sw{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:10px 16px 10px 12px;background:var(--paper)}
+.chip{width:34px;height:34px;border-radius:9px;flex:none;border:1px solid rgba(0,0,0,.08)}
+.sw b{display:block;color:var(--ink);font-size:14px;line-height:1.3}
+.sw span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* карточка варианта */
+.variant{margin-top:56px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper)}
+.v-head{padding:26px 30px 22px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#FBFCFE,#F5F7FA)}
+.v-tag{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);border-radius:999px;padding:5px 13px;margin-bottom:12px}
+.v-tag.blue{color:var(--blue);border-color:var(--blue)}
+.v-head h2{margin:0 0 8px;font-weight:800;font-size:28px;color:var(--ink)}
+.v-head .role{margin:0;font-size:15px;color:var(--ink-soft);max-width:820px}
+
+.v-body{padding:12px 30px 34px}
+.block{padding:26px 0;border-bottom:1px solid var(--line)}
+.block:last-child{border-bottom:none}
+.block h3{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.block .hint{margin:0 0 18px;font-size:14px;color:var(--muted)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+
+.stage{border-radius:16px;padding:34px;display:flex;align-items:center;justify-content:center;min-height:150px;border:1px solid var(--line)}
+.stage.light{background:var(--paper)}
+.stage.panel{background:var(--panel)}
+.stage.dark{background:var(--graphite);border-color:transparent}
+.stage svg{width:min(360px,80%);height:auto;display:block}
+.cap{margin:9px 2px 0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* компакт + знак */
+.trio{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px}
+@media(max-width:720px){.trio{grid-template-columns:1fr}}
+.tile{border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:170px;background:var(--paper)}
+.tile .v-svg{display:flex;align-items:center;justify-content:center;height:110px}
+.tile.dark{background:var(--graphite);border-color:transparent}
+.tlab{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tile.dark .tlab{color:#8A99A8}
+
+/* фавиконки */
+.fav-row{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.fav{display:flex;flex-direction:column;align-items:center;gap:8px}
+.fav .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.fav svg{display:block}
+.fav span{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* монохром */
+.mono-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:720px){.mono-row{grid-template-columns:1fr}}
+
+/* охранное поле */
+.clear{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;justify-content:center}
+.clear .frame{position:relative;padding:var(--pad,40px);background:
+    repeating-linear-gradient(0deg,transparent,transparent 7px,rgba(42,111,242,.16) 7px,rgba(42,111,242,.16) 8px);
+  border:1px dashed rgba(42,111,242,.5);border-radius:8px}
+.clear .inner{background:var(--paper);padding:14px 18px;border-radius:6px;display:flex;align-items:center}
+.clear .inner svg{width:280px;height:auto;display:block}
+
+/* нельзя */
+.donts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+@media(max-width:720px){.donts{grid-template-columns:1fr}}
+.dont{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.dont .pic{height:120px;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line)}
+.dont .pic.light{background:var(--panel)}
+.dont .pic.dark{background:var(--graphite)}
+.dont .pic svg{max-width:82%;max-height:80px}
+.dont .no{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:#E4573C;color:#fff;font-size:14px;line-height:22px;text-align:center;font-weight:700}
+.dont p{margin:0;padding:12px 14px;font-size:13.5px;color:var(--ink-soft)}
+.dont p b{color:var(--ink)}
+
+/* шапка сайта */
+.mock{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mock .bar{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;background:var(--paper);border-bottom:1px solid var(--line)}
+.mock .bar.dark{background:var(--graphite);border-bottom:none}
+.mock .bar svg{height:38px;width:auto}
+.mock nav{display:flex;align-items:center;gap:22px}
+.mock nav span{font-size:13.5px;color:var(--ink-soft);font-weight:500}
+.mock .bar.dark nav span{color:#C4D0DC}
+.mock nav .cta{background:var(--blue);color:#fff;padding:8px 16px;border-radius:9px;font-weight:600}
+.mock .cap{padding:10px 16px;font-size:12px;color:var(--muted);background:var(--panel)}
+@media(max-width:560px){.mock nav span:not(.cta){display:none}}
+
+.why{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.why li{padding-left:22px;position:relative;font-size:14.5px;color:var(--ink-soft)}
+.why li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+.why li b{color:var(--ink)}
+
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--panel);padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<!-- ================= СИМВОЛЫ ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+
+  <!-- ===== ВАРИАНТ 1 · МОНОГРАММА 2.0 ===== -->
+  <symbol id="v1-mark" viewBox="0 0 140 140">
+    <g transform="rotate(40 70 70)"><circle cx="70" cy="70" r="44" fill="none" stroke="#2A6FF2" stroke-width="13" stroke-linecap="round" stroke-dasharray="215 61.5"/></g>
+    <path d="M58 42 V98" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
+    <path d="M58 70 L92 42 M58 70 L92 98" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="58" cy="70" r="8" fill="#10B981"/>
+  </symbol>
+  <symbol id="v1-mark-mono" viewBox="0 0 140 140">
+    <g transform="rotate(40 70 70)"><circle cx="70" cy="70" r="44" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-dasharray="215 61.5"/></g>
+    <path d="M58 42 V98" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
+    <path d="M58 70 L92 42 M58 70 L92 98" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="58" cy="70" r="8" fill="currentColor"/>
+  </symbol>
+  <symbol id="v1-h" viewBox="0 0 660 140">
+    <use href="#v1-mark" x="0" y="10" width="120" height="120"/>
+    <text x="140" y="84" font-family="var(--sans)" font-weight="600" font-size="47" letter-spacing="-0.5" fill="currentColor">связь<tspan fill="#2A6FF2">коннект</tspan></text>
+    <text x="142" y="115" font-family="var(--sans)" font-weight="500" font-size="13.5" letter-spacing="1.2" fill="#7A8794">строительство и обслуживание волс</text>
+  </symbol>
+  <symbol id="v1-h-mono" viewBox="0 0 660 140">
+    <use href="#v1-mark-mono" x="0" y="10" width="120" height="120"/>
+    <text x="140" y="84" font-family="var(--sans)" font-weight="600" font-size="47" letter-spacing="-0.5" fill="currentColor">связьконнект</text>
+    <text x="142" y="115" font-family="var(--sans)" font-weight="500" font-size="13.5" letter-spacing="1.2" fill="currentColor" opacity="0.55">строительство и обслуживание волс</text>
+  </symbol>
+  <symbol id="v1-vert" viewBox="0 0 300 210">
+    <use href="#v1-mark" x="100" y="6" width="100" height="100"/>
+    <text x="150" y="160" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="40" letter-spacing="-0.5" fill="currentColor">связь<tspan fill="#2A6FF2">коннект</tspan></text>
+    <text x="150" y="186" text-anchor="middle" font-family="var(--sans)" font-weight="500" font-size="12" letter-spacing="1.4" fill="#7A8794">строительство и обслуживание волс</text>
+  </symbol>
+
+  <!-- ===== ВАРИАНТ 2 · ИНДИКАТОР ===== -->
+  <symbol id="v2-mark" viewBox="0 0 140 140">
+    <circle cx="66" cy="74" r="38" fill="none" stroke="#2A6FF2" stroke-width="16"/>
+    <circle cx="97" cy="43" r="16" fill="#10B981"/>
+  </symbol>
+  <symbol id="v2-mark-mono" viewBox="0 0 140 140">
+    <circle cx="66" cy="74" r="38" fill="none" stroke="currentColor" stroke-width="16"/>
+    <circle cx="97" cy="43" r="16" fill="currentColor"/>
+  </symbol>
+  <symbol id="v2-h" viewBox="0 0 620 140">
+    <text x="0" y="84" font-family="var(--sans)" font-weight="600" letter-spacing="-0.5" font-size="52" fill="currentColor">связь<tspan fill="#2A6FF2">к</tspan></text>
+    <circle cx="196" cy="67" r="14.5" fill="none" stroke="#2A6FF2" stroke-width="8.5"/>
+    <circle cx="206" cy="57" r="6" fill="#10B981"/>
+    <text x="218" y="84" font-family="var(--sans)" font-weight="600" letter-spacing="-0.5" font-size="52" fill="#2A6FF2">ннект</text>
+    <text x="2" y="115" font-family="var(--sans)" font-weight="500" font-size="13.5" letter-spacing="1.2" fill="#7A8794">строительство и обслуживание волс</text>
+  </symbol>
+  <symbol id="v2-h-mono" viewBox="0 0 620 140">
+    <text x="0" y="84" font-family="var(--sans)" font-weight="600" letter-spacing="-0.5" font-size="52" fill="currentColor">связьк</text>
+    <circle cx="196" cy="67" r="14.5" fill="none" stroke="currentColor" stroke-width="8.5"/>
+    <circle cx="206" cy="57" r="6" fill="currentColor"/>
+    <text x="218" y="84" font-family="var(--sans)" font-weight="600" letter-spacing="-0.5" font-size="52" fill="currentColor">ннект</text>
+    <text x="2" y="115" font-family="var(--sans)" font-weight="500" font-size="13.5" letter-spacing="1.2" fill="currentColor" opacity="0.55">строительство и обслуживание волс</text>
+  </symbol>
+  <symbol id="v2-vert" viewBox="0 0 300 210">
+    <use href="#v2-mark" x="106" y="4" width="88" height="88"/>
+    <text x="150" y="150" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="40" letter-spacing="-0.5" fill="currentColor">связь<tspan fill="#2A6FF2">коннект</tspan></text>
+    <text x="150" y="176" text-anchor="middle" font-family="var(--sans)" font-weight="500" font-size="12" letter-spacing="1.4" fill="#7A8794">строительство и обслуживание волс</text>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+  <p class="eyebrow">ГК ЮЛ-КОМ · SVYAZCONNECT.RU · ФИНАЛ ЛОГОТИПА · 07.2026</p>
+  <h1>Связь Коннект: два финальных логотипа</h1>
+  <p class="lead">По договору для сайта нужно ровно <b>два варианта</b>. Из проработок раунда 4 доведены до финала два сильнейших: <b>Монограмма 2.0</b> как универсальная база и <b>Индикатор</b> как смелый цифровой ход. Оба на утверждённой паре синий плюс зелёный линк, строчной леттеринг, знак готов работать аватаром и фавиконкой без адаптации.</p>
+
+  <div class="palette">
+    <div class="sw"><span class="chip" style="background:#2A6FF2"></span><b>Электрик-синий<span>#2A6FF2</span></b></div>
+    <div class="sw"><span class="chip" style="background:#10B981"></span><b>Зелёный линк<span>#10B981</span></b></div>
+    <div class="sw"><span class="chip" style="background:#16202B"></span><b>Графит<span>#16202B</span></b></div>
+    <div class="sw"><span class="chip" style="background:#7A8794"></span><b>Серый дескриптор<span>#7A8794</span></b></div>
+    <div class="sw"><span class="chip" style="background:#FFFFFF"></span><b>Бумага<span>#FFFFFF</span></b></div>
+  </div>
+  <p class="hint" style="color:var(--muted);font-size:13px;margin:10px 2px 0">Синий держит основу и слово «коннект», зелёный — только акцент-линк (узел или точка), графит — текст и монохром. Пропорция зелёного минимальна: это индикатор, а не заливка.</p>
+
+  <!-- ============ ВАРИАНТ 1 ============ -->
+  <section class="variant">
+    <div class="v-head">
+      <span class="v-tag">Вариант 1 · универсальная база</span>
+      <h2>Монограмма 2.0</h2>
+      <p class="role">Знак «К внутри дуги С» с утяжелённым штрихом и зелёным узлом-линком. Рекомендуется как основной: спокойная модернизация, читается в тендерной документации и на мелких носителях, слово «связьконнект» собрано плотно как у цифровых операторов.</p>
+    </div>
+    <div class="v-body">
+
+      <div class="block">
+        <h3>Горизонтальный лок-ап</h3>
+        <p class="hint">Основное применение. Знак, слово, дескриптор.</p>
+        <div class="grid2">
+          <div><div class="stage light"><svg viewBox="0 0 660 140" style="color:#16202B"><use href="#v1-h"/></svg></div><p class="cap">Светлый фон</p></div>
+          <div><div class="stage dark"><svg viewBox="0 0 660 140" style="color:#FFFFFF"><use href="#v1-h"/></svg></div><p class="cap">Тёмный фон · инверсия</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Компактный лок-ап и знак</h3>
+        <p class="hint">Вертикаль для узких мест, знак — для аватаров и фавиконок.</p>
+        <div class="trio">
+          <div class="tile"><div class="v-svg"><svg viewBox="0 0 300 210" style="height:150px;color:#16202B"><use href="#v1-vert"/></svg></div><span class="tlab">Вертикальный</span></div>
+          <div class="tile"><div class="v-svg"><svg viewBox="0 0 140 140" style="height:96px;color:#16202B"><use href="#v1-mark"/></svg></div><span class="tlab">Знак на светлом</span></div>
+          <div class="tile dark"><div class="v-svg"><svg viewBox="0 0 140 140" style="height:96px;color:#FFFFFF"><use href="#v1-mark"/></svg></div><span class="tlab">Знак на тёмном</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Фавиконка</h3>
+        <p class="hint">Знак держит форму до 16 px — жирный штрих не рассыпается.</p>
+        <div class="fav-row">
+          <div class="fav"><div class="box" style="width:64px;height:64px"><svg width="48" height="48" viewBox="0 0 140 140" style="color:#16202B"><use href="#v1-mark"/></svg></div><span>48 px</span></div>
+          <div class="fav"><div class="box" style="width:48px;height:48px"><svg width="32" height="32" viewBox="0 0 140 140" style="color:#16202B"><use href="#v1-mark"/></svg></div><span>32 px</span></div>
+          <div class="fav"><div class="box" style="width:32px;height:32px"><svg width="16" height="16" viewBox="0 0 140 140" style="color:#16202B"><use href="#v1-mark"/></svg></div><span>16 px</span></div>
+          <div class="fav"><div class="box" style="width:64px;height:64px;background:#16202B;border-color:transparent"><svg width="44" height="44" viewBox="0 0 140 140" style="color:#FFFFFF"><use href="#v1-mark"/></svg></div><span>плитка</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Монохром · одна краска</h3>
+        <p class="hint">Гравировка, штамп, факс, одноцветная печать. Синий и зелёный уходят в графит или в белый.</p>
+        <div class="mono-row">
+          <div><div class="stage panel"><svg viewBox="0 0 660 140" style="color:#16202B"><use href="#v1-h-mono"/></svg></div><p class="cap">Графит на светлом</p></div>
+          <div><div class="stage dark"><svg viewBox="0 0 660 140" style="color:#FFFFFF"><use href="#v1-h-mono"/></svg></div><p class="cap">Белый на тёмном</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Охранное поле</h3>
+        <p class="hint">Минимальный отступ со всех сторон — высота узла-линка знака. Ничего не заходит в штрихованную зону.</p>
+        <div class="clear"><div class="frame" style="--pad:34px"><div class="inner"><svg viewBox="0 0 660 140" style="color:#16202B"><use href="#v1-h"/></svg></div></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Нельзя</h3>
+        <div class="donts">
+          <div class="dont"><div class="pic light"><span class="no">✕</span><svg viewBox="0 0 660 140" style="color:#16202B;transform:scaleY(1.35)"><use href="#v1-h"/></svg></div><p><b>Не растягивать</b> и не сжимать. Пропорции знака и слова фиксированы.</p></div>
+          <div class="dont"><div class="pic light"><span class="no">✕</span><svg viewBox="0 0 140 140" style="color:#E4573C"><use href="#v1-mark-mono"/></svg></div><p><b>Не перекрашивать</b> в произвольные цвета. Только палитра или чистый монохром.</p></div>
+          <div class="dont"><div class="pic" style="background:#8fb4ff"><span class="no">✕</span><svg viewBox="0 0 140 140" style="color:#16202B"><use href="#v1-mark"/></svg></div><p><b>Не ставить</b> цветной знак на пёстрый или близкий по тону фон. Нужен контраст.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>В шапке сайта</h3>
+        <div class="mock">
+          <div class="bar"><svg viewBox="0 0 660 140" preserveAspectRatio="xMinYMid meet" style="width:210px;color:#16202B"><use href="#v1-h"/></svg><nav><span>Услуги</span><span>Проекты</span><span>О компании</span><span class="cta">Запросить смету</span></nav></div>
+          <div class="bar dark"><svg viewBox="0 0 660 140" preserveAspectRatio="xMinYMid meet" style="width:210px;color:#FFFFFF"><use href="#v1-h"/></svg><nav><span>Услуги</span><span>Проекты</span><span>О компании</span><span class="cta">Запросить смету</span></nav></div>
+          <div class="cap">Светлая и тёмная тема, одна геометрия</div>
+        </div>
+      </div>
+
+      <div class="block" style="border-bottom:none;padding-bottom:8px">
+        <h3>Почему этот вариант</h3>
+        <ul class="why">
+          <li><b>Жирный штрих держит 16 px</b> — знак работает от фавиконки до вывески.</li>
+          <li><b>Строчное слово</b> — маркер современности, бренд остаётся читаемым.</li>
+          <li><b>Универсален</b>: в отличие от смелого, спокойно ложится в тендерную и юридическую документацию.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ВАРИАНТ 2 ============ -->
+  <section class="variant">
+    <div class="v-head">
+      <span class="v-tag blue">Вариант 2 · смелый цифровой</span>
+      <h2>Индикатор</h2>
+      <p class="role">Знак — кольцо со сдвинутой зелёной точкой, универсальный язык статуса «в сети». Кольцо встаёт на место буквы «о» в слове «коннект»: логотип сам сообщает, что линк горит. В интерфейсе точка может мягко пульсировать.</p>
+    </div>
+    <div class="v-body">
+
+      <div class="block">
+        <h3>Горизонтальный лок-ап</h3>
+        <p class="hint">Основное применение. Знак-индикатор встроен в слово.</p>
+        <div class="grid2">
+          <div><div class="stage light"><svg viewBox="0 0 620 140" style="color:#16202B"><use href="#v2-h"/></svg></div><p class="cap">Светлый фон</p></div>
+          <div><div class="stage dark"><svg viewBox="0 0 620 140" style="color:#FFFFFF"><use href="#v2-h"/></svg></div><p class="cap">Тёмный фон · инверсия</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Компактный лок-ап и знак</h3>
+        <p class="hint">Вертикаль ставит индикатор над словом, знак — самостоятельный статус-маркер.</p>
+        <div class="trio">
+          <div class="tile"><div class="v-svg"><svg viewBox="0 0 300 210" style="height:150px;color:#16202B"><use href="#v2-vert"/></svg></div><span class="tlab">Вертикальный</span></div>
+          <div class="tile"><div class="v-svg"><svg viewBox="0 0 140 140" style="height:88px;color:#16202B"><use href="#v2-mark"/></svg></div><span class="tlab">Знак на светлом</span></div>
+          <div class="tile dark"><div class="v-svg"><svg viewBox="0 0 140 140" style="height:88px;color:#FFFFFF"><use href="#v2-mark"/></svg></div><span class="tlab">Знак на тёмном</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Фавиконка</h3>
+        <p class="hint">Кольцо с точкой узнаётся даже в 16 px — минимум деталей.</p>
+        <div class="fav-row">
+          <div class="fav"><div class="box" style="width:64px;height:64px"><svg width="48" height="48" viewBox="0 0 140 140" style="color:#16202B"><use href="#v2-mark"/></svg></div><span>48 px</span></div>
+          <div class="fav"><div class="box" style="width:48px;height:48px"><svg width="32" height="32" viewBox="0 0 140 140" style="color:#16202B"><use href="#v2-mark"/></svg></div><span>32 px</span></div>
+          <div class="fav"><div class="box" style="width:32px;height:32px"><svg width="16" height="16" viewBox="0 0 140 140" style="color:#16202B"><use href="#v2-mark"/></svg></div><span>16 px</span></div>
+          <div class="fav"><div class="box" style="width:64px;height:64px;background:#16202B;border-color:transparent"><svg width="44" height="44" viewBox="0 0 140 140" style="color:#FFFFFF"><use href="#v2-mark"/></svg></div><span>плитка</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Монохром · одна краска</h3>
+        <p class="hint">Кольцо и точка сливаются в один цвет — работает на штампе и гравировке.</p>
+        <div class="mono-row">
+          <div><div class="stage panel"><svg viewBox="0 0 620 140" style="color:#16202B"><use href="#v2-h-mono"/></svg></div><p class="cap">Графит на светлом</p></div>
+          <div><div class="stage dark"><svg viewBox="0 0 620 140" style="color:#FFFFFF"><use href="#v2-h-mono"/></svg></div><p class="cap">Белый на тёмном</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Охранное поле</h3>
+        <p class="hint">Минимальный отступ — диаметр зелёной точки-индикатора. Держим воздух вокруг слова.</p>
+        <div class="clear"><div class="frame" style="--pad:30px"><div class="inner"><svg viewBox="0 0 620 140" style="color:#16202B"><use href="#v2-h"/></svg></div></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Нельзя</h3>
+        <div class="donts">
+          <div class="dont"><div class="pic light"><span class="no">✕</span><svg viewBox="0 0 620 140" style="color:#16202B;transform:scaleX(1.4)"><use href="#v2-h"/></svg></div><p><b>Не искажать</b> межбуквенное расстояние — индикатор должен точно стоять на месте «о».</p></div>
+          <div class="dont"><div class="pic light"><span class="no">✕</span><svg viewBox="0 0 140 140" style="color:#16202B"><circle cx="66" cy="74" r="38" fill="none" stroke="#16202B" stroke-width="16"/><circle cx="97" cy="43" r="16" fill="#E4573C"/></svg></div><p><b>Не менять цвет точки.</b> Индикатор всегда зелёный линк, не красный и не жёлтый.</p></div>
+          <div class="dont"><div class="pic dark"><span class="no">✕</span><svg viewBox="0 0 620 140" style="color:#3C4a58"><use href="#v2-h-mono"/></svg></div><p><b>Не заглушать</b> знак низким контрастом. Тёмное на тёмном не читается.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>В шапке сайта</h3>
+        <div class="mock">
+          <div class="bar"><svg viewBox="0 0 620 140" preserveAspectRatio="xMinYMid meet" style="width:200px;color:#16202B"><use href="#v2-h"/></svg><nav><span>Услуги</span><span>Проекты</span><span>О компании</span><span class="cta">Запросить смету</span></nav></div>
+          <div class="bar dark"><svg viewBox="0 0 620 140" preserveAspectRatio="xMinYMid meet" style="width:200px;color:#FFFFFF"><use href="#v2-h"/></svg><nav><span>Услуги</span><span>Проекты</span><span>О компании</span><span class="cta">Запросить смету</span></nav></div>
+          <div class="cap">Точка-индикатор в интерфейсе может мягко пульсировать</div>
+        </div>
+      </div>
+
+      <div class="block" style="border-bottom:none;padding-bottom:8px">
+        <h3>Почему этот вариант</h3>
+        <ul class="why">
+          <li><b>Знак равен статусу</b> — «связь есть, линк горит» считывается без пояснений и анимируется.</li>
+          <li><b>Буква-замена делает слово знаком</b> — отдельная монограмма рядом не нужна.</li>
+          <li><b>Самый современный</b> из раундов; выбирается, если бренд хочет звучать по-цифровому смело.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Чистые SVG-ассеты: <code>design/logo-final/v1-monogram/</code> и <code>design/logo-final/v2-indicator/</code> — по каждому <code>logo-horizontal.svg</code>, <code>logo-mark.svg</code>, <code>logo-mono.svg</code>. Палитра: синий #2A6FF2, зелёный #10B981, графит #16202B. Шрифт слова — Montserrat (в вебе допустим системный гротеск).
+  </footer>
+</div>
+</body>
+</html>
