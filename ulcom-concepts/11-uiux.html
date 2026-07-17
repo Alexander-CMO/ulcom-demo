@@ -322,12 +322,12 @@ table.nodes .tag.pop{background:rgba(255,255,255,.07);color:#B9C6D8}
 }
 </style>
 <!-- ========================================================================
-     UI/UX PRO MAX — применённая дизайн-система (design-system/ul-kom-media/MASTER.md)
+     Применённая дизайн-система (MASTER.md)
      Паттерн Enterprise Gateway · стиль Modern Dark · навигация trust-first.
-     Ниже: семантические токены палитры/спейсинга/теней из скилла +
+     Ниже: семантические токены палитры/спейсинга/теней +
      моушн-пресет Stagger List (back.out) + правки по pre-delivery чек-листу.
 ========================================================================= -->
-<style id="uiux-pro-max">
+<style id="applied-system">
 :root{
   /* палитра дизайн-системы (navy + профессиональный синий CTA) */
   --acc:#0369A1;              /* Accent/CTA из MASTER.md (было #2E7FE0) */
@@ -1003,7 +1003,7 @@ renderTable("all");
 if(location.hash === "#network") showPage("network");
 </script>
 <script>
-/* UI/UX Pro Max — моушн-пресет Stagger List: карточки въезжают волной при появлении */
+/* Моушн-пресет Stagger List: карточки въезжают волной при появлении */
 (function(){
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var groups=[['.stat'],['.aud'],['.why']];
