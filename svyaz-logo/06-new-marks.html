@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Связь-Коннект - новые знаки в фирменной палитре</title>
+<style>
+  :root{
+    --blue:#2A6FF2; --green:#10B981; --ink:#16202B; --gray:#7A8794;
+    --paper:#FFFFFF; --line:#e5e9ef; --soft:#f5f7fa; --sans:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:16px/1.55 var(--sans);color:var(--ink);background:#fff}
+  .wrap{max-width:1080px;margin:0 auto;padding:44px 24px 90px}
+  .kick{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}
+  h1{font-size:30px;line-height:1.12;margin:8px 0 10px;color:var(--ink)}
+  .sub{color:var(--gray);max-width:800px}
+  .swatches{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+  .sw{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:12.5px}
+  .sw i{width:16px;height:16px;border-radius:4px;display:block;border:1px solid rgba(0,0,0,.08)}
+  .sw b{color:var(--ink)} .sw span{color:var(--gray);font-family:ui-monospace,Menlo,monospace}
+  .note{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:20px 0;font-size:14.5px;color:#33465a}
+  .note b{color:var(--ink)}
+
+  .opt{margin-top:40px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .opt-h{padding:16px 22px;background:var(--soft);border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .opt-h .n{font-size:12px;font-weight:800;color:#fff;background:var(--blue);padding:3px 10px;border-radius:20px;letter-spacing:.05em}
+  .opt-h h2{font-size:20px;color:var(--ink)}
+  .opt-h .why{color:var(--gray);font-size:13.5px;flex-basis:100%}
+  .rows{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .cell{padding:34px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:190px}
+  .cell.dark{background:var(--ink)}
+  .cell.light{background:#fff}
+  .cell + .cell{border-left:1px solid var(--line)}
+  .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+  .cell.dark .cap{color:#8b98a6}
+
+  /* lock-up */
+  .lock{display:flex;align-items:center;gap:14px}
+  .lock .mk{width:54px;height:54px;flex:0 0 auto}
+  .wm{line-height:1}
+  .wm .word{font-size:26px;font-weight:800;letter-spacing:-.01em}
+  .wm .s{color:var(--ink)} .wm .k{color:var(--blue)}
+  .cell.dark .wm .s{color:#fff}
+  .wm .desc{margin-top:5px;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);font-weight:600}
+  /* mono monochrome */
+  .cell.mono .wm .k, .cell.mono .wm .s{color:var(--ink)}
+
+  .fav{display:flex;gap:16px;align-items:flex-end;padding:22px 30px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .fav .f{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .fav .f .cap{font-size:10px}
+  .fav .box{background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--gray);font-size:13.5px}
+  @media(max-width:720px){.rows{grid-template-columns:1fr}.cell+.cell{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">ГК ЮЛ-ком · Связь-Коннект · строительство ВОЛС</div>
+  <h1>Новые знаки - в утверждённой палитре</h1>
+  <p class="sub">Свежие направления из разведки, доведённые до полного лок-апа: <b>знак + начертание</b>. Цвета не трогаем - строго дом-стиль «Монограммы 2.0»: синий держит основу и слово «коннект», зелёный только акцент-узел, графит для «связь» и монохрома.</p>
+
+  <div class="swatches">
+    <div class="sw"><i style="background:#2A6FF2"></i><b>Электрик-синий</b><span>#2A6FF2</span></div>
+    <div class="sw"><i style="background:#10B981"></i><b>Зелёный линк</b><span>#10B981</span></div>
+    <div class="sw"><i style="background:#16202B"></i><b>Графит</b><span>#16202B</span></div>
+    <div class="sw"><i style="background:#7A8794"></i><b>Серый дескриптор</b><span>#7A8794</span></div>
+    <div class="sw"><i style="background:#fff"></i><b>Бумага</b><span>#FFFFFF</span></div>
+  </div>
+  <div class="note"><b>Начертание единое во всех:</b> «связь» графит + «коннект» синий, строчное, плотно. Дескриптор «строительство и обслуживание ВОЛС» серым. Меняется только знак слева.</div>
+
+  <!-- ============ OPTION 1: ТРАССА-УЗЕЛ ============ -->
+  <div class="opt">
+    <div class="opt-h">
+      <span class="n">Знак 1</span><h2>Трасса-узел</h2>
+      <span class="why">Две магистрали сводятся в зелёный узел и идут дальше графитом. Прямой смысл подрядчика: «строим и сводим трассы ВОЛС до точки». Максимальный минимализм, держит форму в фавиконе.</span>
+    </div>
+    <div class="rows">
+      <div class="cell light">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Знак трасса-узел">
+            <path d="M5 19 L34 32" stroke="#2A6FF2" stroke-width="5.5" stroke-linecap="round"/>
+            <path d="M5 45 L34 32" stroke="#2A6FF2" stroke-width="5.5" stroke-linecap="round"/>
+            <path d="M34 32 H59" stroke="#16202B" stroke-width="5.5" stroke-linecap="round"/>
+            <circle cx="34" cy="32" r="9" fill="#10B981"/>
+            <circle cx="34" cy="32" r="9" stroke="#fff" stroke-width="2.4"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">светлый фон</div>
+      </div>
+      <div class="cell dark">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 19 L34 32" stroke="#4E86F6" stroke-width="5.5" stroke-linecap="round"/>
+            <path d="M5 45 L34 32" stroke="#4E86F6" stroke-width="5.5" stroke-linecap="round"/>
+            <path d="M34 32 H59" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+            <circle cx="34" cy="32" r="9" fill="#10B981"/>
+            <circle cx="34" cy="32" r="9" stroke="#16202B" stroke-width="2.4"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k" style="color:#4E86F6">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">тёмный фон · инверсия</div>
+      </div>
+    </div>
+    <div class="fav">
+      <div class="f"><div class="box" style="width:48px;height:48px"><svg viewBox="0 0 64 64" width="34" height="34" fill="none"><path d="M5 19 L34 32M5 45 L34 32" stroke="#2A6FF2" stroke-width="6" stroke-linecap="round"/><path d="M34 32 H59" stroke="#16202B" stroke-width="6" stroke-linecap="round"/><circle cx="34" cy="32" r="9" fill="#10B981"/></svg></div><div class="cap">48px</div></div>
+      <div class="f"><div class="box" style="width:32px;height:32px"><svg viewBox="0 0 64 64" width="22" height="22" fill="none"><path d="M5 19 L34 32M5 45 L34 32" stroke="#2A6FF2" stroke-width="7" stroke-linecap="round"/><path d="M34 32 H59" stroke="#16202B" stroke-width="7" stroke-linecap="round"/><circle cx="34" cy="32" r="10" fill="#10B981"/></svg></div><div class="cap">32px</div></div>
+      <div class="f"><div class="box" style="width:56px;height:56px;background:#16202B"><svg viewBox="0 0 64 64" width="38" height="38" fill="none"><path d="M5 19 L34 32M5 45 L34 32" stroke="#4E86F6" stroke-width="6" stroke-linecap="round"/><path d="M34 32 H59" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle cx="34" cy="32" r="9" fill="#10B981"/></svg></div><div class="cap">плитка</div></div>
+    </div>
+  </div>
+
+  <!-- ============ OPTION 2: СТЫК ============ -->
+  <div class="opt">
+    <div class="opt-h">
+      <span class="n">Знак 2</span><h2>Стык</h2>
+      <span class="why">Скруглённый квадрат - магистраль (синяя) и ввод (графит) сходятся в зелёном узле-стыке. App-icon дружелюбный, «соединяем сети». Хорошо на технике, спецодежде, наклейке на муфте.</span>
+    </div>
+    <div class="rows">
+      <div class="cell light">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Знак стык">
+            <rect x="5" y="5" width="54" height="54" rx="15" stroke="#2A6FF2" stroke-width="5"/>
+            <path d="M5 32 H32" stroke="#2A6FF2" stroke-width="5" stroke-linecap="round"/>
+            <path d="M32 32 V59" stroke="#16202B" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="7.5" fill="#10B981"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">светлый фон</div>
+      </div>
+      <div class="cell dark">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="54" height="54" rx="15" stroke="#4E86F6" stroke-width="5"/>
+            <path d="M5 32 H32" stroke="#4E86F6" stroke-width="5" stroke-linecap="round"/>
+            <path d="M32 32 V59" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="7.5" fill="#10B981"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k" style="color:#4E86F6">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">тёмный фон · инверсия</div>
+      </div>
+    </div>
+    <div class="fav">
+      <div class="f"><div class="box" style="width:48px;height:48px"><svg viewBox="0 0 64 64" width="34" height="34" fill="none"><rect x="5" y="5" width="54" height="54" rx="15" stroke="#2A6FF2" stroke-width="6"/><path d="M5 32 H32" stroke="#2A6FF2" stroke-width="6" stroke-linecap="round"/><path d="M32 32 V59" stroke="#16202B" stroke-width="6" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#10B981"/></svg></div><div class="cap">48px</div></div>
+      <div class="f"><div class="box" style="width:32px;height:32px"><svg viewBox="0 0 64 64" width="22" height="22" fill="none"><rect x="6" y="6" width="52" height="52" rx="15" stroke="#2A6FF2" stroke-width="7"/><path d="M6 32 H32" stroke="#2A6FF2" stroke-width="7" stroke-linecap="round"/><path d="M32 32 V58" stroke="#16202B" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="9" fill="#10B981"/></svg></div><div class="cap">32px</div></div>
+      <div class="f"><div class="box" style="width:56px;height:56px;background:#16202B"><svg viewBox="0 0 64 64" width="38" height="38" fill="none"><rect x="5" y="5" width="54" height="54" rx="15" stroke="#4E86F6" stroke-width="6"/><path d="M5 32 H32" stroke="#4E86F6" stroke-width="6" stroke-linecap="round"/><path d="M32 32 V59" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#10B981"/></svg></div><div class="cap">плитка</div></div>
+    </div>
+  </div>
+
+  <!-- ============ OPTION 3: ПЕТЛЯ-КОННЕКТ ============ -->
+  <div class="opt">
+    <div class="opt-h">
+      <span class="n">Знак 3</span><h2>Петля-коннект</h2>
+      <span class="why">Оптоволокно завязано в бесконечную петлю с зелёным коннектором на конце: «связь без разрывов» + «коннект». Самый «телеком-цифровой» из трёх, мягче по характеру.</span>
+    </div>
+    <div class="rows">
+      <div class="cell light">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Знак петля-коннект">
+            <path d="M20 32 C20 22 27 22 32 32 C37 42 44 42 44 32 C44 22 37 22 32 32 C27 42 20 42 20 32 Z" stroke="#2A6FF2" stroke-width="5" stroke-linecap="round"/>
+            <path d="M44 32 H57" stroke="#16202B" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="57" cy="32" r="5.5" fill="#10B981"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">светлый фон</div>
+      </div>
+      <div class="cell dark">
+        <div class="lock">
+          <svg class="mk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 32 C20 22 27 22 32 32 C37 42 44 42 44 32 C44 22 37 22 32 32 C27 42 20 42 20 32 Z" stroke="#4E86F6" stroke-width="5" stroke-linecap="round"/>
+            <path d="M44 32 H57" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="57" cy="32" r="5.5" fill="#10B981"/>
+          </svg>
+          <div class="wm"><div class="word"><span class="s">связь</span><span class="k" style="color:#4E86F6">коннект</span></div><div class="desc">строительство и обслуживание волс</div></div>
+        </div>
+        <div class="cap">тёмный фон · инверсия</div>
+      </div>
+    </div>
+    <div class="fav">
+      <div class="f"><div class="box" style="width:48px;height:48px"><svg viewBox="0 0 64 64" width="34" height="34" fill="none"><path d="M16 32 C16 21 24 21 30 32 C36 43 44 43 44 32 C44 21 36 21 30 32 C24 43 16 43 16 32 Z" stroke="#2A6FF2" stroke-width="6"/><circle cx="49" cy="32" r="7" fill="#10B981"/></svg></div><div class="cap">48px</div></div>
+      <div class="f"><div class="box" style="width:32px;height:32px"><svg viewBox="0 0 64 64" width="22" height="22" fill="none"><path d="M16 32 C16 21 24 21 30 32 C36 43 44 43 44 32 C44 21 36 21 30 32 C24 43 16 43 16 32 Z" stroke="#2A6FF2" stroke-width="7"/><circle cx="49" cy="32" r="8" fill="#10B981"/></svg></div><div class="cap">32px</div></div>
+      <div class="f"><div class="box" style="width:56px;height:56px;background:#16202B"><svg viewBox="0 0 64 64" width="38" height="38" fill="none"><path d="M16 32 C16 21 24 21 30 32 C36 43 44 43 44 32 C44 21 36 21 30 32 C24 43 16 43 16 32 Z" stroke="#4E86F6" stroke-width="6"/><circle cx="49" cy="32" r="7" fill="#10B981"/></svg></div><div class="cap">плитка</div></div>
+    </div>
+  </div>
+
+  <footer>
+    Три новых знака в дом-стиле «Монограммы 2.0» (цвета и начертание без изменений). Рядом с ведущим вариантом их можно показать заказчику как альтернативу символа. Победитель выводится в набор носителей (шапка сайта, спецодежда, техника, документация).
+    <br><br>ИП Полетаев А.В. для ГК ЮЛ-ком · палитра #2A6FF2 / #10B981 / #16202B / #7A8794.
+  </footer>
+</div>
+</body>
+</html>
