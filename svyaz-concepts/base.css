@@ -68,7 +68,7 @@ button,input,select,textarea{font:inherit}
   .services{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line)}.contact{grid-template-columns:1fr}.section{padding:76px 0}
 }
 @media(max-width:540px){
-  .wrap{width:min(100% - 28px,1180px)}.compare{justify-content:flex-start;padding:8px 14px}.logo{gap:8px}.logo svg{width:42px;height:34px}.word{font-size:15px}.descriptor{font-size:7px;letter-spacing:.05em;max-width:190px}
+  .wrap{width:min(100% - 28px,1180px)}.compare{justify-content:flex-start;padding:8px 14px}.logo{gap:8px}.logo svg{width:42px;height:34px}.word{font-size:15px}.descriptor{font-size:8px;letter-spacing:.05em;max-width:190px}
   .services,.process,.form{grid-template-columns:1fr}.section-head,.footer .wrap{align-items:flex-start;flex-direction:column}.service{min-height:auto}.contact{padding:26px}.form textarea,.form .full{grid-column:auto}.hero-title{font-size:42px!important}.btns .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none!important}}

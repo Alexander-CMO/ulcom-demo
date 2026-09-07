@@ -19,7 +19,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,14,21,.66);border-bottom:1px solid var(--line)}
+header{position:relative;z-index:50;backdrop-filter:blur(14px);background:rgba(10,14,21,.66);border-bottom:1px solid var(--line)}
 .hbar{display:flex;align-items:center;gap:28px;height:66px;max-width:1200px;margin:0 auto;padding:0 28px}
 .brand{display:flex;align-items:center;gap:11px}.brand>span{display:flex;flex-direction:column;justify-content:center}.brand .desc{white-space:nowrap}
 .brand .wm{font-family:var(--head);font-weight:700;font-size:19px;letter-spacing:-.3px;line-height:1}
@@ -110,14 +110,27 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
   nav.main.open a{padding:13px 28px}
 }
 @media(max-width:640px){.wrap{padding:0 20px}.hbar{padding:0 20px;gap:14px}.figs,.tl{grid-template-columns:1fr}.clients{grid-template-columns:1fr 1fr}.fcols{grid-template-columns:1fr}.cta-band{padding:26px}.tl .ti{padding-top:0;padding-left:26px}.tl .ti::before{top:0;bottom:0;left:7px;width:2px;height:auto;right:auto}.tl .ti .dot{top:2px}}
+.phero{padding:92px 0 58px}@media(max-width:560px){.phero{padding:56px 0 42px}}
 </style>
-</head>
-<body>
+<style id="brand-comparison">
+:root{--tx:#fff;--tx-soft:#fff;--tx-dim:#80B9FF;--green:#5A93FF}
+header{background:#0B1B2C;backdrop-filter:blur(14px);border-bottom:1px solid rgba(90,147,255,.25)}
+header .brand,header .brand .wm,header nav.main a,header .hphone{color:#fff}header .brand .desc,header .hphone small{color:#80B9FF}
+header .burger span{background:#fff}
+.brand{flex-shrink:0}.brand .wm{white-space:nowrap}.brand .desc{opacity:1!important;color:#fff}.brand svg{flex-shrink:0}
+.brand .wm .b{color:#1E93E8}.brand .desc{letter-spacing:.08em;font-size:9px}
+.compare-bar{position:relative;z-index:55;background:#091625;border-bottom:1px solid #244d7e;color:white;padding:10px 20px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font:600 12px/1.5 system-ui}
+.compare-bar a{text-decoration:underline;text-underline-offset:4px}.compare-bar a[aria-current]{text-decoration:none;font-weight:800}
+header{top:0}.hero-inner{padding-top:72px}.rev{opacity:1;transform:none}
+@media(max-width:900px){header nav.main{background:#0B1B2C}header nav.main a{color:#fff}.hbar{gap:12px}.brand .wm{font-size:17px}.brand .desc{font-size:8px}.brand svg{width:34px;height:34px}}
+@media(max-width:560px){.compare-bar{gap:12px;padding:10px 8px}.hbar{padding:0 16px}.hero-inner{padding-top:54px}}
+</style><style>.hero h1,.hero .sub,.eyebrow,.hero-cta,.hint,.stats{opacity:1!important;animation:none!important}.hero .sub{color:#fff}.brand .wm{color:#fff}header .brand .wm{color:#fff}</style></head>
+<body><div class="compare-bar" aria-label="Навигация по вариантам"><a href="../svyaz-current/index.html">← Все варианты сайта</a><strong>Базовая версия</strong></div>
 <header>
   <div class="hbar">
     <a class="brand" href="index.html">
-      <svg width="38" height="38" viewBox="0 0 76 76" fill="none"><g transform="rotate(38 38 38)"><circle cx="38" cy="38" r="26" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="128 35"/><circle cx="38" cy="38" r="15" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="72 22" opacity=".85"/></g><circle cx="60" cy="26" r="6" fill="#10B981"/></svg>
-      <span><span class="wm">связь<span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
+      <svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg>
+      <span><span class="wm">связь <span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
     </a>
     <nav class="main" id="nav">
       <a href="uslugi.html">Услуги</a>
@@ -126,7 +139,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
       <a href="kontakty.html">Контакты</a>
     </nav>
     <div class="hspace">
-      <span class="hphone">+7 495 000-00-00<small>уточняется</small></span>
+      <span class="hphone">+7 495 748-13-49</span>
       <a class="btn btn-primary" href="kontakty.html">Оставить заявку</a>
     </div>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -145,14 +158,14 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
   <div class="wrap">
     <div class="figs">
       <div class="fig"><div class="n">с 20<span class="u">02</span></div><div class="c">опыт работ на рынке</div><div class="tag">правопреемник ЗАО ЮЛ-ком</div></div>
-      <div class="fig"><div class="n">1400<span class="u"> км+</span></div><div class="c">построенных трасс ВОЛС</div><div class="tag">демо, уточняется</div></div>
-      <div class="fig"><div class="n">320<span class="u">+</span></div><div class="c">сданных объектов</div><div class="tag">демо, уточняется</div></div>
-      <div class="fig"><div class="n">12</div><div class="c">монтажных бригад</div><div class="tag">демо, уточняется</div></div>
+      <div class="fig"><div class="n">ВОЛС</div><div class="c">основная специализация</div><div class="tag">проектирование и строительство</div></div>
+      <div class="fig"><div class="n">Москва</div><div class="c">основная территория работ</div><div class="tag">городская инфраструктура</div></div>
+      <div class="fig"><div class="n">Цикл</div><div class="c">от обследования до сдачи</div><div class="tag">один подрядчик</div></div>
     </div>
     <div class="prose">
       <p><b>Связь Коннект</b> специализируется на строительстве и обслуживании волоконно-оптических линий связи в Москве и Московской области. Мы закрываем полный цикл: изыскания, проектирование, строительно-монтажные работы, монтаж и сварку волокна, сдачу с исполнительной документацией и последующее обслуживание сети.</p>
       <p>Компания входит в телеком-группу <b>ЮЛ-ком</b> вместе с магистральным оператором ЮЛ-ком Медиа. Строительное направление ведёт историю с 2002 года и является правопреемником ЗАО ЮЛ-ком. Опыт группы в собственной инфраструктуре связи позволяет нам строить линии так, как строят для себя.</p>
-      <p>Мы не собираем бригаду под каждый заказ: у компании собственный парк техники и штатные аттестованные монтажники. Это даёт предсказуемые сроки, контроль качества сварных стыков и готовность выехать на аварию в режиме 24/7.</p>
+      <p>Команда объединяет проектные, строительные и монтажные компетенции. Это помогает согласовать решения между этапами и передать заказчику линию вместе с измерениями и исполнительной документацией.</p>
     </div>
   </div>
 </section>
@@ -161,12 +174,12 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
   <div class="wrap">
     <p class="kick">История</p>
     <h2>Опыт группы ЮЛ-ком</h2>
-    <p class="lead">Ключевые вехи. Даты и события уточняются вместе с компанией.</p>
+    <p class="lead">Строительное направление группы работает на московском рынке связи с 2002 года.</p>
     <div class="tl">
       <div class="ti"><span class="dot"></span><div class="yr">2002</div><p>Начало строительных работ по линиям связи в Москве в составе ЗАО ЮЛ-ком.</p></div>
-      <div class="ti"><span class="dot"></span><div class="yr">2008</div><p>Расширение направлений: кабельная канализация, воздушный подвес, монтаж муфт и кроссов.</p></div>
-      <div class="ti"><span class="dot"></span><div class="yr">2015</div><p>Собственный парк техники и бригады, освоение бестраншейных переходов методом ГНБ.</p></div>
-      <div class="ti"><span class="dot"></span><div class="yr">сегодня</div><p>Строительство и обслуживание ВОЛС под ключ, аварийное сопровождение сетей 24/7.</p></div>
+      <div class="ti"><span class="dot"></span><div class="yr">Развитие</div><p>Проектирование, кабельная канализация, земляные работы, монтаж муфт и кроссов.</p></div>
+      <div class="ti"><span class="dot"></span><div class="yr">Группа</div><p>Работа в одной телеком-группе с магистральным оператором ЮЛ-ком Медиа.</p></div>
+      <div class="ti"><span class="dot"></span><div class="yr">сегодня</div><p>Строительство, монтаж и обслуживание волоконно-оптических линий связи.</p></div>
     </div>
   </div>
 </section>
@@ -187,13 +200,13 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
   <div class="wrap">
     <p class="kick">Лицензии и допуски</p>
     <h2>Работаем в правовом поле</h2>
-    <p class="lead">Комплект разрешительных документов для B2B и участия в закупках. Номера и сканы уточняются.</p>
+    <p class="lead">Актуальные документы предоставляются для проверки перед заключением договора и участием в закупке.</p>
     <div class="lic-grid">
-      <div class="lcard"><div class="li"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg></div><div><h4>Членство в СРО</h4><p>№ уточняется · строительство</p></div></div>
-      <div class="lcard"><div class="li"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2h9l3 3v17H6z"/><path d="M14 2v4h4"/></svg></div><div><h4>Допуски к работам</h4><p>№ уточняется · монтаж и СМР</p></div></div>
+      <div class="lcard"><div class="li"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg></div><div><h4>Членство в СРО</h4><p>строительные работы</p></div></div>
+      <div class="lcard"><div class="li"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2h9l3 3v17H6z"/><path d="M14 2v4h4"/></svg></div><div><h4>Допуски к работам</h4><p>монтаж и строительно-монтажные работы</p></div></div>
       <div class="lcard"><div class="li"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div><div><h4>Аттестации персонала</h4><p>сварщики, электробезопасность</p></div></div>
     </div>
-    <p class="note">Раздел-заглушка. Актуальные документы и номера подставим из архива компании</p>
+    <p class="note"></p>
   </div>
 </section>
 
@@ -201,15 +214,15 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
   <div class="wrap">
     <p class="kick">Клиенты</p>
     <h2>Для кого работаем</h2>
-    <p class="lead">Операторы связи, застройщики, промышленные и государственные заказчики. Список актуализируется.</p>
+    <p class="lead">Компания работала с операторами связи, энергетическими, финансовыми и государственными организациями.</p>
     <div class="clients">
-      <div class="clogo">Оператор А</div>
-      <div class="clogo">Оператор Б</div>
-      <div class="clogo">Застройщик</div>
-      <div class="clogo">Промзаказчик</div>
-      <div class="clogo">Госзаказчик</div>
+      <div class="clogo">МегаФон</div>
+      <div class="clogo">МТС</div>
+      <div class="clogo">ВымпелКом</div>
+      <div class="clogo">Мосэнерго</div>
+      <div class="clogo">МВД России</div>
     </div>
-    <p class="note">Логотипы-заглушки. Реальный список клиентов согласуем с компанией</p>
+    <p class="note"></p>
 
     <div class="cta-band" style="margin-top:44px">
       <div>
@@ -226,14 +239,14 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:52px 0 32p
     <div class="fcols">
       <div class="fcol">
         <a class="brand" href="index.html" style="margin-bottom:14px">
-          <svg width="34" height="34" viewBox="0 0 76 76" fill="none"><g transform="rotate(38 38 38)"><circle cx="38" cy="38" r="26" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="128 35"/><circle cx="38" cy="38" r="15" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="72 22" opacity=".85"/></g><circle cx="60" cy="26" r="6" fill="#10B981"/></svg>
-          <span><span class="wm">связь<span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
+          <svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site-footer"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site-footer)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg>
+          <span><span class="wm">связь <span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
         </a>
-        <p class="lic">Строительство, монтаж и обслуживание волоконно-оптических линий связи. Правопреемник ЗАО ЮЛ-ком, опыт работ с 2002 года.<br><br>ИНН 0000000000 · ОГРН 0000000000000 · реквизиты уточняются.</p>
+        <p class="lic">Строительство, монтаж и обслуживание волоконно-оптических линий связи. Правопреемник ЗАО ЮЛ-ком, опыт работ с 2002 года.<br><br></p>
       </div>
-      <div class="fcol"><h5>Услуги</h5><a href="uslugi.html#design">Проектирование</a><a href="uslugi.html#construction">Строительство</a><a href="uslugi.html#welding">Монтаж и сварка</a><a href="uslugi.html#avr">АВР 24/7</a><a href="uslugi.html#maintenance">Обслуживание</a></div>
+      <div class="fcol"><h5>Услуги</h5><a href="uslugi.html#design">Проектирование</a><a href="uslugi.html#construction">Строительство</a><a href="uslugi.html#welding">Монтаж и сварка</a><a href="uslugi.html#avr">Восстановление линий</a><a href="uslugi.html#maintenance">Обслуживание</a></div>
       <div class="fcol"><h5>Группа ЮЛ-ком</h5><div class="grp"><a href="#"><span class="gd" style="background:var(--blue)"></span>Связь Коннект</a><a href="#"><span class="gd" style="background:var(--blue-lite)"></span>ЮЛ-ком Медиа</a><a href="#"><span class="gd" style="background:var(--green)"></span>ЮЛ-ком</a></div></div>
-      <div class="fcol"><h5>Контакты</h5><p>+7 495 000-00-00</p><p>info@svyazconnect.ru</p><p>Москва, адрес уточняется</p><a class="btn btn-ghost" href="kontakty.html" style="margin-top:6px">Оставить заявку</a></div>
+      <div class="fcol"><h5>Контакты</h5><p>+7 495 748-13-49</p><p>info@svyazconnect.ru</p><p>Москва, 2-й Кабельный проезд, 1</p><a class="btn btn-ghost" href="kontakty.html" style="margin-top:6px">Оставить заявку</a></div>
     </div>
     <div class="fbot"><span>© 2026 Связь Коннект · часть группы ЮЛ-ком</span><span class="slog">Нам по пути</span></div>
   </div>

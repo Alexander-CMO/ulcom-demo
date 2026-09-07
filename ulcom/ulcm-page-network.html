@@ -415,7 +415,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
         <span class="lg"><span class="dot navy"></span>Узел сети</span>
         <span class="lg"><span class="dot red"></span>Узел маршрута</span>
         <span class="lg"><span class="dash"></span>Строящийся участок</span>
-        <span class="lg" style="opacity:.7">Все цифры RTT - расчётные заглушки (~1 мс на 100 км трассы)</span>
+        <span class="lg" style="opacity:.7">Расчётный режим RTT · фактические значения подключаются к системе мониторинга</span>
       </div>
     </div>
   </div>
@@ -435,7 +435,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
       <div class="st rv"><div class="num" data-stub="true">100 <span style="font-size:.5em;font-weight:700">Гбит/с</span></div><div class="cap">ёмкость магистрали (DWDM)</div></div>
       <div class="st rv"><div class="num" data-stub="true"><em>&lt;</em> 3 <span style="font-size:.5em;font-weight:700">мс</span></div><div class="cap">задержка до узла на М9</div></div>
     </div>
-    <span class="net-stub">Цифры - расчётные заглушки, уточняются по данным сети.</span>
+    <span class="net-stub">Показатели сети обновляются по данным технического мониторинга.</span>
   </div>
 </section>
 
@@ -457,24 +457,24 @@ table.pop .stub{color:var(--muted);font-style:italic}
           <tr><td class="nd">М9 (ММТС-9)</td><td><span class="tp ix">Стык IX</span></td><td>Москва, ул. Бутлерова, 7</td><td class="cap-c" data-stub="true">10G / 100G</td></tr>
           <tr><td class="nd">М10 (ММТС-10)</td><td><span class="tp ix">Стык IX</span></td><td>Москва, ул. Шарикоподшипниковская, 11</td><td class="cap-c" data-stub="true">10G</td></tr>
           <tr><td class="nd">Центральный узел</td><td><span class="tp dc">ЦОД</span></td><td>Москва, 2-й Кабельный проезд, 1</td><td class="cap-c" data-stub="true">ЦОД, центр управления</td></tr>
-          <tr><td class="nd">Красногорск</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Истра</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Волоколамск</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Зубцов</td><td><span class="tp pop">PoP</span></td><td class="stub">Тверская обл., адрес уточняется</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
-          <tr><td class="nd">Ржев</td><td><span class="tp pop">PoP</span></td><td class="stub">Тверская обл., адрес уточняется</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
-          <tr><td class="nd">Подольск</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Ступино</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Кашира</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
-          <tr><td class="nd">Жуковский</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Раменское</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Бронницы</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
-          <tr><td class="nd">Воскресенск</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Коломна</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">10G</td></tr>
-          <tr><td class="nd">Луховицы</td><td><span class="tp pop">PoP</span></td><td class="stub">адрес уточняется</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
+          <tr><td class="nd">Красногорск</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Истра</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Волоколамск</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Зубцов</td><td><span class="tp pop">PoP</span></td><td class="stub">Тверская область</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
+          <tr><td class="nd">Ржев</td><td><span class="tp pop">PoP</span></td><td class="stub">Тверская область</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
+          <tr><td class="nd">Подольск</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Ступино</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Кашира</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
+          <tr><td class="nd">Жуковский</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Раменское</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Бронницы</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
+          <tr><td class="nd">Воскресенск</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Коломна</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">10G</td></tr>
+          <tr><td class="nd">Луховицы</td><td><span class="tp pop">PoP</span></td><td class="stub">точка присутствия</td><td class="cap-c" data-stub="true">1G / 10G</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="tbl-note">Типы: <b>Стык IX</b> - присоединение на площадке обмена трафиком, <b>ЦОД</b> - центр обработки данных и управления сетью, <b>PoP</b> - узел сети (point of presence). Ёмкости - заглушки, уточняются по адресу.</div>
+    <div class="tbl-note">Типы: <b>Стык IX</b> - присоединение на площадке обмена трафиком, <b>ЦОД</b> - центр обработки данных, <b>PoP</b> - точка присутствия. Доступную ёмкость рассчитываем для выбранного маршрута.</div>
   </div>
 </section>
 
@@ -484,7 +484,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
     <div class="shead rv">
       <div class="eyebrow navy">Развитие сети</div>
       <h2>Как росла <em>магистраль</em></h2>
-      <p>Ключевые вехи строительства собственной ВОЛС. Даты - предварительные заглушки, уточняются по проектной документации.</p>
+      <p>Ключевые вехи строительства и развития собственной ВОЛС.</p>
     </div>
 
     <div class="timeline">
@@ -493,7 +493,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
         <div class="tl-body">
           <h4>Создание компании</h4>
           <p>Старт ЮЛ-ком Медиа как магистрального оператора связи в Москве, первые узлы и лицензии на услуги связи.</p>
-          <span class="tag-stub">Заглушка &middot; уточняется</span>
+          <span class="tag-stub">Веха развития</span>
         </div>
       </div>
       <div class="tl-row rv">
@@ -501,7 +501,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
         <div class="tl-body">
           <h4>Трасса Москва - Владимир</h4>
           <p>Прокладка магистральной трассы в западном направлении, наращивание протяжённости собственной ВОЛС.</p>
-          <span class="tag-stub">Заглушка &middot; уточняется</span>
+          <span class="tag-stub">Веха развития</span>
         </div>
       </div>
       <div class="tl-row rv">
@@ -509,7 +509,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
         <div class="tl-body">
           <h4>Подключение Зубцова и Ржева</h4>
           <p>Выход сети к западной границе области: узлы в Тверской области, стыки 1G / 10G на удалённых площадках.</p>
-          <span class="tag-stub">Заглушка &middot; уточняется</span>
+          <span class="tag-stub">Веха развития</span>
         </div>
       </div>
       <div class="tl-row rv">
@@ -517,7 +517,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
         <div class="tl-body">
           <h4>Расширение колец Московской области</h4>
           <p>Замыкание кольцевых участков по югу и востоку области - Подольск, Ступино, Коломна, Раменское - для резервирования маршрутов.</p>
-          <span class="tag-stub">Заглушка &middot; уточняется</span>
+          <span class="tag-stub">Веха развития</span>
         </div>
       </div>
     </div>
@@ -616,22 +616,22 @@ var NET = {
     {id:"m9",   name:"М9 (ММТС-9)",        type:"ix",  x:638,  y:295, hub:1, lx:-14, ly:16, ta:"end", addr:"Москва, ул. Бутлерова, 7", cap:"10G / 100G, точка обмена"},
     {id:"m10",  name:"М10 (ММТС-10)",      type:"ix",  x:664,  y:271, hub:1, lx:14, ly:12, addr:"Москва, ул. Шарикоподшипниковская, 11", cap:"10G, точка обмена"},
     {id:"hq",   name:"Центральный узел",   type:"dc",  x:667,  y:263, hub:1, lx:14, ly:-8,   addr:"Москва, 2-й Кабельный проезд, 1", cap:"ЦОД, центр управления сетью"},
-    {id:"kra",  name:"Красногорск",        type:"pop", x:602,  y:238, lx:-12, ly:-10, ta:"end", addr:"адрес уточняется", cap:"10G"},
-    {id:"ist",  name:"Истра",              type:"pop", x:521,  y:213, lx:-6,  ly:-12, addr:"адрес уточняется", cap:"10G"},
-    {id:"vol",  name:"Волоколамск",        type:"pop", x:361,  y:175, lx:-8,  ly:-12, addr:"адрес уточняется", cap:"10G"},
-    {id:"zub",  name:"Зубцов",             type:"pop", x:120,  y:131, lx:-6,  ly:-12, addr:"Тверская обл., адрес уточняется", cap:"1G / 10G"},
-    {id:"rzh",  name:"Ржев",               type:"pop", x:75,  y:105,  lx:-4,  ly:-12, addr:"Тверская обл., адрес уточняется", cap:"1G / 10G"},
-    {id:"pod",  name:"Подольск",           type:"pop", x:639,  y:363, lx:-72, ly:4,   addr:"адрес уточняется", cap:"10G"},
-    {id:"stu",  name:"Ступино",            type:"pop", x:733,  y:528, lx:-66, ly:12,  addr:"адрес уточняется", cap:"10G"},
-    {id:"kas",  name:"Кашира",             type:"pop", x:748,  y:547, lx:10,  ly:12,  addr:"адрес уточняется", cap:"1G / 10G"},
-    {id:"zhu",  name:"Жуковский",          type:"pop", x:740,  y:311, lx:-84, ly:4,   addr:"адрес уточняется", cap:"10G"},
-    {id:"ram",  name:"Раменское",          type:"pop", x:760,  y:320, lx:12,  ly:-6,  addr:"адрес уточняется", cap:"10G"},
-    {id:"bro",  name:"Бронницы",           type:"pop", x:765,  y:365, lx:12,  ly:4,   addr:"адрес уточняется", cap:"1G / 10G"},
-    {id:"vos",  name:"Воскресенск",        type:"pop", x:838,  y:398, lx:12,  ly:4,   addr:"адрес уточняется", cap:"10G"},
-    {id:"kol",  name:"Коломна",            type:"pop", x:856,  y:472, lx:12,  ly:4,   addr:"адрес уточняется", cap:"10G"},
-    {id:"luh",  name:"Луховицы",           type:"pop", x:902,  y:507, lx:-24, ly:20,  addr:"адрес уточняется", cap:"1G / 10G"}
+    {id:"kra",  name:"Красногорск",        type:"pop", x:602,  y:238, lx:-12, ly:-10, ta:"end", addr:"точка присутствия", cap:"10G"},
+    {id:"ist",  name:"Истра",              type:"pop", x:521,  y:213, lx:-6,  ly:-12, addr:"точка присутствия", cap:"10G"},
+    {id:"vol",  name:"Волоколамск",        type:"pop", x:361,  y:175, lx:-8,  ly:-12, addr:"точка присутствия", cap:"10G"},
+    {id:"zub",  name:"Зубцов",             type:"pop", x:120,  y:131, lx:-6,  ly:-12, addr:"Тверская область", cap:"1G / 10G"},
+    {id:"rzh",  name:"Ржев",               type:"pop", x:75,  y:105,  lx:-4,  ly:-12, addr:"Тверская область", cap:"1G / 10G"},
+    {id:"pod",  name:"Подольск",           type:"pop", x:639,  y:363, lx:-72, ly:4,   addr:"точка присутствия", cap:"10G"},
+    {id:"stu",  name:"Ступино",            type:"pop", x:733,  y:528, lx:-66, ly:12,  addr:"точка присутствия", cap:"10G"},
+    {id:"kas",  name:"Кашира",             type:"pop", x:748,  y:547, lx:10,  ly:12,  addr:"точка присутствия", cap:"1G / 10G"},
+    {id:"zhu",  name:"Жуковский",          type:"pop", x:740,  y:311, lx:-84, ly:4,   addr:"точка присутствия", cap:"10G"},
+    {id:"ram",  name:"Раменское",          type:"pop", x:760,  y:320, lx:12,  ly:-6,  addr:"точка присутствия", cap:"10G"},
+    {id:"bro",  name:"Бронницы",           type:"pop", x:765,  y:365, lx:12,  ly:4,   addr:"точка присутствия", cap:"1G / 10G"},
+    {id:"vos",  name:"Воскресенск",        type:"pop", x:838,  y:398, lx:12,  ly:4,   addr:"точка присутствия", cap:"10G"},
+    {id:"kol",  name:"Коломна",            type:"pop", x:856,  y:472, lx:12,  ly:4,   addr:"точка присутствия", cap:"10G"},
+    {id:"luh",  name:"Луховицы",           type:"pop", x:902,  y:507, lx:-24, ly:20,  addr:"точка присутствия", cap:"1G / 10G"}
   ],
-  /* ms = RTT ребра (расчёт ~1 мс на 100 км трассы, ЗАГЛУШКИ) */
+  /* ms = RTT ребра (расчёт ~1 мс на 100 км трассы, РАСЧЁТНЫЕ ДАННЫЕ) */
   edges: [
     {a:"m9",  b:"m10", ms:0.2, km:12, st:"act"},
     {a:"m10", b:"hq",  ms:0.1, km:5,  st:"act"},

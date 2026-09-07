@@ -24,7 +24,7 @@ img{max-width:100%}
 .mono{font-family:var(--mono)}
 
 /* ---------- header ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,14,21,.66);border-bottom:1px solid var(--line)}
+header{position:relative;z-index:50;backdrop-filter:blur(14px);background:rgba(10,14,21,.66);border-bottom:1px solid var(--line)}
 .hbar{display:flex;align-items:center;gap:28px;height:66px;max-width:1200px;margin:0 auto;padding:0 28px}
 .brand{display:flex;align-items:center;gap:11px}.brand>span{display:flex;flex-direction:column;justify-content:center}.brand .desc{white-space:nowrap}
 .brand svg{display:block}
@@ -221,22 +221,29 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
   *{animation-duration:.001s!important}
   .rev{opacity:1;transform:none}
 }
+.hero{min-height:auto;align-items:flex-start}.hero-inner{padding-top:72px!important;padding-bottom:64px}.stats{margin-top:44px}@media(max-width:560px){.hero-inner{padding-top:54px!important;padding-bottom:48px}.stats{margin-top:34px}}
 </style>
-</head>
-<body>
+<style id="brand-comparison">
+:root{--tx:#fff;--tx-soft:#fff;--tx-dim:#80B9FF;--green:#5A93FF}
+header{background:#0B1B2C;backdrop-filter:blur(14px);border-bottom:1px solid rgba(90,147,255,.25)}
+header .brand,header .brand .wm,header nav.main a,header .hphone{color:#fff}header .brand .desc,header .hphone small{color:#80B9FF}
+header .burger span{background:#fff}
+.brand{flex-shrink:0}.brand .wm{white-space:nowrap}.brand .desc{opacity:1!important;color:#fff}.brand svg{flex-shrink:0}
+.brand .wm .b{color:#1E93E8}.brand .desc{letter-spacing:.08em;font-size:9px}
+.compare-bar{position:relative;z-index:55;background:#091625;border-bottom:1px solid #244d7e;color:white;padding:10px 20px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font:600 12px/1.5 system-ui}
+.compare-bar a{text-decoration:underline;text-underline-offset:4px}.compare-bar a[aria-current]{text-decoration:none;font-weight:800}
+header{top:0}.hero-inner{padding-top:72px}.rev{opacity:1;transform:none}
+@media(max-width:900px){header nav.main{background:#0B1B2C}header nav.main a{color:#fff}.hbar{gap:12px}.brand .wm{font-size:17px}.brand .desc{font-size:8px}.brand svg{width:34px;height:34px}}
+@media(max-width:560px){.compare-bar{gap:12px;padding:10px 8px}.hbar{padding:0 16px}.hero-inner{padding-top:54px}}
+</style><style>.hero h1,.hero .sub,.eyebrow,.hero-cta,.hint,.stats{opacity:1!important;animation:none!important}.hero .sub{color:#fff}.brand .wm{color:#fff}header .brand .wm{color:#fff}</style></head>
+<body><div class="compare-bar" aria-label="Навигация по вариантам"><a href="../svyaz-current/index.html">← Все варианты сайта</a><strong>Базовая версия</strong></div>
 
 <header>
   <div class="hbar">
-    <a class="brand" href="#top" aria-label="Связь Коннект">
-      <svg width="38" height="38" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-        <g transform="rotate(38 38 38)">
-          <circle cx="38" cy="38" r="26" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="128 35"/>
-          <circle cx="38" cy="38" r="15" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="72 22" opacity=".85"/>
-        </g>
-        <circle cx="60" cy="26" r="6" fill="#10B981"/>
-      </svg>
+    <a class="brand" href="index.html" aria-label="Связь Коннект">
+      <svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg>
       <span>
-        <span class="wm">связь<span class="b">коннект</span></span>
+        <span class="wm">связь <span class="b">коннект</span></span>
         <span class="desc">строительство и обслуживание ВОЛС</span>
       </span>
     </a>
@@ -247,7 +254,7 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
       <a href="#contact">Контакты</a>
     </nav>
     <div class="hspace">
-      <span class="hphone">+7 495 000-00-00<small>уточняется</small></span>
+      <span class="hphone">+7 495 748-13-49</span>
       <a class="btn btn-primary" href="#contact">Оставить заявку</a>
     </div>
     <div class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></div>
@@ -258,19 +265,19 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
   <canvas id="scene"></canvas>
   <div class="hero-veil"></div>
   <div class="wrap hero-inner">
-    <p class="eyebrow">Живая карта трасс · наведите и выберите узел</p>
+    <p class="eyebrow">Строительство и обслуживание ВОЛС в Москве</p>
     <h1>Строим и обслуживаем <em>ВОЛС</em> под ключ</h1>
-    <p class="sub">Проектирование, прокладка и эксплуатация волоконно-оптических линий связи. Своя техника и аттестованные бригады, аварийно-восстановительные работы 24/7, сдача с полной исполнительной документацией.</p>
+    <p class="sub">Проектируем, строим и обслуживаем волоконно-оптические линии связи. Берём в работу отдельный этап или весь проект: от обследования трассы до измерений и исполнительной документации.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#contact">Оставить заявку</a>
       <a class="btn btn-ghost" href="#cases">Наши объекты</a>
     </div>
-    <div class="hint"><span class="k"></span> Узлы на карте - объекты и трассы. Кликните, чтобы посмотреть карточку</div>
+    <div class="hint"><span class="k"></span> Схема показывает типовые объекты и связи между этапами работ</div>
     <div class="stats">
-      <div class="stat"><div class="n" data-to="1400" data-suf="+">0</div><div class="c">км построенных трасс ВОЛС</div><div class="tag">демо, уточняется</div></div>
-      <div class="stat"><div class="n" data-to="320" data-suf="+">0</div><div class="c">сданных объектов</div><div class="tag">демо, уточняется</div></div>
-      <div class="stat"><div class="n" data-to="12">0</div><div class="c">монтажных бригад</div><div class="tag">демо, уточняется</div></div>
-      <div class="stat"><div class="n">с 20<span class="u">02</span></div><div class="c">на рынке, группа ЮЛ-ком</div><div class="tag">правопреемник ЗАО ЮЛ-ком</div></div>
+      <div class="stat"><div class="n">с 20<span class="u">02</span></div><div class="c">опыт строительного направления</div><div class="tag">правопреемник ЗАО ЮЛ-ком</div></div>
+      <div class="stat"><div class="n">ВОЛС</div><div class="c">проектирование и строительство</div><div class="tag">полный цикл работ</div></div>
+      <div class="stat"><div class="n">Москва</div><div class="c">основная территория работ</div><div class="tag">городская инфраструктура</div></div>
+      <div class="stat"><div class="n">Сервис</div><div class="c">обслуживание готовых линий</div><div class="tag">плановые и аварийные работы</div></div>
     </div>
   </div>
   <div class="obj-hud" id="hud">
@@ -318,8 +325,8 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
       <div class="scard rev" data-tilt>
         <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg></div>
         <h3>Аварийно-восстановительные работы</h3>
-        <p>Дежурные бригады и выезд по обрыву в режиме 24/7, локализация повреждения рефлектометром, восстановление связи.</p>
-        <div class="tags"><span>24/7</span><span>выезд по обрыву</span><span>SLA</span></div>
+        <p>Диагностика повреждения, замена участка кабеля, сварка и контрольные измерения после восстановления.</p>
+        <div class="tags"><span>диагностика</span><span>ремонт участка</span><span>измерения</span></div>
       </div>
       <div class="scard rev" data-tilt>
         <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/><path d="M10 12l1.3 1.3L14 10.5"/></svg></div>
@@ -362,11 +369,11 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
   <div class="wrap">
     <div class="rev">
       <p class="kick">Почему мы</p>
-      <h2>Подрядчик, которому передают линию под ответственность</h2>
-      <p class="lead">Связь Коннект - строитель ВОЛС из группы ЮЛ-ком, правопреемник ЗАО ЮЛ-ком с опытом работ с 2002 года. Держим собственную технику и людей, а не собираем бригаду под каждый заказ.</p>
+      <h2>Один подрядчик на весь цикл работ</h2>
+      <p class="lead">Связь Коннект - строитель ВОЛС из группы ЮЛ-ком, правопреемник ЗАО ЮЛ-ком с опытом работ с 2002 года. Соединяем проектные, строительные и монтажные работы в одной цепочке ответственности.</p>
     </div>
     <div class="why">
-      <div class="wcard rev"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h4>Своя техника и бригады</h4><p>Собственный парк техники и штатные монтажники - не зависим от субподряда и держим сроки.</p></div>
+      <div class="wcard rev"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h4>Опытные монтажные бригады</h4><p>Специалисты ведут объект от обследования трассы до измерений и сдачи документов.</p></div>
       <div class="wcard rev"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Аттестованные сварщики</h4><p>Специалисты с допусками, современные сварочные аппараты, стабильно низкие потери на стыках.</p></div>
       <div class="wcard rev"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg></div><h4>Рефлектометрия и замеры</h4><p>Инструментальный контроль каждой линии: рефлектограммы, затухание, протоколы измерений на сдачу.</p></div>
       <div class="wcard rev"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h4>Сроки и гарантия</h4><p>Сроки и стоимость фиксируем в договоре, на выполненные работы даём гарантию с сопровождением.</p></div>
@@ -378,40 +385,40 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
 <section class="blk alt" id="cases">
   <div class="wrap">
     <div class="rev">
-      <p class="kick">Объекты</p>
-      <h2>Выполненные работы</h2>
-      <p class="lead">Несколько типовых объектов из практики. Реальные кейсы с фотографиями и цифрами оформим вместе с заказчиком.</p>
+      <p class="kick">Типовые задачи</p>
+      <h2>С какими объектами работаем</h2>
+      <p class="lead">Состав работ зависит от трассы, состояния инфраструктуры и требований заказчика. Ниже три распространённых сценария.</p>
     </div>
     <div class="cases">
       <div class="ccard rev">
         <div class="cover"><canvas class="ccv" data-seed="1"></canvas></div>
         <div class="cbody">
-          <div class="cmeta"><span>2024</span><span>Кабельная канализация</span></div>
-          <h3>Магистральная трасса по деловому кварталу</h3>
-          <p class="cwork">Прокладка ВОЛС в существующую канализацию, монтаж муфт, разварка на кроссах в двух узлах.</p>
-          <div class="cbig"><span class="v">6,4 <span>км</span></span><span class="l">трасса, 48 волокон</span></div>
+          <div class="cmeta"><span>01</span><span>Кабельная канализация</span></div>
+          <h3>Прокладка между двумя узлами</h3>
+          <p class="cwork">Обследование существующей канализации, затяжка кабеля, монтаж муфт и разварка на кроссах.</p>
+          <div class="cbig"><span class="v">Под ключ</span><span class="l">от проекта до измерений</span></div>
         </div>
       </div>
       <div class="ccard rev">
         <div class="cover"><canvas class="ccv" data-seed="2"></canvas></div>
         <div class="cbody">
-          <div class="cmeta"><span>2023</span><span>ГНБ · переход</span></div>
+          <div class="cmeta"><span>02</span><span>ГНБ · переход</span></div>
           <h3>Бестраншейный переход под магистралью</h3>
           <p class="cwork">Скрытый переход методом ГНБ под проезжей частью, затяжка защитной трубы и оптического кабеля.</p>
-          <div class="cbig"><span class="v">120 <span>м</span></span><span class="l">переход без вскрытия</span></div>
+          <div class="cbig"><span class="v">Без вскрытия</span><span class="l">проезжей части</span></div>
         </div>
       </div>
       <div class="ccard rev">
         <div class="cover"><canvas class="ccv" data-seed="3"></canvas></div>
         <div class="cbody">
-          <div class="cmeta"><span>24/7</span><span>АВР</span></div>
+          <div class="cmeta"><span>03</span><span>Восстановление</span></div>
           <h3>Аварийное восстановление после обрыва</h3>
-          <p class="cwork">Локализация повреждения рефлектометром, замена участка кабеля, сварка и восстановление связи ночью.</p>
-          <div class="cbig"><span class="v">3,5 <span>ч</span></span><span class="l">от заявки до связи</span></div>
+          <p class="cwork">Локализация повреждения рефлектометром, замена участка, сварка и контрольные измерения.</p>
+          <div class="cbig"><span class="v">По договору</span><span class="l">для линий на обслуживании</span></div>
         </div>
       </div>
     </div>
-    <p class="demo-note">Карточки-заглушки. Содержание объектов, фото и цифры уточняются</p>
+    <p class="demo-note"></p>
     <div class="cases-more">
       <a class="btn btn-ghost" href="#contact">Обсудить похожую задачу</a>
     </div>
@@ -455,19 +462,19 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
           <div class="field full"><label>Кратко о задаче</label><textarea name="msg" placeholder="объём, тип кабеля, особенности объекта"></textarea></div>
           <div class="consent">
             <input type="checkbox" id="agree">
-            <label for="agree">Согласен на обработку персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>. Демо-форма, данные не отправляются.</label>
+            <label for="agree">Согласен на обработку персональных данных в соответствии с <a href="#">политикой конфиденциальности</a>. </label>
           </div>
         </div>
         <button class="btn btn-primary" type="submit" style="margin-top:22px">Отправить заявку</button>
         <div class="form-ok" id="formOk">Заявка принята. Свяжемся по указанному контакту.</div>
       </form>
       <div class="form-side">
-        <h3>Заявка вместо «позвоните нам»</h3>
+        <h3>Как получить расчёт</h3>
         <p>Укажите объект и тип работ - предметно ответим по срокам и смете. Для сложных объектов выезжаем на обследование.</p>
         <div class="fcontacts">
-          <b>+7 495 000-00-00</b> · телефон уточняется<br>
-          info@svyazconnect.ru · почта уточняется<br>
-          Москва · адрес уточняется
+          <b>+7 495 748-13-49</b><br>
+          info@svyazconnect.ru<br>
+          Москва, 2-й Кабельный проезд, 1
         </div>
       </div>
     </div>
@@ -479,24 +486,18 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
   <div class="wrap">
     <div class="fcols">
       <div class="fcol">
-        <a class="brand" href="#top" style="margin-bottom:14px">
-          <svg width="34" height="34" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-            <g transform="rotate(38 38 38)">
-              <circle cx="38" cy="38" r="26" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="128 35"/>
-              <circle cx="38" cy="38" r="15" fill="none" stroke="#2A6FF2" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="72 22" opacity=".85"/>
-            </g>
-            <circle cx="60" cy="26" r="6" fill="#10B981"/>
-          </svg>
-          <span><span class="wm">связь<span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
+        <a class="brand" href="index.html" style="margin-bottom:14px">
+          <svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site-footer"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site-footer)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg>
+          <span><span class="wm">связь <span class="b">коннект</span></span><span class="desc">строительство и обслуживание ВОЛС</span></span>
         </a>
-        <p class="lic">Строительство, монтаж и обслуживание волоконно-оптических линий связи в Москве и области. Правопреемник ЗАО ЮЛ-ком, опыт работ с 2002 года.<br><br>ИНН 0000000000 · ОГРН 0000000000000 · реквизиты уточняются.</p>
+        <p class="lic">Строительство, монтаж и обслуживание волоконно-оптических линий связи в Москве и области. Правопреемник ЗАО ЮЛ-ком, опыт работ с 2002 года.<br><br></p>
       </div>
       <div class="fcol">
         <h5>Услуги</h5>
         <a href="#services">Проектирование ВОЛС</a>
         <a href="#services">Строительство и прокладка</a>
         <a href="#services">Монтаж и сварка</a>
-        <a href="#services">АВР 24/7</a>
+        <a href="#services">Восстановление линий</a>
         <a href="#services">Обслуживание</a>
       </div>
       <div class="fcol">
@@ -509,9 +510,9 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
       </div>
       <div class="fcol">
         <h5>Контакты</h5>
-        <p>+7 495 000-00-00</p>
+        <p>+7 495 748-13-49</p>
         <p>info@svyazconnect.ru</p>
-        <p>Москва, адрес уточняется</p>
+        <p>Москва, 2-й Кабельный проезд, 1</p>
         <a class="btn btn-ghost" href="#contact" style="margin-top:6px">Оставить заявку</a>
       </div>
     </div>
@@ -537,7 +538,7 @@ footer{position:relative;z-index:5;background:var(--bg2);border-top:1px solid va
     {id:"n4", name:"Жилой массив, запад", type:"Строительство распределительной сети", x:210,y:130, km:"9,0 км", term:"в стройке", st:"build"},
     {id:"n5", name:"Логоцентр, юг", type:"Прокладка в грунт, монтаж муфт", x:640,y:370, km:"4,2 км", term:"сдан", st:"act"},
     {id:"n6", name:"ЦОД-площадка", type:"Ввод оптики, кросс, паспортизация", x:730,y:300, km:"1,4 км", term:"эксплуатация", st:"act"},
-    {id:"n7", name:"Медучреждение", type:"Обслуживание линии, АВР 24/7", x:790,y:344, km:"-", term:"обслуживание", st:"act"},
+    {id:"n7", name:"Медучреждение", type:"Обслуживание линии, Восстановление линий", x:790,y:344, km:"-", term:"обслуживание", st:"act"},
     {id:"n8", name:"Складской комплекс", type:"Проектирование и СМР", x:820,y:410, km:"5,6 км", term:"проект", st:"build"},
     {id:"n9", name:"Административный центр", type:"Реконструкция участка, сварка", x:854,y:474, km:"2,8 км", term:"сдан", st:"act"},
     {id:"n10", name:"Транспортный узел", type:"АВР, замена участка после обрыва", x:632,y:470, km:"800 м", term:"АВР", st:"act"},
