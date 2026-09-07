@@ -1,3 +1,9 @@
 document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
-document.querySelectorAll('.burger').forEach(function(button){button.addEventListener('click',function(){var nav=button.closest('.head').querySelector('.nav');var open=nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'×':'☰'})});
-document.querySelectorAll('.form button').forEach(function(button){button.addEventListener('click',function(){var old=button.textContent;button.textContent='Запрос принят';button.style.background='#10b981';setTimeout(function(){button.textContent=old;button.style.background=''},1800)})});
+document.querySelectorAll('.burger').forEach(function(button){
+  button.addEventListener('click',function(){
+    var nav=button.closest('.head').querySelector('.nav');
+    var open=nav.classList.toggle('open');
+    button.setAttribute('aria-expanded',String(open));
+    button.textContent=open?'×':'☰';
+  });
+});
