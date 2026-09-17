@@ -6,3 +6,5 @@
 .architecture [hidden]{display:none!important}html{overflow-x:clip} .site-nav{min-width:0}
 
 .geography-layout{display:block!important}.network-drawing{display:block;margin:28px 0 36px}.network-drawing .arc-map{display:block;width:100%;height:auto;max-height:none;border-radius:20px}.geography-layout>section+section{margin-top:32px}@media(max-width:600px){.network-drawing{overflow:auto;border-radius:16px}.network-drawing .arc-map{min-width:760px}.geography-layout h2{font-size:30px}}
+
+.site-brand small{color:#CFE9FF!important;opacity:1!important}.site-brand strong{color:#fff!important}
