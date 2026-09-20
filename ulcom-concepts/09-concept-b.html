@@ -878,6 +878,8 @@ document.getElementById("tkpForm").addEventListener("submit", function(ev){
     });
   }, {threshold:.12});
   items.forEach(function(x){ io.observe(x); });
+  /* REVEAL_FALLBACK: контент обязан появиться, даже если наблюдатель не сработал */
+  setTimeout(function(){document.querySelectorAll('.rise').forEach(function(el){el.classList.add('in');});},1400);
 })();
 
 /* ================= init ================= */

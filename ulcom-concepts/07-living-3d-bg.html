@@ -490,6 +490,8 @@ var NET = {
   // ---- reveal on scroll ----
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.14});
   document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
+  /* REVEAL_FALLBACK: контент обязан появиться, даже если наблюдатель не сработал */
+  setTimeout(function(){document.querySelectorAll('.rev').forEach(function(el){el.classList.add('in');});},1400);
 
   // ---- card tilt ----
   if(!reduce) document.querySelectorAll('[data-tilt]').forEach(function(c){

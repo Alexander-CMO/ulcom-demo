@@ -875,6 +875,8 @@ if(!reduce){
     });
   }, {threshold:.15});
   tiles.forEach(function(t){ io.observe(t); });
+  /* REVEAL_FALLBACK: контент обязан появиться, даже если наблюдатель не сработал */
+  setTimeout(function(){document.querySelectorAll('.tile.i').forEach(function(el){el.classList.add('in');});},1400);
 
   var heroBg = document.getElementById("heroBg");
   window.addEventListener("scroll", function(){
