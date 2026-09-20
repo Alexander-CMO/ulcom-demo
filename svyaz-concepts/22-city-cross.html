@@ -20,7 +20,8 @@ body{background:#07111f}
 @media(max-width:900px){.band,.list a{grid-template-columns:1fr}.list a{gap:8px}.hero .in,.sec,.cta2{padding-left:24px;padding-right:24px}.cta2{grid-template-columns:1fr}}
 
 .route{transition:opacity .25s}.route.dim{opacity:.12}
-.hero .in{max-width:none;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;width:100%;box-sizing:border-box}
+.hero .in{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;width:100%;box-sizing:border-box}
+.hero h1{font-size:clamp(48px,7.6vw,112px)}
 .dialwrap{display:flex;align-items:flex-end;gap:22px}
 .dialsvg{width:220px;height:220px;flex:0 0 auto}
 .node{cursor:pointer;outline:none;pointer-events:all}.node .halo{transition:opacity .2s}.node:hover .halo,.node:focus .halo,.node.on .halo{opacity:.35}
