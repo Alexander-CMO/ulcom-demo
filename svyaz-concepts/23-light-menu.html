@@ -43,7 +43,13 @@ main{position:relative}
 .mega .panel .all{color:var(--soft);text-decoration:none;font-size:13px;margin-left:auto}
 .q .d{padding-top:150px}.q .d .intro p{margin:0 0 20px}
 .hero .lines{pointer-events:none}.hero .lines .node{pointer-events:all}.q{pointer-events:none}.q a,.q .intro{pointer-events:auto}
-.q{grid-template-rows:minmax(0,1fr) auto}.q .d{padding-top:0;padding-bottom:40px}.panel .links a{font-size:16px;padding:8px 0}.mega .panel .links a{padding:12px 0}.mega-in{padding:22px 64px 24px}.mini{width:170px;height:170px}
+.q{grid-template-rows:minmax(0,1fr) auto}.q .d{padding-top:0;padding-bottom:40px}.panel .links a{font-size:16px;padding:8px 0}.q .d{display:grid;grid-template-columns:minmax(0,1fr);align-content:end;gap:18px}.q .d .mnav{grid-row:1}.q .d .intro,.q .d .panel{grid-row:2;grid-column:1}.q .d .intro.off{visibility:hidden}.q .d .panel{display:block;visibility:hidden;pointer-events:none}.q .d .panel.on{visibility:visible;pointer-events:auto}.mega .panel .links a{padding:12px 0}.mega-in{padding:22px 64px 24px}.mini{width:170px;height:170px}
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
+
 .mnav{display:none}
 @media(max-width:700px){
   .mnav{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
@@ -61,7 +67,7 @@ main{position:relative}
   .q .a{border:0}.q .d{padding-top:0;gap:18px}.hero{padding-top:380px}
   .hero h1{font-size:clamp(38px,11vw,60px)}.hero p{font-size:16px}
   .lines{height:520px}.hero .lines .node{pointer-events:none}
-  .msub{display:block}.msub .panel{display:none}.msub .panel.on{display:block}
+  .msub{display:grid}.msub .panel{grid-area:1/1;display:block;visibility:hidden}.msub .panel.on{visibility:visible}
   .msub .panel small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin:14px 0 8px;font-weight:600}
   .msub .panel .links a{display:flex;justify-content:space-between;color:#fff;text-decoration:none;font-size:16px;padding:10px 0;border-top:1px solid rgba(114,170,255,.25)}
   .msub .panel .links a i{font-style:normal;color:var(--blue2)}.msub .panel .all{display:inline-block;margin-top:12px;color:var(--soft);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}

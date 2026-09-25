@@ -20,7 +20,7 @@ button,input,select,textarea{font:inherit}
 .logo svg{width:62px;height:44px;flex:0 0 auto}
 .word{display:block;font-weight:850;font-size:18px;line-height:1.08;white-space:nowrap}
 .word b{color:var(--blue2)}
-.descriptor{display:block;font-size:10px;line-height:1.25;letter-spacing:.1em;color:#9ec7ff;text-transform:uppercase;margin-top:5px;font-weight:700;white-space:nowrap}
+.descriptor{display:block;font-size:10px;line-height:1.25;letter-spacing:.1em;color:#72aaff;text-transform:uppercase;margin-top:5px;font-weight:700;white-space:nowrap}
 .nav{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:650;white-space:nowrap}
 .nav a{color:var(--soft)}
 .nav a:hover{color:#fff}

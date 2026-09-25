@@ -26,13 +26,19 @@ body{background:#07111f}
 .dialsvg{width:220px;height:220px;flex:0 0 auto}
 .node{cursor:pointer;outline:none;pointer-events:all}.node .halo{transition:opacity .2s}.node:hover .halo,.node:focus .halo,.node.on .halo{opacity:.35}
 .pan{width:320px;min-height:250px;position:relative}
-.intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;color:var(--soft);font-size:14px;line-height:1.5}.intro.off{display:none}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;color:var(--soft);font-size:14px;line-height:1.5}.intro.off{visibility:hidden}
 .panel{display:none;position:absolute;inset:0;justify-content:flex-end;flex-direction:column}.panel.on{display:flex}
 .panel small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin-bottom:8px;font-weight:700;text-shadow:0 0 10px #07111f}
 .panel .links a{display:flex;justify-content:space-between;color:#fff;text-decoration:none;font-size:15px;padding:7px 0;border-top:1px solid rgba(255,255,255,.18);font-weight:600}
 .panel .links a i{font-style:normal;color:var(--blue2)}.panel .all{display:inline-block;margin-top:12px;color:var(--soft);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
 .list a[data-cell]{cursor:pointer}.list a.on{padding-left:12px}.list a.on strong{color:var(--green)}
 @media(max-width:1100px){.hero .in{grid-template-columns:1fr}.dialwrap{flex-direction:row;flex-wrap:wrap}}
+
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
 
 .mnav{display:none}
 @media(max-width:700px){

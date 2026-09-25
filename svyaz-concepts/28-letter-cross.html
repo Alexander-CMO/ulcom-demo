@@ -34,8 +34,8 @@ main{position:relative}
 .node{cursor:pointer;outline:none;pointer-events:all}.node .halo{transition:opacity .2s}.node:hover .halo,.node:focus .halo,.node.on .halo{opacity:.4}.node:focus-visible circle:nth-child(2){stroke-width:4}
 .legend{position:relative;z-index:2;display:flex;gap:22px;flex-wrap:wrap;margin:26px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
 .legend a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;min-height:44px}.legend a i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}.legend a.on,.legend a:hover{color:#fff}
-.strip{position:relative;z-index:2;margin-top:22px;border-top:1px solid rgba(114,170,255,.3);border-bottom:1px solid rgba(114,170,255,.3);min-height:104px;display:flex;align-items:center;padding:20px 0}
-.strip .intro{display:flex;gap:40px;align-items:center;flex-wrap:wrap;width:100%}.strip .intro p{margin:0;flex:1 1 380px}.intro.off{display:none}
+.strip{position:relative;z-index:2;margin-top:22px;border-top:1px solid rgba(114,170,255,.3);border-bottom:1px solid rgba(114,170,255,.3);display:grid;align-items:center;padding:20px 0}.strip>.intro,.strip>.panel{grid-area:1/1}.strip>.intro.off{visibility:hidden}.strip>.panel{display:flex;visibility:hidden;pointer-events:none}.strip>.panel.on{visibility:visible;pointer-events:auto}
+.strip .intro{display:flex;gap:40px;align-items:center;flex-wrap:wrap;width:100%}.strip .intro p{margin:0;flex:1 1 380px}.intro.off{visibility:hidden}
 .panel{display:none;width:100%}.panel.on{display:flex;gap:30px;align-items:center;flex-wrap:wrap}
 .panel small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);font-weight:600;flex:0 0 220px}
 .panel .links{display:flex;gap:8px 28px;flex-wrap:wrap;flex:1}.panel .links a{color:#fff;text-decoration:none;font-size:17px;font-weight:500;border-bottom:1px solid rgba(114,170,255,.4);padding:6px 0}.panel .links a i{display:none}.panel .links a:hover{color:var(--blue2)}
@@ -47,6 +47,12 @@ main{position:relative}
   .strip{display:block;padding:16px 0}.strip .intro{display:block}.strip .intro p{margin:0 0 16px}.panel.on{display:block}.panel small{display:block;margin-bottom:10px}
   .panel .links{display:block}.panel .links a{display:flex;justify-content:space-between;min-height:44px;align-items:center;border-bottom:1px solid rgba(114,170,255,.25);padding:8px 0}.panel .links a i{display:inline;font-style:normal;color:var(--blue2)}.panel .all{display:inline-block;margin-top:12px}
   .sec{padding:48px 16px}}
+
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
 
 .mnav{display:none}
 @media(max-width:700px){

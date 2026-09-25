@@ -25,13 +25,19 @@ body{background:#07111f}
 .hero .in a,.hero .in .panel,.hero .in .intro{pointer-events:auto}
 .hero h1{font-size:clamp(46px,7vw,108px)}
 .pan{position:relative;min-height:260px;background:rgba(7,17,31,.72);border:1px solid rgba(255,255,255,.14);padding:22px 24px;backdrop-filter:blur(6px)}
-.intro{color:var(--soft);font-size:15px;line-height:1.5}.intro.off{display:none}
+.intro{color:var(--soft);font-size:15px;line-height:1.5}.intro.off{visibility:hidden}
 .panel{display:none}.panel.on{display:block}
 .panel small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin-bottom:10px;font-weight:700}
 .panel .links a{display:flex;justify-content:space-between;color:#fff;text-decoration:none;font-size:16px;padding:9px 0;border-top:1px solid rgba(255,255,255,.18);font-weight:600}.panel .links a i{font-style:normal;color:var(--blue2)}
 .panel .all{display:inline-block;margin-top:12px;color:var(--soft);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
 .list a[data-cell]{cursor:pointer}.list a.on{padding-left:12px}.list a.on strong{color:var(--green)}
 @media(max-width:1000px){.hero .in{grid-template-columns:1fr}}
+
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
 
 .mnav{display:none}
 @media(max-width:700px){

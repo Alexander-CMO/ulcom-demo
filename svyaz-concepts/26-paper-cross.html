@@ -22,14 +22,14 @@ main{max-width:1320px;margin:0 auto;padding:40px 32px 80px}
 .cta3{margin-top:80px;padding:40px 0 0;border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
 .cta3 h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:clamp(40px,6vw,88px);line-height:.9;margin:0;font-weight:700}
 @media(max-width:900px){.lede,.svc{grid-template-columns:1fr}.steps{flex-direction:column}.steps div{border:0;border-bottom:1px solid var(--rule)}}
-.site-brand strong b{color:#1f5fd6!important}.steps b{color:#1f5fd6}
+.site-brand strong b{color:#1f5fd6!important}.site-brand small{color:#1f5fd6!important}.steps b{color:#1f5fd6}.lede .tag,.tag{color:#1f5fd6}.svc small{color:#1f5fd6}.svc span{color:#16232f}.steps span{color:#16232f}.site-footer,.site-footer a,.site-footer p,.site-footer small{color:#16232f!important}
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:start;margin-top:-16px}
 .hero h1{font-size:clamp(52px,6.6vw,104px);margin:0 0 16px}
 .lede{display:block}.lede p{margin:0 0 22px}
-.sheet{border-top:3px solid var(--ink);margin-top:22px;padding-top:16px;min-height:200px}
-.tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#555;display:flex;gap:18px;flex-wrap:wrap}
+.sheet{border-top:3px solid var(--ink);margin-top:22px;padding-top:16px;display:grid;align-content:start}.sheet>.intro,.sheet>.panel{grid-area:1/1}.sheet>.intro.off{visibility:hidden}.sheet>.panel{display:block;visibility:hidden;pointer-events:none}.sheet>.panel.on{visibility:visible;pointer-events:auto}
+.tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#1f5fd6;display:flex;gap:18px;flex-wrap:wrap}
 .sheet .panel small{color:var(--ink)}
-.sheet .intro{font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.6;color:#444;text-transform:uppercase;letter-spacing:.06em}.intro.off{display:none}
+.sheet .intro{font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.6;color:#16232f;text-transform:uppercase;letter-spacing:.06em}.intro.off{visibility:hidden}
 .panel{display:none}.panel.on{display:block}
 .panel small{display:block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:8px;font-weight:600}
 .panel .links a{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-family:Oswald,sans-serif;text-transform:uppercase;font-size:22px;padding:7px 0;border-bottom:1px solid var(--rule);letter-spacing:.01em}
@@ -44,6 +44,12 @@ main{max-width:1320px;margin:0 auto;padding:40px 32px 80px}
 .mnav .chip{border-color:#111;color:#111;background:#fff}.mnav .chip.on{background:#eef3ff}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:20px}.cross{max-width:520px;margin:0 auto}}
 @media(max-width:700px){.cross .lbl{font-size:22px}.cross .node{pointer-events:none}.sheet{min-height:0}.panel .links a{font-size:20px;min-height:44px}}
+
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
 
 .mnav{display:none}
 @media(max-width:700px){

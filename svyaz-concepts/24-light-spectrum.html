@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Связь Коннект · Свет и спектр</title><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="../shared/architecture.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap"><style>body,.hero h1,.svc strong,.big h3{font-family:Onest,Inter,system-ui,sans-serif}
 .node{cursor:pointer;outline:none;transition:transform .2s}.node .halo{transition:opacity .2s}.node:hover .halo,.node:focus .halo,.node.on .halo{opacity:.35}.node.on circle:nth-child(3){r:8}
-.q .d{padding-top:150px}.d .intro{transition:opacity .2s}.d .intro.off{display:none}
+.q .d{padding-top:150px}.d .intro{transition:opacity .2s}.d .intro.off{visibility:hidden}
 .panel{display:none}.panel.on{display:block}
 .panel small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin-bottom:10px;font-weight:600;text-shadow:0 0 12px #07111f}
 .panel .links a{display:flex;justify-content:space-between;align-items:center;color:#fff;text-decoration:none;font-size:17px;padding:10px 0;border-top:1px solid rgba(114,170,255,.25);font-weight:500}
@@ -48,6 +48,12 @@ main{position:relative}
 .q .d{justify-content:flex-end}
 .q{pointer-events:none}.q a,.q .intro,.q .seg,.q .panel{pointer-events:auto}
 .barhint{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2)}
+.subwrap{display:grid;min-height:0}.subwrap .panel{grid-area:1/1;display:block;visibility:hidden;pointer-events:none}.subwrap .panel.on{visibility:visible;pointer-events:auto}
+/* высота блока не скачет: подсказка и панели лежат в одной ячейке */
+.swap{display:grid;align-content:end}.swap>.intro,.swap>.panel{grid-area:1/1}
+.swap>.intro.off{visibility:hidden}
+.swap>.panel{display:block!important;visibility:hidden;pointer-events:none}
+.swap>.panel.on{visibility:visible;pointer-events:auto}
 
 .mnav{display:none}
 @media(max-width:700px){
