@@ -249,6 +249,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.85);padding:clamp(56px,8vw
 .slogan em{font-style:normal;color:var(--red)}
 .fbot{border-top:1px solid rgba(255,255,255,.16);padding-top:26px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;font-size:13.5px;color:rgba(255,255,255,.6)}
 .fbot .lics{display:flex;flex-wrap:wrap;gap:6px 16px}
+/* mobile-menu-color: в раскрытом меню фон белый, значит и ссылки тёмные */
+@media(max-width:900px){.main a{color:#0A1524!important;min-height:44px;display:flex;align-items:center}}
+/* menu-hidden-fix */
+@media(max-width:900px){.main:not(.open){display:none!important;visibility:hidden}}
 </style>
 <style id="ext">
 .map-sect{overflow:hidden}

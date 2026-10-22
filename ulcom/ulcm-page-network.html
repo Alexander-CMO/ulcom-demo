@@ -248,6 +248,26 @@ footer{background:var(--navy);color:rgba(255,255,255,.85);padding:clamp(56px,8vw
 .slogan em{font-style:normal;color:var(--red)}
 .fbot{border-top:1px solid rgba(255,255,255,.16);padding-top:26px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;font-size:13.5px;color:rgba(255,255,255,.6)}
 .fbot .lics{display:flex;flex-wrap:wrap;gap:6px 16px}
+
+/* выбор точек списком: на телефоне тапать по мелким узлам карты неудобно */
+.nodepick{display:none;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.nodepick button{min-height:44px;padding:0 14px;border:1px solid rgba(1,63,120,.28);border-radius:999px;background:#fff;
+                 color:#0A1524;font:600 14px/1 inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.nodepick button i{width:8px;height:8px;border-radius:50%;background:#013F78;font-style:normal}
+.nodepick button.on{border-color:#013F78;background:#eef4fc}
+.nodepick button.hub i{background:#EE3A23}
+@media(max-width:900px){.nodepick{display:flex}}
+/* node-mobile-off: на телефоне выбор идёт кнопками под картой */
+@media(max-width:900px){svg .node{pointer-events:none}}
+/* мобильное меню скрыто целиком, а не только прозрачностью */
+@media(max-width:900px){.nav:not(.open){display:none!important}}
+.hhours,.hbar span{font-size:12px}
+.tabs a,.tab{min-height:44px;display:inline-flex;align-items:center}
+.lg{color:rgba(255,255,255,.86)}
+/* mobile-menu-color: в раскрытом меню фон белый, значит и ссылки тёмные */
+@media(max-width:900px){.main a{color:#0A1524!important;min-height:44px;display:flex;align-items:center}}
+/* menu-hidden-fix */
+@media(max-width:900px){.main:not(.open){display:none!important;visibility:hidden}}
 </style>
 <style id="ext">
 .map-sect{overflow:hidden}
@@ -404,7 +424,7 @@ table.pop .stub{color:var(--muted);font-style:italic}
       <div class="mapbox">
         <div id="netMap"></div>
       </div>
-      <div class="maphint" id="mapHint">Кликните <b>первый узел</b> маршрута, затем второй - посчитаем задержку.</div>
+      <div class="nodepick" role="group" aria-label="Выбор точек маршрута"></div><div class="maphint" id="mapHint">Выберите <b>первый узел</b> маршрута, затем второй - посчитаем задержку. На телефоне используйте кнопки ниже.</div>
 
       <div class="route-panel" id="routePanel">
         <div class="rt-ms" id="rtMs"></div>
@@ -687,7 +707,7 @@ function renderMap(el){
   NET.nodes.forEach(function(n){
     var r = n.hub ? 9 : 6.5;
     s += '<g class="node'+(n.hub?" hub":"")+'" data-id="'+n.id+'" tabindex="0" role="button" aria-label="'+n.name+'">';
-    s += '<circle cx="'+n.x+'" cy="'+n.y+'" r="'+(r+9)+'" fill="transparent"/>';
+    s += '<circle cx="'+n.x+'" cy="'+n.y+'" r="'+(r+20)+'" fill="transparent"/>';
     s += '<circle class="c" cx="'+n.x+'" cy="'+n.y+'" r="'+r+'"/>';
     var tx = n.x + (n.lx||10), ty = n.y + (n.ly||-10);
     s += '<text x="'+tx+'" y="'+ty+'"'+(n.ta?' text-anchor="'+n.ta+'"':'')+'>'+n.name+'</text>';
@@ -772,7 +792,7 @@ function updateRoute(el){
     return;
   }
   if(sel.length !== 2){
-    hint.innerHTML = "Кликните <b>первый узел</b> маршрута, затем второй - посчитаем задержку.";
+    hint.innerHTML = "Выберите <b>первый узел</b> маршрута, затем второй - посчитаем задержку. На телефоне используйте кнопки ниже.";
     panel.classList.remove("show");
     return;
   }
@@ -809,7 +829,7 @@ function updateRoute(el){
     " · " + (names.length-1) + " " + plural(names.length-1,["участок","участка","участков"]) +
     " · ~" + km + " км трассы";
   panel.classList.add("show");
-  hint.innerHTML = "Маршрут построен. Кликните любой узел, чтобы начать новый маршрут.";
+  hint.innerHTML = "Маршрут построен. Выберите любой узел, чтобы начать новый маршрут.";
 }
 
 function plural(n, f){
@@ -866,5 +886,36 @@ var _tf=document.getElementById("tkpForm"); if(_tf) _tf.addEventListener("submit
 /* ================= init ================= */
 var _nm=document.getElementById("netMap"); if(_nm){ renderMap(_nm); }
 </script>
-</body>
+<script>
+/* список точек под картой: тот же выбор маршрута, но нормальными кнопками */
+(function(){
+  function build(){
+    var host = document.querySelector('.nodepick'); if(!host || !window.NET) return;
+    if(host.dataset.ready) return; host.dataset.ready = '1';
+    NET.nodes.forEach(function(n){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = n.hub ? 'hub' : '';
+      b.setAttribute('data-pick', n.id);
+      b.innerHTML = '<i></i>' + n.name;
+      b.addEventListener('click', function(){
+        var g = document.querySelector('.node[data-id="' + n.id + '"]');
+        if (g) g.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        sync();
+      });
+      host.appendChild(b);
+    });
+    sync();
+  }
+  function sync(){
+    document.querySelectorAll('.nodepick button').forEach(function(b){
+      var id = b.getAttribute('data-pick');
+      var g = document.querySelector('.node[data-id="' + id + '"]');
+      b.classList.toggle('on', !!(g && (g.classList.contains('sel') || g.classList.contains('active') || g.classList.contains('on'))));
+    });
+  }
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', function(){ setTimeout(build, 300) });
+  else setTimeout(build, 300);
+  addEventListener('click', function(){ setTimeout(sync, 60) });
+})();
+</script></body>
 </html>

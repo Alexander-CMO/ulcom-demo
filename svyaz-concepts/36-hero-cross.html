@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Связь Коннект · Разрез с первого экрана</title><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="../shared/architecture.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500&display=swap"><style>
+:root{--e:cubic-bezier(.425,.005,0,1);--bg:#0a111a;--panel:#101925;--ink:#fff;--mut:rgba(255,255,255,.64);--rule:rgba(255,255,255,.14);
+      --blue:#2a6ff2;--blue2:#72aaff;--green:#10b981}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:"Golos Text",Inter,system-ui,sans-serif;font-weight:400;overflow:visible!important;
+     -webkit-font-smoothing:antialiased}
+main{position:relative;overflow-x:clip}
+.site-header{background:rgba(10,17,26,.92)!important;border-bottom:1px solid var(--rule)!important;backdrop-filter:blur(14px)}
+.site-footer{background:#070d14!important;border-top:1px solid var(--rule)!important}
+.w{padding:0 30px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:400;margin:0}
+.kick{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--mut)}
+.alink{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.26px;text-transform:uppercase;min-height:44px}
+.alink u{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;transition:border-color .5s var(--e)}
+.alink:hover u{border-color:#fff}
+.alink svg{width:17px;height:17px;color:var(--blue2);transition:transform .5s var(--e)}
+.alink:hover svg{transform:translate(3px,-3px)}
+
+/* ---------- сцена живёт с первого экрана ---------- */
+.story{position:relative}
+.stage{position:sticky;top:88px;height:calc(100vh - 88px);min-height:620px;overflow:hidden;z-index:2;background:var(--bg)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.layer{position:absolute;inset:0;z-index:2;padding:40px 30px;display:grid;
+       grid-template-columns:minmax(0,1fr) min(32vw,400px) minmax(0,1fr);align-items:center;gap:40px;pointer-events:none}
+.layer>*{pointer-events:auto}
+
+/* первый экран: заголовок слева, разрез крупный в центре */
+.intro{grid-column:1/3;max-width:620px;transition:opacity .6s var(--e),transform .6s var(--e)}
+.intro.off{opacity:0;transform:translateY(-18px);pointer-events:none}
+.intro h1{font-size:clamp(40px,4.97vw,71.5px);line-height:1;max-width:13ch}
+.intro p{font-size:20px;line-height:1.2;font-weight:500;color:rgba(255,255,255,.86);max-width:44ch;margin:24px 0 28px}
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--blue);color:#fff;padding:18px 26px;font-size:13px;
+     letter-spacing:.26px;text-transform:uppercase;transition:transform .5s var(--e)}
+.cta svg{width:17px;height:17px;transition:transform .5s var(--e)}
+.cta:hover{transform:translateY(-2px)}.cta:hover svg{transform:translateX(4px)}
+
+/* разрез: один на всю страницу, размер и место задаёт прокрутка */
+.ringwrap{position:absolute;left:var(--rx,50%);top:50%;width:min(var(--rw,540px),78vw);
+          transform:translate(-50%,-50%) scale(var(--rs,1));z-index:3;pointer-events:none;will-change:transform,left,width}
+.ringsvg{width:100%;height:auto;overflow:visible;display:block}
+.node{cursor:pointer;outline:none;pointer-events:all}
+.node .halo{transition:opacity .5s var(--e)}
+.node.on .halo{opacity:.32}
+.node.on .pulse{animation:np 2.4s var(--e) infinite}
+@keyframes np{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.2);opacity:0}}
+.dash{animation:spin 56s linear infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pointer{transform-box:view-box;transform-origin:180px 180px;opacity:0;transition:opacity .5s var(--e)}
+.pointer.on{opacity:1}
+.ringcap{position:absolute;left:50%;bottom:-54px;transform:translateX(-50%);font-size:12px;letter-spacing:.24px;
+         text-transform:uppercase;color:var(--blue2);white-space:nowrap;transition:opacity .5s var(--e)}
+.ringcap.off{opacity:0}
+
+/* разделы: шкала слева, карточка справа */
+.sidenav{grid-column:1/2;align-self:center;opacity:0;transform:translateY(18px);transition:opacity .6s var(--e),transform .6s var(--e);pointer-events:none}
+.sidenav.on{opacity:1;transform:none;pointer-events:auto}
+.prog{list-style:none;margin:16px 0 0;padding:0;max-width:360px}
+.prog li{position:relative;padding:15px 0 15px 54px;border-top:1px solid var(--rule);cursor:pointer}
+.prog li:first-child{border-top:0}
+.prog b{position:absolute;left:0;top:17px;font-size:12px;letter-spacing:.24px;color:var(--mut);font-weight:400;transition:color .4s var(--e)}
+.prog span{font-size:clamp(18px,1.7vw,24px);color:rgba(255,255,255,.5);display:inline-block;transition:color .4s var(--e),transform .4s var(--e)}
+.prog li.on span{color:#fff;transform:translateX(5px)}
+.prog li.on b{color:var(--c)}
+.prog li:after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--c);transition:width .2s linear}
+.prog li.on:after{width:var(--p,0%)}
+.prog li.done:after{width:100%;opacity:.3}
+.cards{grid-column:3/4;position:relative;min-height:330px;display:grid;align-content:center}
+.cards>*{grid-area:1/1}
+.card{opacity:0;transform:translateY(26px);transition:opacity .5s var(--e),transform .5s var(--e);pointer-events:none}
+.card.on{opacity:1;transform:none;pointer-events:auto}
+.card.past{transform:translateY(-26px)}
+.card .no{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--c);margin-bottom:12px}
+.card h3{font-size:clamp(28px,3.9vw,56px);line-height:1;margin:0 0 14px}
+.card p{font-size:16.3px;line-height:1.4;color:var(--mut);margin:0 0 18px;max-width:46ch}
+.card ul{list-style:none;margin:0 0 16px;padding:0}
+.card li{border-top:1px solid var(--rule)}
+.card li a{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:16.3px;
+           transition:padding-left .45s var(--e),color .45s var(--e)}
+.card li a:hover{padding-left:10px;color:var(--blue2)}
+.card li i{font-style:normal;color:var(--blue2);transition:transform .45s var(--e)}
+.card li a:hover i{transform:translateX(4px)}
+.hint{position:absolute;left:30px;bottom:22px;z-index:4;display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24px;
+      text-transform:uppercase;color:var(--blue2);pointer-events:none;transition:opacity .5s var(--e)}
+.hint.off{opacity:0}
+.hint i{display:block;width:46px;height:1px;background:linear-gradient(90deg,var(--blue2),transparent);position:relative;overflow:hidden}
+.hint i:after{content:"";position:absolute;inset:0;background:var(--blue2);animation:sweep 2.6s var(--e) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.rail{position:relative;z-index:1;pointer-events:none}
+.step{height:100vh}
+.step:first-child{height:calc(100vh - 88px)}
+.mstep{pointer-events:auto;border-top:1px solid var(--rule);padding:28px 0}
+.mstep .no{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+.mstep h3{font-size:28px;margin:0 0 10px}
+.mstep p{font-size:16.3px;line-height:1.4;color:var(--mut);margin:0 0 12px}
+.mstep ul{list-style:none;margin:0;padding:0}.mstep li{border-top:1px solid var(--rule)}
+.mstep li a{display:flex;justify-content:space-between;align-items:center;min-height:44px;font-size:16.3px}
+.mstep li i{font-style:normal;color:var(--blue2)}
+
+/* ---------- дальше обычные блоки ---------- */
+.sec{padding:92px 0;position:relative}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec h2{font-size:clamp(30px,4.17vw,56px);line-height:1.04;max-width:16ch}
+.sec .lead2{font-size:17px;line-height:1.45;color:var(--mut);max-width:54ch;margin:20px 0 0}
+.l4{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px}
+.l4 div{padding:26px 24px 32px 0;border-right:1px solid var(--rule);margin-right:24px}
+.l4 div:last-child{border-right:0;margin-right:0}
+.l4 b{display:block;font-size:12px;letter-spacing:.24px;color:var(--green);font-weight:400;margin-bottom:14px}
+.l4 strong{display:block;font-size:clamp(20px,2.1vw,27px);font-weight:400;line-height:1.1;margin-bottom:10px}
+.l4 span{font-size:16.3px;line-height:1.4;color:var(--mut)}
+.axis{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;align-items:center;height:86px;overflow:hidden;background:var(--panel)}
+.axis .end{flex:0 0 auto;padding:0 30px;font-size:clamp(22px,3.2vw,46px);line-height:.62;text-transform:uppercase;background:var(--panel);z-index:2}
+.axis .end.r{margin-left:auto}
+.track{flex:1;height:100%;display:flex;align-items:center;overflow:hidden;
+       -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.track ul{display:flex;margin:0;padding:0;list-style:none;animation:run 48s linear infinite;flex:0 0 auto}
+.track:hover ul{animation-play-state:paused}
+.track li{padding:0 24px;font-size:13px;letter-spacing:.26px;text-transform:uppercase;color:rgba(255,255,255,.68);white-space:nowrap;display:flex;align-items:center;gap:9px}
+.track li:before{content:"";width:4px;height:4px;border-radius:50%;background:var(--green)}
+@keyframes run{to{transform:translateX(-50%)}}
+.row{border-top:1px solid var(--rule);padding:28px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:40px;
+     align-items:baseline;transition:padding-left .5s var(--e)}
+.row:hover{padding-left:12px}
+.row h3{font-size:clamp(22px,2.9vw,42px);line-height:1.2}
+.row p{font-size:16.3px;line-height:1.4;color:var(--mut);margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.ch{padding:28px 26px;border:1px solid var(--rule);background:rgba(255,255,255,.02)}
+.ch h3{font-size:clamp(22px,2.4vw,32px);margin:0 0 16px}
+.ch ul{margin:0;padding:0;list-style:none}
+.ch li{font-size:16.3px;line-height:1.4;color:var(--mut);padding:9px 0 9px 18px;position:relative}
+.ch li:before{content:"";position:absolute;left:0;top:17px;width:5px;height:5px;border-radius:50%;background:var(--green)}
+.final{padding:100px 0;border-top:1px solid var(--rule);
+       background:radial-gradient(90% 120% at 18% 0%,rgba(42,111,242,.26),transparent 62%),var(--panel)}
+.final .row2{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;align-items:end}
+.final p{font-size:16.3px;line-height:1.45;color:var(--mut);margin:0 0 24px;max-width:46ch}
+
+.up{opacity:0;transform:translateY(24px);transition:opacity .75s var(--e),transform .75s var(--e)}
+.up.in{opacity:1;transform:none}
+.up.d1{transition-delay:.08s}.up.d2{transition-delay:.16s}
+.mask{display:block;overflow:hidden}
+.mask>span{display:block;transform:translateY(104%);transition:transform 1.1s var(--e)}
+.mask.in>span{transform:none}
+.mask.in>span:nth-child(2){transition-delay:.08s}
+
+@media(max-width:1100px){
+  .stage{position:relative;top:0;height:auto;min-height:0;padding:30px 0 20px}
+  .layer{position:relative;inset:auto;grid-template-columns:1fr;gap:24px;padding:10px 30px 0}
+  .intro{grid-column:1/2}
+  .ringwrap{position:relative;left:auto;top:auto;transform:none!important;width:min(62vw,320px);margin:26px auto 0}
+  .ringwrap .node{pointer-events:none}
+  .ringcap{position:static;transform:none;display:block;text-align:center;margin-top:16px}
+  .sidenav,.cards,.hint{display:none}
+  .step{height:auto}.step:first-child{height:auto}
+  .rail{padding:0 30px 16px}
+  .l4,.row,.two,.final .row2{grid-template-columns:1fr;gap:16px}
+  .l4 div{border-right:0;margin-right:0;border-bottom:1px solid var(--rule)}
+}
+@media(min-width:1101px){.mstep{display:none}}
+@media(max-width:700px){
+  .intro h1{font-size:clamp(34px,10vw,48px)}.intro p{font-size:17px}
+  .sec{padding:56px 0}.final{padding:62px 0}.axis{height:66px}.axis .end{padding:0 16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .up,.mask>span,.card,.intro,.sidenav{opacity:1!important;transform:none!important;transition:none!important}
+  .track ul,.dash,.node.on .pulse,.hint i:after{animation:none}
+  .ringwrap{transform:translate(-50%,-50%)!important}
+}
+</style></head><body><header class="site-header"><div class="site-bar"><a class="site-brand" href="04-fiber-system.html"><svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg><span><strong>связь <b>коннект</b></strong><small>строительство и обслуживание ВОЛС</small></span></a><button class="site-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button><nav class="site-nav" aria-label="Основное меню"><a href="04-fiber-system-pages/uslugi.html">Услуги</a><a href="04-fiber-system-pages/proekty.html">Проекты</a><a href="04-fiber-system-pages/geografiya.html">География</a><a href="04-fiber-system-pages/o-kompanii.html">О компании</a><a href="04-fiber-system-pages/dokumenty.html">Документы</a><a href="04-fiber-system-pages/kontakty.html">Контакты</a></nav></div></header><main><section class="story">
+  <div class="stage"><canvas aria-hidden="true"></canvas>
+    <div class="layer">
+      <div class="intro"><h1 class="mask"><span>Линия связи</span><span>в одних руках</span></h1>
+        <p>Подрядчик по строительству и обслуживанию волоконно-оптических линий в Москве и области: проект, трасса, монтаж, измерения и сдача.</p>
+        <a class="cta" href="04-fiber-system-pages/kontakty.html">Обсудить объект <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></div>
+      <div class="sidenav"><div class="kick">Состав работ ВОЛС</div><ol class="prog"><li data-prog="0" style="--c:#5b93ff"><b>01</b><span>Проектирование</span></li><li data-prog="1" style="--c:#10b981"><b>02</b><span>Строительство</span></li><li data-prog="2" style="--c:#72aaff"><b>03</b><span>Монтаж</span></li><li data-prog="3" style="--c:#34d399"><b>04</b><span>Обслуживание</span></li><li data-prog="4" style="--c:#c7dcfb"><b>05</b><span>Земляные работы</span></li></ol></div>
+      <div class="cards"><div class="card" data-card="0" style="--c:#5b93ff"><div class="no">01 · Проектирование</div><h3>Проектирование</h3><p>Обследование трассы, технические условия и проектные решения.</p><ul><li><a href="04-fiber-system-pages/proektirovanie.html#obsledovanie-trassy">Обследование трассы<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#tehnicheskie-usloviya">Технические условия<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#rabochaya-dokumentaciya">Рабочая документация<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#smeta-i-sroki">Смета и сроки<i>→</i></a></li></ul><a class="alink " href="04-fiber-system-pages/proektirovanie.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Все работы</u></a></div><div class="card" data-card="1" style="--c:#10b981"><div class="no">02 · Строительство</div><h3>Строительство</h3><p>Прокладка кабеля и строительство линий связи.</p><ul><li><a href="04-fiber-system-pages/stroitelstvo.html#kabelnaya-kanalizaciya">Кабельная канализация<i>→</i></a></li><li><a href="04-fiber-system-pages/stroitelstvo.html#podves-na-oporah">Подвес на опорах<i>→</i></a></li><li><a href="04-fiber-system-pages/stroitelstvo.html#perehody-gnb">Переходы ГНБ<i>→</i></a></li></ul><a class="alink " href="04-fiber-system-pages/stroitelstvo.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Все работы</u></a></div><div class="card" data-card="2" style="--c:#72aaff"><div class="no">03 · Монтаж</div><h3>Монтаж</h3><p>Монтаж муфт, кроссов и оконечных устройств.</p><ul><li><a href="04-fiber-system-pages/montazh.html#mufty-i-krossy">Муфты и кроссы<i>→</i></a></li><li><a href="04-fiber-system-pages/montazh.html#svarka-volokna">Сварка волокна<i>→</i></a></li><li><a href="04-fiber-system-pages/montazh.html#izmereniya-i-reflektometriya">Измерения и рефлектометрия<i>→</i></a></li></ul><a class="alink " href="04-fiber-system-pages/montazh.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Все работы</u></a></div><div class="card" data-card="3" style="--c:#34d399"><div class="no">04 · Обслуживание</div><h3>Обслуживание</h3><p>Плановое обслуживание и восстановление линий.</p><ul><li><a href="04-fiber-system-pages/obsluzhivanie.html#planovye-raboty">Плановые работы<i>→</i></a></li><li><a href="04-fiber-system-pages/obsluzhivanie.html#avariynoe-vosstanovlenie">Аварийное восстановление<i>→</i></a></li><li><a href="04-fiber-system-pages/obsluzhivanie.html#dogovor-obsluzhivaniya">Договор обслуживания<i>→</i></a></li></ul><a class="alink " href="04-fiber-system-pages/obsluzhivanie.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Все работы</u></a></div><div class="card" data-card="4" style="--c:#c7dcfb"><div class="no">05 · Земляные работы</div><h3>Земляные работы</h3><p>Траншеи, кабельная канализация и восстановление покрытия.</p><ul><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#transhei-i-kotlovany">Траншеи и котлованы<i>→</i></a></li><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#vosstanovlenie-pokrytiya">Восстановление покрытия<i>→</i></a></li><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#soglasovaniya-i-order">Согласования и ордер<i>→</i></a></li></ul><a class="alink " href="04-fiber-system-pages/zemlyanye-raboty.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Все работы</u></a></div></div>
+    </div>
+    <div class="ringwrap"><svg class="ringsvg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" aria-label="Разрез оптического кабеля"><defs><filter id="rgf" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#rgf)"><circle cx="180" cy="180" r="136" fill="#0a111a" fill-opacity=".78" stroke="#72aaff" stroke-width="1.6"/></g><circle class="dash" cx="180" cy="180" r="116" fill="none" stroke="#72aaff" stroke-width=".9" stroke-dasharray="3 7" opacity=".55"/><circle cx="180" cy="180" r="56" fill="none" stroke="#72aaff" stroke-width="1" opacity=".38"/><g class="pointer"><line x1="180" y1="160" x2="180" y2="118" stroke="#c7dcfb" stroke-width="1.5" stroke-linecap="round"/><path d="M175 124 L180 116 L185 124" fill="none" stroke="#c7dcfb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><circle cx="180" cy="180" r="8" fill="#c7dcfb"/><g class="node" data-node="0" tabindex="0" role="button" aria-label="Проектирование" transform="translate(180.0 92.0)" style="--c:#2a6ff2"><circle class="pulse" r="20" fill="none" stroke="#2a6ff2" stroke-width="2" opacity="0" style="transform-box:fill-box;transform-origin:50% 50%"/><circle class="halo" r="32" fill="#2a6ff2" opacity="0"/><circle class="ring-o" r="20" fill="#0a111a" stroke="#2a6ff2" stroke-width="2.3"/><circle r="8" fill="#2a6ff2"/><text y="42" text-anchor="middle" fill="#c7dcfb" font-size="13" letter-spacing="1.5">01</text></g><g class="node" data-node="1" tabindex="0" role="button" aria-label="Строительство" transform="translate(263.7 152.8)" style="--c:#10b981"><circle class="pulse" r="20" fill="none" stroke="#10b981" stroke-width="2" opacity="0" style="transform-box:fill-box;transform-origin:50% 50%"/><circle class="halo" r="32" fill="#10b981" opacity="0"/><circle class="ring-o" r="20" fill="#0a111a" stroke="#10b981" stroke-width="2.3"/><circle r="8" fill="#10b981"/><text y="42" text-anchor="middle" fill="#c7dcfb" font-size="13" letter-spacing="1.5">02</text></g><g class="node" data-node="2" tabindex="0" role="button" aria-label="Монтаж" transform="translate(231.7 251.2)" style="--c:#72aaff"><circle class="pulse" r="20" fill="none" stroke="#72aaff" stroke-width="2" opacity="0" style="transform-box:fill-box;transform-origin:50% 50%"/><circle class="halo" r="32" fill="#72aaff" opacity="0"/><circle class="ring-o" r="20" fill="#0a111a" stroke="#72aaff" stroke-width="2.3"/><circle r="8" fill="#72aaff"/><text y="42" text-anchor="middle" fill="#c7dcfb" font-size="13" letter-spacing="1.5">03</text></g><g class="node" data-node="3" tabindex="0" role="button" aria-label="Обслуживание" transform="translate(128.3 251.2)" style="--c:#34d399"><circle class="pulse" r="20" fill="none" stroke="#34d399" stroke-width="2" opacity="0" style="transform-box:fill-box;transform-origin:50% 50%"/><circle class="halo" r="32" fill="#34d399" opacity="0"/><circle class="ring-o" r="20" fill="#0a111a" stroke="#34d399" stroke-width="2.3"/><circle r="8" fill="#34d399"/><text y="42" text-anchor="middle" fill="#c7dcfb" font-size="13" letter-spacing="1.5">04</text></g><g class="node" data-node="4" tabindex="0" role="button" aria-label="Земляные работы" transform="translate(96.3 152.8)" style="--c:#c7dcfb"><circle class="pulse" r="20" fill="none" stroke="#c7dcfb" stroke-width="2" opacity="0" style="transform-box:fill-box;transform-origin:50% 50%"/><circle class="halo" r="32" fill="#c7dcfb" opacity="0"/><circle class="ring-o" r="20" fill="#0a111a" stroke="#c7dcfb" stroke-width="2.3"/><circle r="8" fill="#c7dcfb"/><text y="42" text-anchor="middle" fill="#c7dcfb" font-size="13" letter-spacing="1.5">05</text></g></svg><div class="ringcap">Разрез кабеля · пять модулей</div></div>
+    <div class="hint"><i></i>Листайте: разрез станет навигатором</div>
+  </div>
+  <div class="rail"><div class="step" data-i="0"></div><div class="step" data-i="1"></div><div class="step" data-i="2"></div><div class="step" data-i="3"></div><div class="step" data-i="4"></div><div class="step" data-i="5"></div><div class="mstep" style="--c:#5b93ff"><div class="no">01 · Проектирование</div><h3>Проектирование</h3><p>Обследование трассы, технические условия и проектные решения.</p><ul><li><a href="04-fiber-system-pages/proektirovanie.html#obsledovanie-trassy">Обследование трассы<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#tehnicheskie-usloviya">Технические условия<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#rabochaya-dokumentaciya">Рабочая документация<i>→</i></a></li><li><a href="04-fiber-system-pages/proektirovanie.html#smeta-i-sroki">Смета и сроки<i>→</i></a></li></ul></div><div class="mstep" style="--c:#10b981"><div class="no">02 · Строительство</div><h3>Строительство</h3><p>Прокладка кабеля и строительство линий связи.</p><ul><li><a href="04-fiber-system-pages/stroitelstvo.html#kabelnaya-kanalizaciya">Кабельная канализация<i>→</i></a></li><li><a href="04-fiber-system-pages/stroitelstvo.html#podves-na-oporah">Подвес на опорах<i>→</i></a></li><li><a href="04-fiber-system-pages/stroitelstvo.html#perehody-gnb">Переходы ГНБ<i>→</i></a></li></ul></div><div class="mstep" style="--c:#72aaff"><div class="no">03 · Монтаж</div><h3>Монтаж</h3><p>Монтаж муфт, кроссов и оконечных устройств.</p><ul><li><a href="04-fiber-system-pages/montazh.html#mufty-i-krossy">Муфты и кроссы<i>→</i></a></li><li><a href="04-fiber-system-pages/montazh.html#svarka-volokna">Сварка волокна<i>→</i></a></li><li><a href="04-fiber-system-pages/montazh.html#izmereniya-i-reflektometriya">Измерения и рефлектометрия<i>→</i></a></li></ul></div><div class="mstep" style="--c:#34d399"><div class="no">04 · Обслуживание</div><h3>Обслуживание</h3><p>Плановое обслуживание и восстановление линий.</p><ul><li><a href="04-fiber-system-pages/obsluzhivanie.html#planovye-raboty">Плановые работы<i>→</i></a></li><li><a href="04-fiber-system-pages/obsluzhivanie.html#avariynoe-vosstanovlenie">Аварийное восстановление<i>→</i></a></li><li><a href="04-fiber-system-pages/obsluzhivanie.html#dogovor-obsluzhivaniya">Договор обслуживания<i>→</i></a></li></ul></div><div class="mstep" style="--c:#c7dcfb"><div class="no">05 · Земляные работы</div><h3>Земляные работы</h3><p>Траншеи, кабельная канализация и восстановление покрытия.</p><ul><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#transhei-i-kotlovany">Траншеи и котлованы<i>→</i></a></li><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#vosstanovlenie-pokrytiya">Восстановление покрытия<i>→</i></a></li><li><a href="04-fiber-system-pages/zemlyanye-raboty.html#soglasovaniya-i-order">Согласования и ордер<i>→</i></a></li></ul></div></div>
+</section>
+
+<section class="w sec"><h2 class="mask up"><span>Из чего складывается готовая линия</span></h2>
+  <p class="lead2 up d1">Четыре этапа: от обследования трассы до передачи линии с исполнительным комплектом.</p>
+  <div class="l4"><div class="up d0"><b>01</b><strong>Трасса</strong><span>Обследование, технические условия и проектные решения.</span></div><div class="up d1"><b>02</b><strong>Инфраструктура</strong><span>Канализация, траншеи, переходы и восстановление покрытия.</span></div><div class="up d2"><b>03</b><strong>Оптика</strong><span>Прокладка кабеля, монтаж муфт, кроссов и оконечных устройств.</span></div><div class="up d2"><b>04</b><strong>Готовность</strong><span>Измерения, исполнительная документация и передача линии.</span></div></div></section>
+
+<div class="axis"><div class="end">Москва</div><div class="track"><ul><li>ММТС-9</li><li>Одинцово</li><li>Красногорск</li><li>Химки</li><li>Мытищи</li><li>Королёв</li><li>Балашиха</li><li>Люберцы</li><li>Подольск</li><li>Домодедово</li><li>Видное</li><li>Звенигород</li><li>Дмитров</li><li>Ногинск</li><li>Сергиев Посад</li><li>ММТС-9</li><li>Одинцово</li><li>Красногорск</li><li>Химки</li><li>Мытищи</li><li>Королёв</li><li>Балашиха</li><li>Люберцы</li><li>Подольск</li><li>Домодедово</li><li>Видное</li><li>Звенигород</li><li>Дмитров</li><li>Ногинск</li><li>Сергиев Посад</li></ul></div><div class="end r">Область</div></div>
+
+<section class="w sec"><h2 class="mask up"><span>Почему берут нас</span></h2><div style="margin-top:34px"><div class="row up"><h3>Один подрядчик на весь маршрут</h3><p>Проект, стройка, монтаж, измерения и документы без передачи между компаниями.</p></div><div class="row up"><h3>Свои бригады и техника</h3><p>Работы ведут собственные монтажники, без субподряда на ключевых этапах.</p></div><div class="row up"><h3>Работа в городской застройке</h3><p>Канализация, подвес на опорах, переходы методом ГНБ, восстановление покрытия.</p></div><div class="row up"><h3>Сдача с исполнительной документацией</h3><p>Фактическая схема трассы, протоколы измерений, комплект для эксплуатации.</p></div><div class="row up"><h3>Плановое и аварийное обслуживание</h3><p>Регламентные работы и восстановление линии по договору сопровождения.</p></div></div></section>
+
+<section class="w sec"><h2 class="mask up"><span>Проверяем линию до сдачи</span></h2>
+  <p class="lead2 up d1">Работы завершаются измерениями и комплектом документов по фактической трассе.</p>
+  <div class="two"><div class="ch up d0"><h3>Измерительный контроль</h3><ul><li>рефлектометрия оптических волокон</li><li>проверка затухания и качества сварки</li><li>фиксация результатов по участкам</li></ul></div><div class="ch up d1"><h3>Исполнительный комплект</h3><ul><li>фактическая схема трассы</li><li>протоколы измерений</li><li>документы для эксплуатации линии</li></ul></div></div></section>
+
+<section class="final"><div class="w row2">
+  <h2 class="mask up" style="font-size:clamp(32px,4.17vw,60px);line-height:1.04;max-width:14ch"><span>Соберём проект</span><span>под вашу задачу</span></h2>
+  <div class="up d1"><p>Укажите адреса, протяжённость или тип работ. Определим, какие исходные данные нужны для сметы.</p>
+    <a class="cta" href="04-fiber-system-pages/kontakty.html">Подготовить запрос <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></div>
+</div></section></main><footer class="site-footer"><div><strong>Связь Коннект</strong><a href="tel:+74957481349">+7 495 748-13-49</a><a href="mailto:info@svyazconnect.ru">info@svyazconnect.ru</a><span>Москва, 2-й Кабельный проезд, 1</span><a href="04-fiber-system-pages/kontakty.html">Обсудить работы</a></div></footer><script src="concepts.js"></script><script src="../shared/architecture.js"></script><script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches, wide=function(){return innerWidth>1100};
+  var COL=["#5b93ff", "#10b981", "#72aaff", "#34d399", "#c7dcfb"];
+  var ring=document.querySelector('.ringwrap'), intro=document.querySelector('.intro'),
+      sidenav=document.querySelector('.sidenav'), cap=document.querySelector('.ringcap'), hint=document.querySelector('.hint'),
+      nodes=[].slice.call(document.querySelectorAll('.node')),
+      cards=[].slice.call(document.querySelectorAll('.card')),
+      progs=[].slice.call(document.querySelectorAll('.prog li')),
+      steps=[].slice.call(document.querySelectorAll('.step')),
+      pointer=document.querySelector('.pointer'),
+      active=-1, target='#2a6ff2';
+
+  function show(i){
+    if(i===active) return; active=i; var on=i>=0;
+    intro.classList.toggle('off',on);
+    sidenav.classList.toggle('on',on);
+    cap.classList.toggle('off',on);
+    hint&&hint.classList.toggle('off',on);
+    pointer.classList.toggle('on',on);
+    if(on) pointer.style.transform='rotate('+(i*72)+'deg)';
+    nodes.forEach(function(n,k){n.classList.toggle('on',on&&k===i)});
+    cards.forEach(function(c,k){c.classList.toggle('on',on&&k===i);c.classList.toggle('past',on&&k<i)});
+    progs.forEach(function(p,k){p.classList.toggle('on',on&&k===i);p.classList.toggle('done',on&&k<i)});
+    target=on?(COL[i]||'#2a6ff2'):'#2a6ff2';
+  }
+  if('IntersectionObserver' in window&&steps.length){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)show(+e.target.dataset.i-1)})},
+      {rootMargin:'-50% 0px -50% 0px',threshold:0});
+    steps.forEach(function(s){io.observe(s)});
+  }
+
+  /* разрез переезжает из первого экрана в сцену: размер и положение зависят от прокрутки */
+  var story=document.querySelector('.story'), first=steps[0];
+  function place(){
+    if(wide()&&first&&ring){
+      var r=first.getBoundingClientRect();
+      var p=Math.min(Math.max(1-(r.bottom-innerHeight*0.5)/(r.height||1),0),1);   // 0 в начале, 1 когда первый экран пройден
+      var ease=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+      ring.style.setProperty('--rx','50%');
+      ring.style.setProperty('--rw',(540-ease*200)+'px');
+      ring.style.setProperty('--rs',(1-ease*0.04).toFixed(3));
+      if(active>=0){var s=steps[active+1];
+        if(s){var rr=s.getBoundingClientRect(),q=Math.min(Math.max((innerHeight/2-rr.top)/rr.height,0),1);
+          var li=progs[active]; li&&li.style.setProperty('--p',(q*100).toFixed(1)+'%')}}
+    }
+    requestAnimationFrame(place);
+  }
+  if(!reduce) requestAnimationFrame(place);
+
+  nodes.forEach(function(n,k){
+    n.addEventListener('mouseenter',function(){if(wide())show(k)});
+    n.addEventListener('focus',function(){if(wide())show(k)});
+    n.addEventListener('click',function(){var s=steps[k+1];s&&s.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'})});
+  });
+  progs.forEach(function(p,k){
+    p.addEventListener('mouseenter',function(){if(wide())show(k)});
+    p.addEventListener('click',function(){var s=steps[k+1];s&&s.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'})});
+  });
+
+  /* поток волокна */
+  var cv=document.querySelector('.stage canvas');
+  if(cv){var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),F=[],N=32;
+    var hex=function(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]},cur=[42,111,242];
+    for(var i=0;i<N;i++)F.push({side:i%2,t:i/(N-1),amp:20+Math.random()*46,ph:Math.random()*6.28,sp:.1+Math.random()*.2,
+                                w:.55+Math.random()*1,a:.14+Math.random()*.34,green:(i%5===0)});
+    function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+    function draw(t0){ctx.clearRect(0,0,W,H);var t=t0/1000,tc=hex(target);
+      for(var k=0;k<3;k++)cur[k]+=(tc[k]-cur[k])*0.05;
+      var rb=ring?ring.getBoundingClientRect():null, sb=cv.getBoundingClientRect();
+      var cx=rb?rb.left+rb.width/2-sb.left:W/2, cy=rb?rb.top+rb.height/2-sb.top:H/2;
+      var main='rgb('+cur.map(Math.round).join(',')+')';
+      for(var i=0;i<F.length;i++){var f=F[i],x0=f.side?W+80:-80,y0=(f.side?-H*0.35:H*1.35)+(f.side?1:-1)*f.t*H*1.25;
+        var dx=cx-x0,dy=cy-y0,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len;ctx.beginPath();
+        for(var s=0;s<=28;s++){var p=s/28,fade=Math.sin(p*Math.PI),
+          off=reduce?0:Math.sin(t*f.sp+f.ph+p*2.4)*f.amp*fade*(1-p*0.55);
+          var x=x0+dx*p+nx*off,y=y0+dy*p+ny*off;s?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+        ctx.strokeStyle=f.green?'#10b981':main;ctx.globalAlpha=f.a;ctx.lineWidth=f.w;
+        ctx.shadowBlur=9;ctx.shadowColor=ctx.strokeStyle;ctx.stroke()}
+      ctx.globalAlpha=1;ctx.shadowBlur=0;
+      var gr=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*0.32);
+      gr.addColorStop(0,'rgba('+cur.map(Math.round).join(',')+',.2)');gr.addColorStop(1,'rgba(10,17,26,0)');
+      ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
+      if(!reduce)requestAnimationFrame(draw)}
+    addEventListener('resize',function(){size();if(reduce)draw(0)});size();requestAnimationFrame(draw)}
+
+  /* появление обычных блоков */
+  var els=[].slice.call(document.querySelectorAll('.up,.mask'));
+  if('IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})},
+      {rootMargin:'0px 0px -10% 0px',threshold:.1});
+    els.forEach(function(e){io2.observe(e)});
+  }
+  setTimeout(function(){els.forEach(function(e){e.classList.add('in')})},1700);
+})();
+</script></body></html>
