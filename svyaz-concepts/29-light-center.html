@@ -70,4 +70,4 @@
   nodes.forEach(n=>bind(n,+n.dataset.node)); cells.forEach(c=>bind(c,+c.dataset.cell));
   set(null);
 })();
-</script><script>(function(){var n=document.querySelector('.ringmid [data-node="0"]');if(n)n.dispatchEvent(new MouseEvent('click',{bubbles:true}));})();</script></body></html>
+</script><script>(function(){var n=document.querySelector('.ringmid [data-node="0"]');if(!n)return;var si=Element.prototype.scrollIntoView;Element.prototype.scrollIntoView=function(){};n.dispatchEvent(new MouseEvent('click',{bubbles:true}));setTimeout(function(){Element.prototype.scrollIntoView=si},600);})();</script></body></html>
