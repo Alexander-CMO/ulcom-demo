@@ -18,15 +18,17 @@ h2{font-size:21px;margin:40px 0 6px}
 .stage img{width:100%;max-height:120px;object-fit:contain}
 .stage:not(.wide) img{width:auto;height:104px}
 .meta{border-top:1px solid #e3e9f1;padding:12px 16px;display:flex;flex-direction:column;gap:3px}
-.meta b{font-size:13px;color:#1E93E8;text-transform:uppercase;letter-spacing:.07em}
+.meta b{font-size:13px;color:#0A5FA8;text-transform:uppercase;letter-spacing:.07em}
 .meta span{font-size:14px}
 .sizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;background:#fff;border:1px solid #d6dfea;border-radius:14px;padding:22px 24px;margin-top:16px}
 .sz{display:flex;align-items:flex-end;gap:12px}
 .sz>span{min-width:86px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#1E93E8;font-weight:700;align-self:center;text-align:right}
 .sz>div{display:inline-flex;flex-direction:column;align-items:center;gap:3px}
-.sz i{font-style:normal;font-size:11px;opacity:.55}
+.sz i{font-style:normal;font-size:12px;opacity:.55}
 .note{background:#fff;border:1px solid #d6dfea;border-left:4px solid #1E93E8;border-radius:12px;padding:18px 22px;margin-top:22px;max-width:860px;font-size:15px}
 a.back{color:#1E93E8;font-size:15px}
+/* тап-цели */
+a[download],a.back,a.dl,.sample a,.card a,footer a,main>p>a{display:inline-flex;align-items:center;min-height:44px}
 </style>
 <main>
 <h1>Связь Коннект: правки по знаку</h1>
@@ -39,7 +41,7 @@ a.back{color:#1E93E8;font-size:15px}
 <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))"><article class="card"><div class="stage"><img src="icons/sk-icon-fill.svg" alt="Аватар: плашка"></div><div class="meta"><b>Аватар: плашка</b><span></span></div></article><article class="card"><div class="stage"><img src="icons/sk-icon-outline.svg" alt="Аватар: рамка"></div><div class="meta"><b>Аватар: рамка</b><span></span></div></article></div>
 <h2>Как держатся в мелком размере</h2>
 <p class="sub">64, 32 и 16 пикселей.</p>
-<div class="sizes"><div class="sz"><span>плашка</span><div><img src="icons/sk-icon-fill.svg" width="64" height="64"><i>64</i></div><div><img src="icons/sk-icon-fill.svg" width="32" height="32"><i>32</i></div><div><img src="icons/sk-icon-fill.svg" width="16" height="16"><i>16</i></div></div><div class="sz"><span>рамка</span><div><img src="icons/sk-icon-outline.svg" width="64" height="64"><i>64</i></div><div><img src="icons/sk-icon-outline.svg" width="32" height="32"><i>32</i></div><div><img src="icons/sk-icon-outline.svg" width="16" height="16"><i>16</i></div></div></div>
+<div class="sizes"><div class="sz"><span>плашка</span><div><img src="icons/sk-icon-fill.svg" width="64" height="64" alt=""><i>64</i></div><div><img src="icons/sk-icon-fill.svg" width="32" height="32" alt=""><i>32</i></div><div><img src="icons/sk-icon-fill.svg" width="16" height="16" alt=""><i>16</i></div></div><div class="sz"><span>рамка</span><div><img src="icons/sk-icon-outline.svg" width="64" height="64" alt=""><i>64</i></div><div><img src="icons/sk-icon-outline.svg" width="32" height="32" alt=""><i>32</i></div><div><img src="icons/sk-icon-outline.svg" width="16" height="16" alt=""><i>16</i></div></div></div>
 <div class="note"><b>Про рамку в мелком размере.</b> На 16 и 32 пикселях контур и буквы внутри сливаются, рамка становится серым пятном, а залитая плашка остаётся читаемой. Рабочее разделение: рамка идёт в шапку сайта, на документы и презентации, а в фавикон, аватар и иконку приложения ставим плашку. Знак при этом один и тот же.</div>
 <p style="margin-top:26px"><a class="back" href="../index.html">К остальным материалам →</a></p>
 </main></html>

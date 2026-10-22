@@ -32,7 +32,7 @@
   .cell.dark{background:var(--ink)}
   .cell.light{background:#fff}
   .cell + .cell{border-left:1px solid var(--line)}
-  .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+  .cap{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
   .cell.dark .cap{color:#8b98a6}
 
   /* lock-up */
@@ -48,11 +48,13 @@
 
   .fav{display:flex;gap:16px;align-items:flex-end;padding:22px 30px;border-top:1px solid var(--line);flex-wrap:wrap}
   .fav .f{display:flex;flex-direction:column;align-items:center;gap:6px}
-  .fav .f .cap{font-size:10px}
+  .fav .f .cap{font-size:12px}
   .fav .box{background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center}
 
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--gray);font-size:13.5px}
   @media(max-width:720px){.rows{grid-template-columns:1fr}.cell+.cell{border-left:0;border-top:1px solid var(--line)}}
+/* тап-цели */
+a[download],a.back,a.dl,.sample a,.card a,footer a,main>p>a{display:inline-flex;align-items:center;min-height:44px}
 </style>
 </head>
 <body>
