@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Бизнесу · ЮЛ-ком Медиа</title><meta name="description" content="Интернет, VPN, телефония и IPTV для юридических лиц на собственной ВОЛС ЮЛ-ком Медиа."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500&display=swap"><style>
+:root{--eo:cubic-bezier(.165,.84,.44,1);--eio:cubic-bezier(.8,0,.3,1);--navy:#013F78;--deep:#011f3d;--red:#EE3A23;--redt:#C4291A;--ink:#0a1524;
+      --light:#f6f7f8;--redb:#DA321C;--rule:rgba(10,21,36,.16);--ruled:rgba(255,255,255,.2)}
+*{box-sizing:border-box}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--light);color:var(--ink);font-family:"Golos Text",Inter,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0;font-weight:400}
+.kick{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--redt)}
+.dk .kick{color:#fff}
+.dk .kick:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:10px;vertical-align:1px}
+.alink{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.26px;text-transform:uppercase;min-height:44px}
+.alink u{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:3px;transition:background-size .5s ease}
+.alink:hover u{background-size:0 1px;background-position:100% 100%}
+.alink svg{width:17px;height:17px;color:var(--redt);transition:transform .5s ease}
+.dk .alink svg{color:#fff}
+.alink:hover svg{transform:translate(3px,-3px)}
+.mask{display:block;overflow:hidden}.mask>span{display:block}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--redb);color:#fff;padding:18px 26px;min-height:52px;font-size:13px;
+     letter-spacing:.26px;text-transform:uppercase;transition:background-color .5s ease}
+.btn svg{width:17px;height:17px;transition:transform .5s ease}
+.btn:hover{background:var(--redt)}.btn:hover svg{transform:translateX(4px)}
+
+/* кнопки: оттенок фирменного красного с контрастом белого 4,7:1 */
+/* шапка */
+.header{position:relative;z-index:20;background:var(--deep);color:#fff;border-bottom:1px solid var(--ruled)}
+.hbar{display:flex;align-items:center;gap:28px;height:78px;padding:0 30px}
+.logo{display:flex;align-items:center;min-height:44px}.logo img{height:42px;width:auto;display:block}
+.nav{display:flex;gap:4px;margin-left:12px}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 12px;font-size:16px;transition:color .5s ease}
+.nav a:hover{color:#ffb4a8}
+.hsp{flex:1}
+.hph{font-size:16px;display:flex;align-items:center;min-height:44px}
+.hbtn{padding:14px 20px;min-height:44px}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--ruled);background:none;color:#fff;cursor:pointer;align-items:center;justify-content:center}
+.burger i,.burger i:before,.burger i:after{display:block;width:18px;height:1.5px;background:#fff;position:relative;transition:transform .5s var(--eo)}
+.burger i:before,.burger i:after{content:"";position:absolute;left:0}.burger i:before{top:-6px}.burger i:after{top:6px}
+.open .burger i{background:transparent}.open .burger i:before{transform:translateY(6px) rotate(45deg)}.open .burger i:after{transform:translateY(-6px) rotate(-45deg)}
+
+/* сцена: первый экран и навигатор сценариев, одна схема сети */
+.scene{position:relative;background:var(--deep);color:#fff;overflow:hidden;padding:0 0 30px}
+.meta{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 30px;border-bottom:1px solid var(--ruled)}
+.meta div{padding:14px 0;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.meta div+div{padding-left:16px;border-left:1px solid var(--ruled)}
+.meta b{font-weight:400;color:#ffb4a8}
+.intro{position:relative;z-index:3;padding:56px 30px 0;max-width:880px}
+.intro h1{font-size:clamp(40px,4.97vw,71.5px);line-height:1}
+.intro p{font-size:20px;line-height:1.2;font-weight:500;max-width:40ch;margin:24px 0 30px}
+.mapwrap{position:relative;z-index:2;margin:34px 30px 0}
+.net{width:100%;height:auto;display:block;overflow:visible}
+.net .reg{fill:none;stroke:#fff;stroke-opacity:.14;stroke-width:1}
+.net .reg.main{fill:#fff;fill-opacity:.035;stroke-opacity:.34}
+.net .msk{fill:#fff;fill-opacity:.07;stroke:#fff;stroke-opacity:.3}
+.net .eg{fill:none;stroke:#fff;stroke-opacity:.06;stroke-width:9;stroke-linecap:round}
+.net .e{fill:none;stroke:#fff;stroke-opacity:.75;stroke-width:1.6;stroke-linecap:round;transition:stroke .5s ease,stroke-opacity .5s ease,stroke-width .5s ease}
+.net .e.build{stroke-dasharray:5 6;stroke-opacity:.5}
+.net .dot{fill:var(--deep);stroke:#fff;stroke-width:1.8;transition:fill .5s ease,stroke .5s ease}
+.net .hub .dot{fill:var(--red);stroke:#fff}
+.net .halo{fill:var(--red);opacity:0;transition:opacity .5s ease}
+.net .lb{fill:#fff;font-size:13px;letter-spacing:.4px;font-family:"Golos Text",sans-serif;transition:opacity .5s ease}
+.net .pulse{fill:#fff}.net .pulse.hot{fill:#ff5b45}
+.net.focus .e{stroke-opacity:.16}
+.net.focus .e.hot{stroke:#ff5b45;stroke-opacity:1;stroke-width:3}
+.net.focus .nd .dot{stroke-opacity:.3}
+.net.focus .nd.hot .dot{fill:#fff;stroke:#ff5b45;stroke-opacity:1;stroke-width:2.6}
+.net.focus .nd.hot .halo{opacity:.28}
+.net.focus .lb{opacity:.28}.net.focus .lb.hot{opacity:1}
+.mapcap{margin-top:12px;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.sidenav,.cards,.cue,.modbar,.talk{display:none}
+.msteps{position:relative;z-index:3;padding:10px 30px 0}
+.mstep{border-top:1px solid var(--ruled);padding:28px 0}
+.no{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:#ffb4a8;margin-bottom:12px}
+.mstep h3{font-size:28px;margin:0 0 10px}
+.mstep p,.card p{font-size:16.3px;line-height:1.4;margin:0 0 14px;max-width:46ch}
+.mstep ul,.card ul{list-style:none;margin:0 0 14px;padding:0}
+.mstep li,.card li{border-top:1px solid var(--ruled)}
+.mstep li a,.card li a{display:flex;justify-content:space-between;align-items:center;min-height:44px;font-size:16.3px;transition:padding-left .5s ease,color .5s ease}
+.card li a:hover{padding-left:10px;color:#ffb4a8}
+.mstep li i,.card li i{font-style:normal}
+
+.pin .scene{height:100vh;min-height:660px;padding:0}
+.pin .intro{position:absolute;left:0;bottom:12vh;padding:0 30px}
+.pin .mapwrap{position:absolute;left:50%;top:54%;width:min(860px,60vw);margin:0}
+.pin .mapcap{position:absolute;right:0;bottom:-34px;margin:0}
+.pin .msteps{display:none}
+.pin .sidenav{display:block;position:absolute;z-index:3;left:30px;top:54%;width:min(27vw,370px)}
+.pin .cards{display:grid;grid-template-columns:minmax(0,1fr);position:absolute;z-index:3;right:30px;top:54%;width:min(28vw,420px)}
+.pin .cue{display:flex;position:absolute;z-index:3;right:30px;bottom:5vh;align-items:center;gap:12px;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.cue i{display:block;width:1px;height:46px;background:var(--ruled);position:relative;overflow:hidden}
+.cue i:after{content:"";position:absolute;inset:0;background:#fff;animation:drop 2.4s var(--eio) infinite}
+@keyframes drop{0%{transform:translateY(-100%)}70%,100%{transform:translateY(100%)}}
+.pin .modbar{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;position:absolute;z-index:3;left:30px;right:30px;bottom:26px}
+.modbar i{display:block;height:2px;background:var(--ruled);position:relative;overflow:hidden}
+.modbar i b{position:absolute;inset:0;background:var(--c);transform-origin:0 50%;transform:scaleX(0)}
+.prog{list-style:none;margin:16px 0 0;padding:0}
+.prog li{position:relative;padding:12px 0 12px 54px;border-top:1px solid var(--ruled);cursor:pointer;min-height:44px}
+.prog li:first-child{border-top:0}
+.prog b{position:absolute;left:0;top:17px;font-size:12px;letter-spacing:.24px;font-weight:400}
+.prog small{display:block;font-size:12px;letter-spacing:.24px;text-transform:uppercase;margin-bottom:2px}
+.prog span{font-size:clamp(18px,1.6vw,23px);display:inline-block;transition:color .5s ease,transform .5s var(--eo)}
+.prog li:hover span{transform:translateX(4px)}
+.prog li.on span{color:#ffb4a8;transform:translateX(8px)}
+.prog li.on b{color:#ffb4a8}
+.cards>*{grid-area:1/1;min-width:0}
+.card{visibility:hidden}.card.on{visibility:visible}
+.card h3{font-size:clamp(30px,3.6vw,52px);line-height:1;margin:0 0 16px}
+.card h3>span{display:block;transform:translateY(104%);transition:transform .9s var(--eio)}
+.card .fade{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .8s var(--eo)}
+.card.on h3>span,.card.on .fade{transform:none;opacity:1}
+.card.on .fade{transition-delay:.12s}
+.pin .talk{display:flex;position:absolute;z-index:4;right:30px;top:calc(26% - 67px);width:135px;height:135px;border-radius:50%;
+           background:var(--redb);align-items:center;justify-content:center;text-align:center;font-size:13px;letter-spacing:.26px;
+           text-transform:uppercase;line-height:1.3;color:#fff}
+
+/* полосы ниже */
+.band{position:relative}
+.lt{background:var(--light)}.wt{background:#fff}.dk{background:var(--navy);color:#fff}.dp{background:var(--deep);color:#fff}
+.pad{padding:100px 30px}
+.h2{font-size:clamp(34px,4.4vw,63px);line-height:1;margin-top:16px}
+.who{padding:100px 30px 0;overflow:hidden}
+.who h2{font-size:clamp(22px,2.2vw,31px);line-height:1.2;max-width:26ch}
+.ghost{font-size:clamp(110px,19vw,280px);line-height:.86;margin:40px 0 0;white-space:nowrap;text-transform:uppercase}
+.ghost:before{content:attr(data-ghost);color:#e3e9ef}
+.facts{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px}
+.fact{border-top:1px solid var(--rule);padding:22px 0}
+.fact b{display:block;font-size:clamp(30px,3.3vw,48px);font-weight:400;line-height:1.05;margin-bottom:8px;color:var(--navy)}
+.fact span{font-size:13px;letter-spacing:.26px;text-transform:uppercase}
+.ftext{font-size:20px;line-height:1.3;max-width:40ch;margin-bottom:28px}
+.ftext+p{font-size:16.3px;line-height:1.4;max-width:52ch;margin-bottom:22px}
+.axis{display:flex;align-items:center;height:86px;overflow:hidden}
+.axis .end{flex:0 0 auto;padding:0 30px;font-size:clamp(22px,3.2vw,46px);line-height:.62;text-transform:uppercase;background:var(--navy);position:relative;z-index:2}
+.axis .end.r{margin-left:auto}
+.track{flex:1;height:100%;display:flex;align-items:center;overflow:hidden;
+       -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track ul{display:flex;margin:0;padding:0;list-style:none;flex:0 0 auto;will-change:transform}
+.track li{padding:0 24px;font-size:13px;letter-spacing:.26px;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:9px}
+.track li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red)}
+.row{position:relative;padding:28px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:40px;align-items:baseline;transition:padding-left .5s var(--eo)}
+.row:hover{padding-left:12px}
+.row:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule);transform-origin:0 50%}
+.motion .row:before{transform:scaleX(0);transition:transform 1.1s var(--eio)}
+.motion .row.in:before{transform:none}
+.row h3{font-size:clamp(24px,3.1vw,45px);line-height:1.2}
+.row p{font-size:16.3px;line-height:1.4}
+.geo2{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:50px;align-items:center}
+.cities{columns:2;column-gap:24px;margin:28px 0 24px;padding:0;list-style:none}
+.cities li{break-inside:avoid;border-top:1px solid var(--ruled);padding:11px 0;font-size:16.3px}
+.cities li span{display:block;font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:#ffb4a8}
+.geo2 .net .lb{font-size:14px}
+.lic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:44px}
+.lic>div{border-top:1px solid var(--rule);padding:24px 24px 28px 0}
+.lic>div+div{padding-left:24px;border-left:1px solid var(--rule)}
+.lic b{display:block;font-size:12px;letter-spacing:.24px;color:var(--redt);font-weight:400;margin-bottom:14px;text-transform:uppercase}
+.lic strong{display:block;font-size:clamp(20px,1.9vw,27px);font-weight:400;line-height:1.15;margin-bottom:12px}
+.lic span{font-size:16.3px;line-height:1.4}
+.group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:44px}
+.gc{display:block;background:#fff;border:1px solid var(--rule);padding:30px 28px;transition:border-color .5s ease}
+.gc:hover{border-color:var(--navy)}
+.gc h3{font-size:clamp(24px,2.4vw,34px);margin:0 0 12px}
+.gc p{font-size:16.3px;line-height:1.4;margin-bottom:18px;max-width:44ch}
+.gc .alink{pointer-events:none}
+.final .row2{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;align-items:end}
+.final p{font-size:16.3px;line-height:1.45;margin:0 0 24px;max-width:46ch}
+.contacts{list-style:none;margin:0 0 28px;padding:0}
+.contacts li{border-top:1px solid var(--ruled)}
+.contacts a,.contacts span{display:flex;align-items:center;min-height:52px;font-size:clamp(18px,1.6vw,22px)}
+.foot{padding:40px 30px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-size:16px}
+.foot img{height:36px;width:auto}
+.foot a{display:inline-flex;align-items:center;min-height:44px}
+.pbar{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+
+@media(max-width:1100px){
+  .nav,.hph{display:none}.burger{display:flex}
+  .open .nav{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:78px;background:var(--deep);padding:8px 30px 20px;border-bottom:1px solid var(--ruled);margin:0}
+  .open .nav a{padding:0;border-top:1px solid var(--ruled);font-size:18px;min-height:52px}
+  .meta{grid-template-columns:1fr 1fr}.meta div:nth-child(3){padding-left:0;border-left:0}
+  .facts,.row,.geo2,.final .row2,.group{grid-template-columns:1fr;gap:16px}
+  .lic{grid-template-columns:1fr 1fr}.lic>div:nth-child(3){padding-left:0;border-left:0}
+}
+@media(max-width:700px){
+  .hbar{gap:12px;padding:0 16px}.logo img{height:34px}.hbtn{padding:12px 14px;font-size:12px}
+  .meta{margin:0 16px}.intro,.msteps,.pad,.who,.foot{padding-left:16px;padding-right:16px}.mapwrap{margin:28px 16px 0}
+  .intro{padding-top:36px}.intro h1{font-size:clamp(34px,10vw,48px)}.intro p{font-size:17px}
+  .pad{padding-top:60px;padding-bottom:60px}.who{padding-top:60px}
+  .lic{grid-template-columns:1fr}.lic>div+div{padding-left:0;border-left:0}
+  .cities{columns:1}.axis{height:66px}.axis .end{padding:0 16px}
+}
+@media(prefers-reduced-motion:reduce){.cue i:after{animation:none}}
+
+/* ---------- внутренние страницы ---------- */
+.nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--red)}
+.phero{padding:0 0 70px}
+.crumbs{position:relative;z-index:3;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:22px 30px 0;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.ph{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:50px;align-items:center;padding:30px 30px 0}
+.ph1{font-size:clamp(40px,4.97vw,71.5px);line-height:1}
+.phl{font-size:20px;line-height:1.2;font-weight:500;max-width:40ch;margin:24px 0 30px}
+.ph .btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn2{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:16px 24px;font-size:13px;letter-spacing:.26px;text-transform:uppercase;
+      border:1px solid currentColor;transition:background-color .5s ease,color .5s ease}
+button.btn2{background:transparent;font-family:inherit;cursor:pointer}
+.scene .btn2{color:#fff}.scene .btn2:hover{background:#fff;color:var(--deep)}
+.lt .btn2,.wt .btn2{color:var(--navy)}.lt .btn2:hover,.wt .btn2:hover{background:var(--navy);color:#fff}
+.dk .btn2{color:#fff}.dk .btn2:hover{background:#fff;color:var(--navy)}
+.sec-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:40px}
+.sec-h p{font-size:16.3px;line-height:1.4;max-width:46ch}
+.tbl{width:100%;border-collapse:collapse;font-size:16.3px}
+.tbl th{font-weight:400;text-align:left;font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--redt);padding:0 16px 12px 0}
+.tbl td{border-top:1px solid var(--rule);padding:14px 16px 14px 0;vertical-align:top}
+.tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:20px}
+.tl>div{position:relative;padding:28px 24px 30px 0}
+.tl>div:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule)}
+.tl>div:after{content:"";position:absolute;left:0;top:-5px;width:11px;height:11px;border-radius:50%;background:var(--red)}
+.tl b{display:block;font-size:clamp(36px,4.4vw,63px);font-weight:400;line-height:1;color:var(--navy);margin-bottom:14px}
+.dk .tl b{color:#fff}.dk .tl>div:before{background:var(--ruled)}
+.tl strong{display:block;font-weight:400;font-size:clamp(20px,1.9vw,27px);line-height:1.15;margin-bottom:10px}
+.tl span{font-size:16.3px;line-height:1.4}
+.cta-band .row2{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;align-items:end}
+.cta-band p{font-size:16.3px;line-height:1.45;margin:0 0 24px;max-width:46ch}
+.linkrows{list-style:none;margin:0;padding:0}
+.linkrows li{position:relative}
+.linkrows a{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:72px;font-size:clamp(22px,2.6vw,38px);border-top:1px solid var(--rule);
+            transition:padding-left .5s var(--eo),color .5s ease}
+.linkrows a:hover{padding-left:12px;color:var(--redt)}
+.linkrows a span{font-size:16.3px;max-width:40ch;text-align:right}
+.dk .linkrows a{border-color:var(--ruled)}.dk .linkrows a:hover{color:#ffb4a8}
+
+/* сеть: схема на весь экран, выбор точек */
+.netx{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:30px;padding:24px 30px 0;position:relative;z-index:3}
+.netx .ph1{font-size:clamp(40px,4.4vw,63px)}
+.np{margin-top:26px;border-top:1px solid var(--ruled)}
+.lt .np,.wt .np{border-color:var(--rule)}
+.np dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:18px 0;font-size:16.3px}
+.np dt{font-size:12px;letter-spacing:.24px;text-transform:uppercase;padding-top:3px}
+.np dd{margin:0}
+.np .path{font-size:16.3px;line-height:1.5;min-height:48px}
+.np .reset{min-height:44px;margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips button{position:relative;z-index:2;min-height:44px;padding:0 14px;font:inherit;font-size:15px;color:inherit;background:var(--deep);border:1px solid var(--ruled);cursor:pointer;
+              transition:background-color .5s ease,border-color .5s ease,color .5s ease}
+.chips button:hover{border-color:currentColor}
+.chips button.a,.chips button.b{background:var(--redb);border-color:var(--redb);color:#fff}
+.chips button.on{border-color:var(--red)}
+.netbig{min-height:calc(100vh - 160px);display:flex;align-items:center}
+.netbig .net{max-height:calc(100vh - 140px)}
+.net .hit{fill:transparent;cursor:pointer}
+.net.pick .nd{cursor:pointer}
+.net .nd.sel .dot{fill:var(--red);stroke:#fff}
+.legend{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;letter-spacing:.24px;text-transform:uppercase;margin-top:14px}
+.legend i{display:inline-block;width:22px;height:0;border-top:2px solid currentColor;vertical-align:4px;margin-right:8px}
+.legend i.d{border-top-style:dashed}
+
+/* операторам: услуги слева, схема справа залипает и подсвечивает маршрут */
+.svc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px}
+.svc .stick{position:sticky;top:30px;align-self:start}
+.svc-row{position:relative;padding:30px 0 30px 0;cursor:default}
+.svc-row:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule);transform-origin:0 50%}
+.motion .svc-row:before{transform:scaleX(0);transition:transform 1.1s var(--eio)}
+.motion .svc-row.in:before{transform:none}
+.svc-row .no{color:var(--redt)}
+.svc-row h3{font-size:clamp(24px,2.6vw,38px);line-height:1.15;margin-bottom:12px;transition:color .5s ease}
+.svc-row p{font-size:16.3px;line-height:1.4;max-width:46ch}
+.svc-row.on h3{color:var(--redt)}
+.hubs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:34px;border-top:1px solid var(--ruled)}
+.hubs>div{padding:18px 18px 0 0}.hubs>div+div{padding-left:18px;border-left:1px solid var(--ruled)}
+.hubs b{display:block;font-weight:400;font-size:clamp(20px,1.9vw,27px);margin-bottom:6px}
+.hubs span{font-size:15px;line-height:1.4}
+.lt .hubs,.lt .hubs>div+div{border-color:var(--rule)}
+
+/* бизнесу: сценарии карточками в первом экране */
+.bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bc{position:relative;display:flex;flex-direction:column;min-height:230px;padding:24px;border:1px solid var(--ruled);overflow:hidden;
+    transition:border-color .5s ease,transform .5s var(--eo)}
+.bc:hover{border-color:#fff;transform:translateY(-4px)}
+.bc .no{margin-bottom:auto}
+.bc h3{font-size:clamp(22px,2.1vw,30px);line-height:1.1;margin:18px 0 8px}
+.bc p{font-size:15px;line-height:1.4}
+.bc svg{position:absolute;right:18px;top:18px;width:96px;height:56px;overflow:visible}
+.bc svg .ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:4 5;animation:flow 1.6s linear infinite}
+.bc svg rect,.bc svg circle{fill:none;stroke:currentColor;stroke-width:1.6}
+.bc svg .rd{fill:var(--red);stroke:none}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.lt .bc,.wt .bc{border-color:var(--rule)}.lt .bc:hover,.wt .bc:hover{border-color:var(--navy)}
+
+/* контакты */
+.cx{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:50px;align-items:center;padding:30px 30px 0;position:relative;z-index:3}
+.clist{list-style:none;margin:30px 0 0;padding:0}
+.clist li{border-top:1px solid var(--ruled)}
+.clist small{display:block;font-size:12px;letter-spacing:.24px;text-transform:uppercase;padding-top:14px}
+.clist a,.clist span{display:flex;align-items:center;min-height:52px;font-size:clamp(22px,2.4vw,34px);transition:color .5s ease}
+.clist a:hover{color:#ffb4a8}
+.dial{position:relative;width:min(36vw,420px);margin-left:auto}
+.dial svg{width:100%;height:auto;display:block}
+.dial .now{position:absolute;left:50%;top:58%;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.dial .now b{display:block;font-size:clamp(30px,3.4vw,50px);font-weight:400}
+.dial .now span{font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.round{position:absolute;right:0;bottom:-20px;width:135px;height:135px;border-radius:50%;background:var(--redb);color:#fff;display:flex;align-items:center;
+       justify-content:center;text-align:center;font-size:13px;letter-spacing:.26px;text-transform:uppercase;line-height:1.3;z-index:4}
+.open-st{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
+.open-st i{width:8px;height:8px;border-radius:50%;background:var(--red)}
+.open-st.on i{background:#10b981}
+
+/* простые страницы раздела «О компании» */
+.qt{font-size:clamp(28px,3.4vw,48px);line-height:1.15;max-width:22ch}
+.qt:before{content:"«"}.qt:after{content:"»"}
+.vid{display:flex;align-items:center;gap:20px;min-height:120px;padding:24px;border:1px solid var(--rule);background:#fff;transition:border-color .5s ease}
+.vid:hover{border-color:var(--navy)}
+.vid i{flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:var(--redb);position:relative}
+.vid i:after{content:"";position:absolute;left:26px;top:21px;border-left:16px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.vid b{display:block;font-weight:400;font-size:clamp(20px,1.9vw,27px)}
+.vid span{font-size:15px}
+.dk .lic>div,.dk .lic>div+div{border-color:var(--ruled)}.dk .lic b{color:#ffb4a8}
+.ghost.sm{font-size:clamp(90px,15vw,220px);margin-top:10px}
+.dk .ghost:before,.dp .ghost:before{color:#0f4a85}
+.scene .ghost:before{color:#0a3157}
+
+@media(max-width:1100px){
+  .ph,.netx,.svc,.cx,.sec-h,.cta-band .row2{grid-template-columns:1fr;gap:24px}
+  .svc .stick{position:relative;top:0}
+  .netbig{min-height:0}.netbig .net{max-height:none}
+  .net.pick .nd{pointer-events:none}
+  .phero .net,.band .net{overflow:hidden}
+  .tl{grid-template-columns:1fr 1fr}.hubs{grid-template-columns:1fr}.hubs>div+div{padding-left:0;border-left:0}
+  .dial{width:min(80vw,340px);margin:10px auto 0}
+  .round{right:-6px;width:108px;height:108px}
+}
+@media(max-width:700px){
+  .crumbs,.ph,.netx,.cx{padding-left:16px;padding-right:16px}
+  .ph1{font-size:clamp(34px,10vw,48px)}.phl{font-size:17px}
+  .bento,.tl{grid-template-columns:1fr}
+  .tbl thead{display:none}.tbl tr{display:block;border-top:1px solid var(--rule);padding:10px 0}.tbl td{display:block;border:0;padding:2px 0}
+  .linkrows a{flex-direction:column;align-items:flex-start;justify-content:center;padding:14px 0;gap:6px}.linkrows a span{text-align:left}
+}
+.lt .net .reg,.wt .net .reg{stroke:var(--navy);stroke-opacity:.16}.lt .net .reg.main,.wt .net .reg.main{fill:#e3eaf1;fill-opacity:1;stroke:#b9c8d7;stroke-opacity:1}.lt .net .msk,.wt .net .msk{fill:#d2deea;fill-opacity:1;stroke:#a9bccf;stroke-opacity:1}.lt .net .eg,.wt .net .eg{stroke:#fff;stroke-opacity:1;stroke-width:7}.lt .net .e,.wt .net .e{stroke:var(--navy);stroke-opacity:1;stroke-width:1.8}.lt .net .dot,.wt .net .dot{fill:#fff;stroke:var(--navy)}.lt .net .hub .dot,.wt .net .hub .dot{fill:var(--red);stroke:#fff}.lt .net .lb,.wt .net .lb{fill:#0B1B2C}.lt .net .pulse,.wt .net .pulse{fill:var(--navy)}.lt .net .pulse.hot,.wt .net .pulse.hot{fill:var(--red)}.lt .net.focus .eg,.wt .net.focus .eg{stroke-opacity:0}.lt .net.focus .e,.wt .net.focus .e{stroke-opacity:.22}.lt .net.focus .e.hot,.wt .net.focus .e.hot{stroke:var(--red);stroke-opacity:1;stroke-width:3}.lt .net.focus .nd.hot .dot,.wt .net.focus .nd.hot .dot{fill:#fff;stroke:var(--red);stroke-opacity:1}.lt .net.focus .nd.hot .halo,.wt .net.focus .nd.hot .halo{opacity:.18}</style></head><body><div class="pbar" aria-hidden="true"></div><header class="header"><div class="hbar"><a class="logo" href="../index.html" aria-label="ЮЛ-ком Медиа, на главную"><img src="../../shared/ulcm-logo-5a-inverse.svg" alt="ЮЛ-ком Медиа"></a><nav class="nav" id="nav" aria-label="Разделы"><a href="ulcm-page-operators.html">Операторам</a><a href="ulcm-page-business.html" aria-current="page">Бизнесу</a><a href="ulcm-page-network.html">Сеть</a><a href="ulcm-page-news.html">Новости</a><a href="ulcm-page-about.html">О компании</a><a href="ulcm-page-contacts.html">Контакты</a></nav><div class="hsp"></div><a class="hph" href="tel:+74957481349">+7 495 748-13-49</a><a class="btn hbtn" href="ulcm-page-contacts.html">Получить ТКП</a><button class="burger" type="button" aria-label="Меню" aria-controls="nav" aria-expanded="false"><i></i></button></div></header><main><section class="scene phero"><div class="meta"><div><b>Бизнесу</b></div><div>Интернет, VPN, телефония, IPTV</div><div>Москва и область</div><div>Москва <span class="clock">00:00</span></div></div>
+  <nav class="crumbs" aria-label="Путь"><a href="../index.html">Главная</a><span>/</span><span aria-current="page">Бизнесу</span></nav>
+  <div class="ph"><div><h1 class="ph1 mask"><span>Связь для офиса</span><span>на своей</span><span>магистрали</span></h1>
+      <p class="phl ld">Интернет, VPN между площадками, телефония и IP-телевидение для юридических лиц на собственной волоконно-оптической сети.</p>
+      <div class="btns ld"><a class="btn" href="ulcm-page-contacts.html">Подключить офис <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a><a class="btn2" href="ulcm-page-network.html">Карта сети</a></div></div>
+    <div class="bento"><a class="bc" href="#s1"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="2" y="16" width="26" height="24"/><path class="ln" d="M28 28H70"/><circle cx="82" cy="28" r="12"/><circle class="rd" cx="82" cy="28" r="4"/></svg><div class="no">01 · Интернет</div><h3>Интернет для офиса</h3><p>Доступ в интернет с гибкими тарифами на магистрали, за которую отвечаем сами.</p></a><a class="bc" href="#s2"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="2" y="4" width="22" height="18"/><rect x="2" y="34" width="22" height="18"/><rect x="72" y="18" width="22" height="20"/><path class="ln" d="M24 13H48V45H24M48 28H72"/><circle class="rd" cx="48" cy="28" r="4"/></svg><div class="no">02 · Сеть</div><h3>VPN между площадками</h3><p>Офисы, склады и филиалы в единой защищённой сети по нашей ВОЛС, уровни L2 и L3.</p></a><a class="bc" href="#s3"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="2" y="12" width="30" height="32"/><path class="ln" d="M32 28H62"/><rect x="62" y="8" width="32" height="22"/><path d="M70 38h16" stroke="currentColor" stroke-width="1.6"/><circle class="rd" cx="17" cy="28" r="4"/></svg><div class="no">03 · Связь</div><h3>Телефония и IPTV</h3><p>Местная телефонная связь и IP-телевидение на одном подключении.</p></a><a class="bc" href="#s4"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="2" y="16" width="24" height="24"/><path class="ln" d="M26 22C48 4 60 4 70 22"/><path class="ln" d="M26 34C48 52 60 52 70 34"/><circle cx="82" cy="28" r="12"/><circle class="rd" cx="82" cy="28" r="4"/></svg><div class="no">04 · Надёжность</div><h3>Резервирование канала</h3><p>Второй ввод по другой физической трассе, если важна непрерывность связи.</p></a></div></div>
+</section>
+<section class="band lt pad"><div class="kick up">Сценарии</div><h2 class="mask h2"><span>Что подключаем</span><span>компаниям</span></h2><div style="margin-top:30px"><div class="row rw" id="s1"><h3>Интернет для офиса</h3><div><p>Доступ в интернет для юридических лиц по собственной оптике, без посредников. Тариф подбираем под задачу офиса.</p><ul class="cities" style="columns:1;margin:14px 0 0"><li style="border-color:var(--rule)">Гибкие тарифы</li><li style="border-color:var(--rule)">Статические адреса по запросу</li><li style="border-color:var(--rule)">Подключение по готовой трассе или достройка</li></ul></div></div><div class="row rw" id="s2"><h3>VPN между площадками</h3><div><p>Объединяем офисы, склады и филиалы в единую защищённую сеть, как один общий контур.</p><ul class="cities" style="columns:1;margin:14px 0 0"><li style="border-color:var(--rule)">Уровень L2: прозрачное соединение площадок</li><li style="border-color:var(--rule)">Уровень L3: маршрутизируемая сеть</li><li style="border-color:var(--rule)">Точка-точка и звезда по схеме филиалов</li></ul></div></div><div class="row rw" id="s3"><h3>Телефония и IPTV</h3><div><p>Местная телефонная связь и цифровое телевидение для офиса, гостиницы или зоны обслуживания.</p><ul class="cities" style="columns:1;margin:14px 0 0"><li style="border-color:var(--rule)">Городские номера Москвы</li><li style="border-color:var(--rule)">Подключение вашей АТС</li><li style="border-color:var(--rule)">Пакеты IP-телевидения</li></ul></div></div><div class="row rw" id="s4"><h3>Резервирование канала</h3><div><p>Второй ввод по независимому маршруту: если одна линия обрывается, офис остаётся на связи.</p><ul class="cities" style="columns:1;margin:14px 0 0"><li style="border-color:var(--rule)">Резервный канал по другой трассе</li><li style="border-color:var(--rule)">Подбор маршрута по схеме сети</li><li style="border-color:var(--rule)">Пакетные предложения</li></ul></div></div></div></section>
+<section class="band dk pad diag"><div class="sec-h"><div><div class="kick up">Бизнес-центры и новые объекты</div><h2 class="mask h2"><span>Заводим оптику</span><span>в здание</span></h2></div>
+  <p class="up">Проектирование и строительство последней мили выполняет Связь Коннект, компания группы ЮЛ-ком. После ввода организуем связь для арендаторов и служб.</p></div>
+  <a class="alink up" href="ulcm-page-capabilities.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Группа компаний</u></a></section>
+<section class="band wt pad"><div class="kick up">Почему ЮЛ-ком Медиа</div><h2 class="mask h2"><span>Одна компания</span><span>на всей трассе</span></h2><div style="margin-top:30px">
+  <div class="row rw"><h3>Своя оптика</h3><p>Сеть собственная, поэтому отвечаем за качество на каждом участке.</p></div>
+  <div class="row rw"><h3>С 2011 года</h3><p>Оператор связи в составе группы ЮЛ-ком, которая работает на рынке связи с 2002 года.</p></div></div></section>
+<section class="band dk pad cta-band diag"><div class="row2"><div><div class="kick up">Контакты</div><h2 class="mask h2"><span>Подключим</span><span>ваш офис</span></h2></div><div class="up"><p>Пришлите адрес и нужные услуги. Проверим техническую возможность подключения и подготовим предложение.</p><a class="btn" href="ulcm-page-contacts.html">Подключить офис <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></div></div></section></main><footer class="band dp foot"><img src="../../shared/ulcm-logo-5a-inverse.svg" alt="ЮЛ-ком Медиа"><span>Нам по пути</span><a href="ulcm-page-mission.html">Миссия</a><a href="ulcm-page-documents.html">Документы</a><a href="ulcm-page-careers.html">Вакансии</a><a href="ulcm-page-capabilities.html">Возможности</a></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script><script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script><script>
+(function(){
+  var root=document.documentElement, $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var hdr=$('.header'), bg=$('.burger');
+  bg.addEventListener('click',function(){var o=hdr.classList.toggle('open');bg.setAttribute('aria-expanded',o)});
+
+  /* часы Москвы и режим работы офиса */
+  function tick(){var d=new Date(),m=new Date(d.getTime()+(d.getTimezoneOffset()+180)*60000),h=m.getHours(),mi=m.getMinutes();
+    $$('.clock').forEach(function(e){e.textContent=('0'+h).slice(-2)+':'+('0'+mi).slice(-2)});
+    var hand=$('.hand'),hm=$('.handm');
+    hand&&hand.setAttribute('transform','rotate('+((h%12)*30+mi*.5)+' 100 100)');hm&&hm.setAttribute('transform','rotate('+(mi*6)+' 100 100)');
+    var st=$('.open-st');if(st){var wd=m.getDay(),on=wd>0&&wd<6&&h>=9&&h<18;st.classList.toggle('on',on);
+      $('em',st).textContent=on?'Офис работает':'Офис закрыт, ответим в рабочее время'}}
+  tick();setInterval(tick,20000);
+
+  /* схема: подсветка маршрута и импульсы по трассам */
+  var nets=$$('svg.net');
+  function focus(svg,edges,nodes){var on=edges.length||nodes.length,hs={};edges.forEach(function(k){hs[k]=1});svg._hot=hs;
+    svg.classList.toggle('focus',!!on);
+    $$('.e',svg).forEach(function(e){e.classList.toggle('hot',!!hs[e.getAttribute('data-k')])});
+    $$('.nd',svg).forEach(function(n){n.classList.toggle('hot',nodes.indexOf(n.getAttribute('data-id'))>=0)});
+    $$('.lb',svg).forEach(function(n){var id=n.getAttribute('data-id');n.classList.toggle('hot',nodes.indexOf(id)>=0||(id==='m9'&&!svg.classList.contains('all')&&(nodes.indexOf('m10')>=0||nodes.indexOf('hq')>=0)))})}
+  nets.forEach(function(svg){svg._hot={};var g=$('.pulses',svg);
+    svg._p=$$('.e',svg).filter(function(e){return !e.classList.contains('build')}).map(function(e){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('r',2.8);c.setAttribute('class','pulse');g.appendChild(c);return {e:e,c:c,L:e.getTotalLength(),t:Math.random(),v:.12+Math.random()*.1,k:e.getAttribute('data-k')}})});
+  function place(dt){nets.forEach(function(svg){svg._p.forEach(function(p){var h=!!svg._hot[p.k];p.t=(p.t+dt/1000*p.v*(h?2.2:1))%1;
+    var pt=p.e.getPointAtLength(p.t*p.L);p.c.setAttribute('cx',pt.x.toFixed(1));p.c.setAttribute('cy',pt.y.toFixed(1));p.c.classList.toggle('hot',h)})})}
+  if(!still){var last=performance.now();(function loop(now){place(Math.min(now-last,50));last=now;requestAnimationFrame(loop)})(last)}else place(0);
+
+  /* сеть: выбор двух точек, кратчайший путь по действующим трассам */
+  var np=$('.np');
+  if(np){var svg=$('svg.pick'),G={"m9": [["m10", 12], ["hq", 15], ["kra", 25], ["pod", 32]], "m10": [["m9", 12], ["hq", 5], ["zhu", 38]], "hq": [["m10", 5], ["m9", 15]], "kra": [["m9", 25], ["ist", 35]], "ist": [["kra", 35], ["vol", 65]], "vol": [["ist", 65], ["zub", 90]], "zub": [["vol", 90], ["rzh", 22]], "rzh": [["zub", 22]], "pod": [["m9", 32], ["stu", 64]], "stu": [["pod", 64], ["kas", 18]], "kas": [["stu", 18], ["kol", 54]], "kol": [["kas", 54], ["vos", 32], ["luh", 26]], "zhu": [["m10", 38], ["ram", 12]], "ram": [["zhu", 12], ["bro", 22]], "bro": [["ram", 22], ["vos", 36]], "vos": [["bro", 36], ["kol", 32]], "luh": [["kol", 26]]},NM={"m9": "М9 (ММТС-9)", "m10": "М10 (ММТС-10)", "hq": "Центральный узел", "kra": "Красногорск", "ist": "Истра", "vol": "Волоколамск", "zub": "Зубцов", "rzh": "Ржев", "pod": "Подольск", "stu": "Ступино", "kas": "Кашира", "zhu": "Жуковский", "ram": "Раменское", "bro": "Бронницы", "vos": "Воскресенск", "kol": "Коломна", "luh": "Луховицы"},A=null,B=null,chips=$$('.chips button');
+    function path(a,b){var D={},P={},Q=[a],seen={};D[a]=0;
+      while(Q.length){Q.sort(function(x,y){return D[x]-D[y]});var u=Q.shift();if(seen[u])continue;seen[u]=1;if(u===b)break;
+        (G[u]||[]).forEach(function(v){var nd=D[u]+v[1];if(D[v[0]]===undefined||nd<D[v[0]]){D[v[0]]=nd;P[v[0]]=u;Q.push(v[0])}})}
+      if(D[b]===undefined)return null;var p=[b];while(p[p.length-1]!==a)p.push(P[p[p.length-1]]);return p.reverse()}
+    function draw(){$('.va',np).textContent=A?NM[A]:'не выбрана';$('.vb',np).textContent=B?NM[B]:'не выбрана';
+      $$('.nd',svg).forEach(function(n){var id=n.getAttribute('data-id');n.classList.toggle('sel',id===A||id===B)});
+      chips.forEach(function(c){var id=c.getAttribute('data-id');c.classList.toggle('a',id===A);c.classList.toggle('b',id===B);c.setAttribute('aria-pressed',id===A||id===B)});
+      var out=$('.path',np);
+      if(A&&B){var p=path(A,B);if(p){var ed=[];for(var k=0;k<p.length-1;k++)ed.push([p[k],p[k+1]].sort().join('-'));focus(svg,ed,p);
+        out.textContent='Маршрут: '+p.map(function(i){return NM[i]}).join(' → ')+'. Узлов на маршруте: '+p.length+'.'}}
+      else{focus(svg,[],A?[A]:[]);out.textContent=A?'Выберите вторую точку.':'Выберите первую точку на схеме или кнопкой ниже.'}}
+    function pick(id){if(!A||(A&&B)){A=id;B=null}else if(id!==A){B=id}draw()}
+    $$('.nd',svg).forEach(function(n){n.addEventListener('click',function(){pick(n.getAttribute('data-id'))})});
+    chips.forEach(function(c){c.addEventListener('click',function(){pick(c.getAttribute('data-id'))})});
+    $('.reset',np).addEventListener('click',function(){A=B=null;draw()});
+    draw()}
+
+  /* операторам: строка услуги подсвечивает свой маршрут на залипающей схеме */
+  var rows=$$('.svc-row');
+  if(rows.length){var sv=$('.svc svg.net'),RT=[];
+    function act(i){rows.forEach(function(r,k){r.classList.toggle('on',k===i)});focus(sv,i<0?[]:RT[i].edges,i<0?[]:RT[i].nodes)}
+    rows.forEach(function(r,k){r.addEventListener('mouseenter',function(){act(k)});r.addEventListener('focusin',function(){act(k)})});
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)act(rows.indexOf(e.target))})},
+      {rootMargin:'-45% 0px -45% 0px'});rows.forEach(function(r){io.observe(r)})}}
+
+  var hub=$('svg.net.hubmap');if(hub)focus(hub,[],[]);
+
+  if(!window.gsap||!window.ScrollTrigger)return;            // без библиотек остаётся статичная раскладка
+  gsap.registerPlugin(ScrollTrigger);
+  var EO='power3.out',EIO='power4.inOut';
+  if(window.CustomEase){gsap.registerPlugin(CustomEase);CustomEase.create('eo','.165,.84,.44,1');CustomEase.create('eio','.8,0,.3,1');EO='eo';EIO='eio'}
+  var mm=gsap.matchMedia();
+  mm.add('(prefers-reduced-motion:no-preference)',function(){
+    var lenis=null;
+    if(window.Lenis){lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);var raf=function(t){lenis.raf(t*1000)};gsap.ticker.add(raf);gsap.ticker.lagSmoothing(0)}
+    root.classList.add('motion');
+    var es=$$('.scene .net .e');
+    es.forEach(function(e){var L=e.getTotalLength();gsap.set(e,{strokeDasharray:L,strokeDashoffset:L})});
+    gsap.timeline({delay:.1,onComplete:function(){es.forEach(function(e){e.style.strokeDasharray=e.classList.contains('build')?'5 6':'';e.style.strokeDashoffset=''})}})
+      .from('.meta div',{autoAlpha:0,y:-12,duration:.6,ease:EO,stagger:.06})
+      .from('.scene .ph1 span',{yPercent:104,duration:1.1,ease:EIO,stagger:.1},'<.1')
+      .fromTo('.scene .ld',{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.8,ease:EO,stagger:.08,clearProps:'opacity,visibility,transform'},'<.4')
+      .to(es,{strokeDashoffset:0,duration:1.2,ease:EO,stagger:.04},'<')
+      .fromTo('.scene .bc',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.9,ease:EO,stagger:.08,clearProps:'opacity,visibility,transform'},'<.1')
+      .fromTo('.scene .dial line',{autoAlpha:0},{autoAlpha:1,duration:.4,ease:EO,stagger:.03,clearProps:'opacity,visibility'},'<')
+      .fromTo('.round',{scale:0},{scale:1,duration:.9,ease:EO,clearProps:'transform'},'<.3');
+    $$('.band h2.mask').forEach(function(h){gsap.from($$('span',h),{yPercent:104,duration:1.1,ease:EIO,stagger:.08,scrollTrigger:{trigger:h,start:'top 88%'}})});
+    gsap.set('.up',{autoAlpha:0,y:30});
+    ScrollTrigger.batch('.up',{start:'top 92%',once:true,onEnter:function(b){gsap.to(b,{autoAlpha:1,y:0,duration:.8,ease:EO,stagger:.07,overwrite:true})}});
+    $$('.rw,.svc-row').forEach(function(rw){gsap.from($$('h3,p',rw),{y:34,autoAlpha:0,duration:.8,ease:EO,stagger:.08,
+      scrollTrigger:{trigger:rw,start:'top 90%',onEnter:function(){rw.classList.add('in')}}})});
+    $$('.ghost').forEach(function(g){gsap.fromTo(g,{xPercent:4},{xPercent:-12,ease:'none',scrollTrigger:{trigger:g,start:'top bottom',end:'bottom top',scrub:true}})});
+    $$('.tl>div').forEach(function(d,k){gsap.from(d,{'--w':0,autoAlpha:0,y:30,duration:.9,ease:EO,delay:(k%4)*.08,scrollTrigger:{trigger:d,start:'top 90%'}})});
+    $$('.diag').forEach(function(d){gsap.fromTo(d,{clipPath:'polygon(0 14%,100% 0,100% 100%,0 100%)'},{clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)',ease:'none',
+      scrollTrigger:{trigger:d,start:'top bottom',end:'top 35%',scrub:true}})});
+    $$('.band .net').forEach(function(svg){$$('.e',svg).forEach(function(e){var L=e.getTotalLength();gsap.fromTo(e,{strokeDasharray:L,strokeDashoffset:L},
+      {strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:svg,start:'top 85%',end:'center 55%',scrub:.6,onLeave:function(){e.style.strokeDasharray=e.classList.contains('build')?'5 6':''}}})})});
+    var rd=$('.round');if(rd){var q=gsap.quickTo(rd,'x',{duration:.6,ease:EO}),r=gsap.quickTo(rd,'y',{duration:.6,ease:EO});
+      addEventListener('mousemove',function(e){var b=rd.getBoundingClientRect(),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2);
+        if(Math.hypot(dx,dy)<200){q(dx*.2);r(dy*.2)}else{q(0);r(0)}})}
+    gsap.to('.pbar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+    return function(){root.classList.remove('motion');if(lenis)lenis.destroy()}
+  });
+  addEventListener('load',function(){ScrollTrigger.refresh()});
+})();
+</script></body></html>
