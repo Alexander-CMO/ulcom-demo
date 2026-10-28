@@ -275,6 +275,75 @@ a.lrow:hover .go{translate:4px -4px}
 @media(max-width:1100px){.wgrid{grid-template-columns:1fr}.wcalc{position:static}.wl .wr{grid-template-columns:44px minmax(0,1fr)}}
 @media(max-width:1100px){.keys{grid-template-columns:1fr 1fr}.keys>div:nth-child(3){padding-left:0;border-left:0}}
 @media(max-width:700px){.keys{grid-template-columns:1fr}.keys>div+div{padding-left:0;border-left:0}}
+
+/* ---------- калькулятор линии ---------- */
+.lc{padding:100px 30px}
+.lc h2{font-size:clamp(34px,4.4vw,63px);line-height:1;margin-top:16px}
+.lc .lcnote0{font-size:20px;line-height:1.3;max-width:46ch;margin-top:22px}
+.lcgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:60px;margin-top:50px;align-items:start}
+.lcin{display:grid;gap:26px}
+.lcf{display:grid;gap:10px}
+.lcf>label,.lcf>.lcl{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--kick)}
+.lcrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.lc input[type=text]{font:inherit;font-size:22px;font-variant-numeric:tabular-nums;color:#fff;background:var(--bg2);border:1px solid var(--rule);
+  border-radius:0;padding:0 16px;height:52px;width:140px;outline:none;transition:border-color .5s ease}
+.lc input[type=text]:focus{border-color:var(--blue2)}
+.lc input[type=text]::placeholder{color:#fff;opacity:.55;font-size:16px}
+.lc input.wide{width:min(100%,260px)}
+.lc .unit{font-size:16.3px}
+.lcrange{width:100%;height:44px;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.lcrange:focus{outline:none}
+.lcrange::-webkit-slider-runnable-track{height:2px;background:linear-gradient(var(--blue2),var(--blue2)) 0/var(--p,5%) 100% no-repeat,var(--rule)}
+.lcrange::-moz-range-track{height:2px;background:var(--rule)}
+.lcrange::-moz-range-progress{height:2px;background:var(--blue2)}
+.lcrange::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:0;margin-top:-10px;
+  box-shadow:0 0 0 6px rgba(114,170,255,.22);transition:box-shadow .5s ease}
+.lcrange::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 6px rgba(114,170,255,.22)}
+.lcrange:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 6px var(--blue2)}
+.lcseg{display:inline-flex;justify-self:start;border:1px solid var(--rule)}
+.lcseg label{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:104px;min-height:48px;padding:0 18px;
+  font-size:16.3px;cursor:pointer;transition:background-color .5s ease,color .5s ease}
+.lcseg label+label{border-left:1px solid var(--rule)}
+.lcseg input{position:absolute;opacity:0;width:1px;height:1px}
+.lcseg label:has(input:checked){background:#fff;color:#0b121a}
+.lcseg label:has(input:focus-visible){outline:2px solid var(--blue2);outline-offset:2px}
+.lcauto{display:inline-flex;align-items:center;min-height:48px;padding:0 18px;border:1px solid var(--rule);background:transparent;color:#fff;
+  font:inherit;font-size:13px;letter-spacing:.26px;text-transform:uppercase;cursor:pointer;transition:background-color .5s ease,color .5s ease}
+.lcauto[aria-pressed=true]{background:#fff;color:#0b121a}
+.lchelp{font-size:13px;line-height:1.4}
+.lcout{display:grid;gap:22px}
+.lcnums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.lcnums>div{padding:22px 20px 0 0}
+.lcnums>div+div{padding-left:20px;border-left:1px solid var(--rule)}
+.lcnums .k{font-size:12px;letter-spacing:.24px;text-transform:uppercase;color:var(--kick)}
+.lcnums .v{display:block;font-size:clamp(36px,4.2vw,60px);line-height:1;margin-top:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lcnums .v small{font-size:.36em;margin-left:6px;letter-spacing:.02em}
+.lcbreak{display:grid;gap:2px;font-size:13px;line-height:1.5;margin-top:12px;font-variant-numeric:tabular-nums}
+.lcbreak span{white-space:nowrap}
+.lcstate{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 18px;border:1px solid var(--rule);font-size:18px;line-height:1.3}
+.lcstate[hidden]{display:none}
+.lcstate i{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:var(--st)}
+.lcstate b{font-weight:500;color:var(--st)}
+.lcstate.ok{--st:#34d399}.lcstate.tight{--st:#fbbf24}.lcstate.bad{--st:#f87171}
+.lcgraph{background:var(--bg2);padding:18px 18px 12px}
+.lcgraph svg{display:block;width:100%;height:auto;overflow:visible}
+.lcgraph .cap{font-size:13px;line-height:1.4;margin-top:8px}
+.lcnote{font-size:16.3px;line-height:1.4;max-width:62ch}
+.lcbtns{display:flex;flex-wrap:wrap;gap:12px}
+.lc .ghost-btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border:1px solid rgba(255,255,255,.5);font-size:13px;
+  letter-spacing:.26px;text-transform:uppercase;transition:border-color .5s ease,background-color .5s ease}
+.lc .ghost-btn:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.lc .ghost-btn svg{width:17px;height:17px}
+.lcsr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:1100px){.lcgrid{grid-template-columns:1fr;gap:44px}}
+@media(max-width:700px){
+  .lc{padding:60px 30px}
+  .lcnums{grid-template-columns:1fr}
+  .lcnums>div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule);margin-top:20px}
+  .lcnums>div{padding-right:0}
+  .lcseg label{min-width:0;flex:1}
+  .lcseg{display:flex}
+}
 </style></head><body><header class="site-header"><div class="site-bar"><a class="site-brand" href="../37-dna.html"><svg width="52" height="38" viewBox="0 0 152 108" aria-hidden="true"><defs><clipPath id="kclip-site"><rect x="70" y="38" width="80" height="64"/></clipPath></defs><g transform="translate(9.12,-17.64) scale(1.0235)"><circle cx="42" cy="70" r="39.6" fill="none" stroke="currentColor" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="157.58 91.23" transform="rotate(66 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(48 42 70)"/><circle cx="42" cy="70" r="39.6" fill="none" stroke="#10B981" stroke-width="14.8" stroke-linecap="butt" stroke-dasharray="12.44 236.37" transform="rotate(294 42 70)"/><g clip-path="url(#kclip-site)" fill="none" stroke="#2A6FF2" stroke-linecap="butt"><path d="M85.4 70H106.65" stroke-width="9.5"/><path d="M106.65 70L133.2 30" stroke-width="12.4"/><path d="M106.65 70L133.34 110" stroke-width="14.3"/><path d="M85.4 26V114" stroke-width="14.81"/></g></g></svg><span><strong>связь <b>коннект</b></strong><small>строительство и обслуживание ВОЛС</small></span></a><button class="site-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button><nav class="site-nav" aria-label="Основное меню"><a href="uslugi.html">Услуги</a><a href="proekty.html">Проекты</a><a href="geografiya.html">География</a><a href="o-kompanii.html">О компании</a><a href="dokumenty.html">Документы</a><a href="kontakty.html">Контакты</a></nav></div></header><main><div class="pbar" aria-hidden="true"></div><section class="ph dr"><canvas aria-hidden="true" data-target=".ringsvg" data-col="#72aaff"></canvas>
   <div class="meta"><div><b>Подрядчик ВОЛС</b></div><div>Направление 05 из 08</div><div>Москва и область</div><div>Москва <span class="clock">00:00</span></div></div>
   <nav class="crumbs" aria-label="Хлебные крошки"><a href="../37-dna.html">Главная</a><i aria-hidden="true">/</i><a href="uslugi.html">Услуги</a><i aria-hidden="true">/</i><span>Монтаж, наладка и измерения</span></nav>
@@ -288,7 +357,44 @@ a.lrow:hover .go{translate:4px -4px}
   <div class="wgrid"><div class="wl"><div class="lrow wr" style="--c:#72aaff"><b>01</b><h3>Монтаж оптических муфт, кроссов и активного оборудования</h3></div><div class="lrow wr" style="--c:#72aaff"><b>02</b><h3>Сварка и коммутация волокон</h3></div><div class="lrow wr" style="--c:#72aaff"><b>03</b><h3>Наладка и испытание оборудования связи</h3></div><div class="lrow wr" style="--c:#72aaff"><b>04</b><h3>Измерения затухания и подготовка протоколов</h3></div></div><aside class="wcalc up" style="--c:#72aaff"><div class="kick">Для расчёта</div><p>Схема соединений, состав оборудования и требования к испытаниям.</p>
   <a class="cta" href="kontakty.html">Подготовить запрос <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></aside></div></section>
 <section class="band b2 sec"><div class="kick up">Ключевые работы</div><h2 class="mask h2"><span>Монтаж</span><span>на объекте</span></h2><div class="keys" style="--c:#72aaff"><div id="mufty-i-krossy" class="up"><b>01</b><strong>Муфты и кроссы</strong></div><div id="svarka-volokna" class="up"><b>02</b><strong>Сварка волокна</strong></div><div id="izmereniya-i-reflektometriya" class="up"><b>03</b><strong>Измерения и рефлектометрия</strong></div></div></section>
-<section class="band b1 sec"><div class="kick up">Как проходит работа</div><p class="calc up" style="font-size:clamp(20px,2.2vw,31px)">Уточняем исходные данные, обследуем объект и согласуем объём работ. После выполнения передаём результаты и предусмотренную договором документацию.</p>
+<section class="band b1 lc" id="raschet-linii" aria-labelledby="lc-h">
+  <div class="kick up">Калькулятор линии</div>
+  <h2 class="mask" id="lc-h"><span>Затухание и задержка</span><span>по длине трассы</span></h2>
+  <p class="lcnote0 up">Оценка до проекта: укладывается ли будущая линия в бюджет оборудования и какой будет задержка.</p>
+  <div class="lcgrid">
+    <form class="lcin up" onsubmit="return false" aria-describedby="lc-norms">
+      <div class="lcf"><label for="lc-km">Длина трассы, км</label>
+        <div class="lcrow"><input type="text" id="lc-km" inputmode="decimal" autocomplete="off" value="5"><span class="unit">км</span></div>
+        <input class="lcrange" id="lc-kmr" type="range" min="0.1" max="100" step="0.1" value="5" aria-label="Длина трассы, км" aria-valuetext="5 км"></div>
+      <div class="lcf" role="radiogroup" aria-labelledby="lc-laml"><span class="lcl" id="lc-laml">Длина волны</span>
+        <div class="lcseg"><label><input type="radio" name="lc-lam" value="1310">1310 нм</label><label><input type="radio" name="lc-lam" value="1550" checked>1550 нм</label></div></div>
+      <div class="lcf"><label for="lc-sp">Число сварок</label>
+        <div class="lcrow"><input type="text" id="lc-sp" inputmode="numeric" autocomplete="off" value="2"><button type="button" class="lcauto" id="lc-spa" aria-pressed="true">Авто</button></div>
+        <span class="lchelp">Авто: одна сварка на каждые 4 км, строительная длина около 4 км.</span></div>
+      <div class="lcf"><label for="lc-cn">Число разъёмных соединений</label>
+        <div class="lcrow"><input type="text" id="lc-cn" inputmode="numeric" autocomplete="off" value="2"></div></div>
+      <div class="lcf"><label for="lc-bg">Бюджет приёмопередатчика, дБ</label>
+        <div class="lcrow"><input type="text" id="lc-bg" class="wide" inputmode="decimal" autocomplete="off" placeholder="из паспорта модуля"></div>
+        <span class="lchelp">Необязательно. С бюджетом покажем запас линии.</span></div>
+      <p class="lchelp" id="lc-norms">Нормы: волокно 0,35 дБ/км на 1310 нм и 0,22 дБ/км на 1550 нм, сварка 0,1 дБ, разъём 0,5 дБ,
+        эксплуатационный запас 3 дБ, задержка 4,9 мкс на километр.</p>
+    </form>
+    <div class="lcout up">
+      <div class="lcnums">
+        <div><span class="k">Затухание линии</span><span class="v"><span data-v="loss">0</span><small>дБ</small></span><div class="lcbreak"></div></div>
+        <div><span class="k">Задержка в одну сторону</span><span class="v"><span data-v="one">0</span><small>мкс</small></span></div>
+        <div><span class="k">Туда и обратно</span><span class="v"><span data-v="rtt">0</span><small>мс</small></span></div>
+      </div>
+      <div class="lcstate" hidden></div>
+      <div class="lcsr" aria-live="polite"></div>
+      <figure class="lcgraph" style="margin:0"><div class="plot"></div>
+        <figcaption class="cap">Зелёные точки: сварки. Схематично. Реальную рефлектограмму снимаем при сдаче линии.</figcaption></figure>
+      <p class="lcnote">Расчёт по типовым нормам для одномодового волокна. Фактические значения подтверждаются рефлектометрией и измерением затухания при сдаче.</p>
+      <div class="lcbtns"><a class="cta" href="kontakty.html">Обсудить линию <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a><a class="ghost-btn" href="#izmereniya-i-reflektometriya">Как мы измеряем <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></div>
+    </div>
+  </div>
+</section>
+<section class="band b2 sec"><div class="kick up">Как проходит работа</div><p class="calc up" style="font-size:clamp(20px,2.2vw,31px)">Уточняем исходные данные, обследуем объект и согласуем объём работ. После выполнения передаём результаты и предусмотренную договором документацию.</p>
   <div class="l4"><div class="up"><b>01</b><strong>Трасса</strong><span>Обследование, технические условия и проектные решения.</span></div><div class="up"><b>02</b><strong>Инфраструктура</strong><span>Канализация, траншеи, переходы и восстановление покрытия.</span></div><div class="up"><b>03</b><strong>Оптика</strong><span>Прокладка кабеля, монтаж муфт, кроссов и оконечных устройств.</span></div><div class="up"><b>04</b><strong>Готовность</strong><span>Измерения, исполнительная документация и передача линии.</span></div></div></section>
 <section class="band check"><div class="kick up">Следующий шаг</div><h2 class="mask h2" style="margin-top:16px"><span>Обсудим вашу задачу</span></h2><p class="big up">Пришлите адрес объекта, состав работ и исходные материалы.</p><a class="cta inv" href="kontakty.html">Подготовить запрос <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></section>
 <a class="band b1 next" href="ognezashchita.html"><div class="kick">Следующее направление</div><div class="big"><span>Огнезащита кабелей</span><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></div></a></main><footer class="site-footer"><div><strong>Связь Коннект</strong><a href="tel:+74957481349">+7 495 748-13-49</a><a href="mailto:info@svyazconnect.ru">info@svyazconnect.ru</a><span>Москва, 2-й Кабельный проезд, 1</span><a href="kontakty.html">Обсудить работы</a></div></footer><script src="../concepts.js"></script><script src="../../shared/architecture.js"></script><script>
@@ -300,7 +406,100 @@ window.PAGE_STATIC=function(){
 window.PAGE_HERO=function(tl,c){
   if(window.$q('.dr .echo'))tl.from('.echo b',{yPercent:100,autoAlpha:0,duration:1.1,ease:c.EIO},'<-.5')
     .fromTo('.echo i',{x:0,autoAlpha:0},{x:function(k){return -(k+1)*22},autoAlpha:1,duration:1.2,ease:c.EO,stagger:.12},'<.5');
-};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script><script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script><script>
+};
+(function(){
+  var root=document.querySelector('.lc'); if(!root) return;
+  var N={"fiber": {"1310": 0.35, "1550": 0.22}, "splice": 0.1, "conn": 0.5, "reserve": 3, "us_per_km": 4.9, "span_km": 4}, q=function(s){return root.querySelector(s)};
+  var kmT=q('#lc-km'), kmR=q('#lc-kmr'), spT=q('#lc-sp'), spA=q('#lc-spa'), cnT=q('#lc-cn'), bgT=q('#lc-bg'), st=q('.lcstate'), sr=q('.lcsr'),
+      out={loss:q('[data-v=loss]'),one:q('[data-v=one]'),rtt:q('[data-v=rtt]')}, br=q('.lcbreak'), svgBox=q('.lcgraph .plot');
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches, auto=true, shown={loss:0,one:0,rtt:0}, raf=null, srT=null;
+  var num=function(v){v=String(v||'').replace(/\s/g,'').replace(',','.');var x=parseFloat(v);return isFinite(x)?x:NaN};
+  var fmt=function(x,d){return new Intl.NumberFormat('ru-RU',{maximumFractionDigits:d,minimumFractionDigits:0}).format(x)};
+  var fdb=function(x){return fmt(x,2)}, fus=function(x){return fmt(x,x<10?2:1)},
+      fms=function(x){return new Intl.NumberFormat('ru-RU',{maximumSignificantDigits:3}).format(x)};
+  var clamp=function(x,a,b){return Math.min(b,Math.max(a,x))};
+
+  function state(){
+    var km=num(kmT.value); if(!isFinite(km)) km=5; km=clamp(Math.round(km*10)/10,0.1,100);
+    var lam=(root.querySelector('input[name=lc-lam]:checked')||{}).value||'1550';
+    var sp=auto?Math.ceil(km/N.span_km):clamp(Math.round(num(spT.value)||0),0,999);
+    var cn=clamp(Math.round(isFinite(num(cnT.value))?num(cnT.value):2),0,99);
+    var bg=num(bgT.value);
+    var fiber=km*N.fiber[lam], spl=sp*N.splice, con=cn*N.conn, loss=fiber+spl+con;
+    var one=km*N.us_per_km, rtt=2*one/1000;
+    return {km:km,lam:lam,sp:sp,cn:cn,bg:isFinite(bg)&&String(bgT.value).trim()!==''?bg:null,fiber:fiber,spl:spl,con:con,loss:loss,one:one,rtt:rtt};
+  }
+
+  function tick(to){
+    if(raf) cancelAnimationFrame(raf);
+    var from={loss:shown.loss,one:shown.one,rtt:shown.rtt}, t0=performance.now(), D=still?0:420;
+    var step=function(t){var p=D?Math.min(1,(t-t0)/D):1, e=1-Math.pow(1-p,4);
+      ['loss','one','rtt'].forEach(function(k){shown[k]=from[k]+(to[k]-from[k])*e});
+      out.loss.textContent=fdb(p<1?shown.loss:to.loss);out.one.textContent=fus(p<1?shown.one:to.one);out.rtt.textContent=fms(p<1?shown.rtt:to.rtt);
+      if(p<1) raf=requestAnimationFrame(step); else {shown={loss:to.loss,one:to.one,rtt:to.rtt};raf=null}};
+    raf=requestAnimationFrame(step);
+  }
+
+  function draw(s){
+    var W=Math.max(260,Math.round(svgBox.getBoundingClientRect().width)), H=W<500?220:260, L=44, R=14, T=32, B=34;
+    var pw=W-L-R, ph=H-T-B, maxDb=Math.max(1,s.loss*1.18), X=function(k){return L+k/s.km*pw}, Y=function(db){return T+db/maxDb*ph};
+    var nice=function(m,n){var r=m/n,p=Math.pow(10,Math.floor(Math.log10(r))),f=r/p;return (f<1.5?1:f<3.5?2:f<7.5?5:10)*p};
+    var sx=nice(s.km,W<500?4:6), sy=nice(maxDb,4), o=[];
+    o.push('<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Схематичная рефлектограмма линии '+fmt(s.km,1)+' км">');
+    for(var y=0;y<=maxDb+1e-9;y+=sy){o.push('<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(y).toFixed(1)+'" y2="'+Y(y).toFixed(1)+'" stroke="#fff" stroke-opacity=".12"/>');
+      o.push('<text x="'+(L-8)+'" y="'+(Y(y)+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#fff">'+fmt(y,1)+'</text>')}
+    for(var x=0;x<=s.km+1e-9;x+=sx){o.push('<line x1="'+X(x).toFixed(1)+'" x2="'+X(x).toFixed(1)+'" y1="'+T+'" y2="'+(H-B)+'" stroke="#fff" stroke-opacity=".08"/>');
+      o.push('<text x="'+X(x).toFixed(1)+'" y="'+(H-B+18)+'" text-anchor="middle" font-size="12" fill="#fff">'+fmt(x,1)+'</text>')}
+    o.push('<text x="'+(W-R)+'" y="'+(H-4)+'" text-anchor="end" font-size="12" fill="#5b93ff">км</text>');
+    o.push('<text x="'+(L+16)+'" y="12" text-anchor="start" font-size="12" fill="#5b93ff">дБ, затухание от начала линии</text>');
+    // линия: всплеск на входном разъёме, наклон волокна, ступеньки на сварках, всплеск на выходном
+    var a=s.fiber/s.km, cIn=s.cn>0?N.conn*Math.min(1,s.cn/2):0, cOut=s.cn>1?s.con-cIn:0, mid=Math.max(0,s.cn-2)*N.conn, db=0, d=[], ev=[];
+    var spike=function(k,h){var xx=X(k);d.push('L'+xx.toFixed(1)+' '+Y(db).toFixed(1),'L'+(xx+2).toFixed(1)+' '+(Y(db)-h).toFixed(1),'L'+(xx+5).toFixed(1)+' '+Y(db).toFixed(1))};
+    d.push('M'+L+' '+Y(0).toFixed(1));
+    if(cIn){spike(0,24);db+=cIn;d.push('L'+(X(0)+7).toFixed(1)+' '+Y(db).toFixed(1));ev.push([0,'разъём'])}
+    var pts=[];for(var i=1;i<=s.sp;i++)pts.push(s.km*i/(s.sp+1));
+    var last=0;
+    pts.forEach(function(k){db+=a*(k-last);last=k;d.push('L'+X(k).toFixed(1)+' '+Y(db).toFixed(1));db+=N.splice+(mid?mid/s.sp:0);d.push('L'+(X(k)+1).toFixed(1)+' '+Y(db).toFixed(1));ev.push([k,db])});
+    if(!s.sp&&mid) db+=mid;
+    db+=a*(s.km-last);d.push('L'+X(s.km).toFixed(1)+' '+Y(db).toFixed(1));
+    if(cOut){spike(s.km-0.0001,24);db+=cOut}
+    d.push('L'+(X(s.km)+6).toFixed(1)+' '+(H-B).toFixed(1));
+    o.push('<path d="'+d.join(' ')+'" fill="none" stroke="#72aaff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" class="lctrace"/>');
+    if(s.sp<=40)ev.forEach(function(e){if(typeof e[1]==='number')o.push('<circle cx="'+X(e[0]).toFixed(1)+'" cy="'+Y(e[1]).toFixed(1)+'" r="3" fill="#34d399"/>')});
+    o.push('<text x="'+(X(s.km)-4).toFixed(1)+'" y="'+(Y(s.loss)-12).toFixed(1)+'" text-anchor="end" font-size="12" fill="#fff">'+fdb(s.loss)+' дБ</text>');
+    o.push('</svg>');
+    svgBox.innerHTML=o.join('');
+    if(!still){var tr=svgBox.querySelector('.lctrace'),Lp=tr.getTotalLength();tr.style.strokeDasharray=Lp;tr.style.strokeDashoffset=Lp;
+      tr.getBoundingClientRect();tr.style.transition='stroke-dashoffset .7s cubic-bezier(.165,.84,.44,1)';tr.style.strokeDashoffset=0}
+  }
+
+  function run(){
+    var s=state();
+    if(auto) spT.value=s.sp;
+    kmR.value=s.km; kmR.style.setProperty('--p',((s.km-0.1)/99.9*100).toFixed(1)+'%');
+    kmR.setAttribute('aria-valuetext',fmt(s.km,1)+' км');
+    tick(s);
+    br.innerHTML='<span>Волокно: '+fdb(s.fiber)+' дБ</span><span>Сварки, '+s.sp+' шт.: '+fdb(s.spl)+' дБ</span><span>Разъёмы, '+s.cn+' шт.: '+fdb(s.con)+' дБ</span>';
+    var msg='';
+    if(s.bg===null){st.hidden=true}
+    else{var m=s.bg-s.loss;st.hidden=false;st.className='lcstate '+(m>=N.reserve?'ok':m>=0?'tight':'bad');
+      st.innerHTML='<i aria-hidden="true"></i><span>'+(m>=N.reserve?'<b>Укладывается</b>, запас '+fdb(m)+' дБ':m>=0?'<b>Впритык</b>, запас меньше '+N.reserve+' дБ ('+fdb(m)+' дБ)':'<b>Не укладывается</b>, не хватает '+fdb(-m)+' дБ')+'</span>';
+      msg=' '+st.textContent+'.'}
+    draw(s);
+    clearTimeout(srT);srT=setTimeout(function(){sr.textContent='Затухание '+fdb(s.loss)+' дБ, задержка в одну сторону '+fus(s.one)+' мкс, туда и обратно '+fms(s.rtt)+' мс.'+msg},450);
+    window.__lc=s;
+  }
+  kmR.addEventListener('input',function(){kmT.value=fmt(+kmR.value,1);run()});
+  kmT.addEventListener('input',run);
+  kmT.addEventListener('change',function(){kmT.value=fmt(state().km,1);run()});
+  spT.addEventListener('input',function(){auto=false;spA.setAttribute('aria-pressed','false');run()});
+  spA.addEventListener('click',function(){auto=true;spA.setAttribute('aria-pressed','true');run()});
+  [cnT,bgT].forEach(function(e){e.addEventListener('input',run)});
+  [].forEach.call(root.querySelectorAll('input[name=lc-lam]'),function(e){e.addEventListener('change',run)});
+  if(window.ResizeObserver) new ResizeObserver(function(){draw(state())}).observe(svgBox); else addEventListener('resize',function(){draw(state())});
+  run();
+})();
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script><script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script><script>
 (function(){
   var root=document.documentElement;
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
