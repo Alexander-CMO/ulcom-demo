@@ -1,4 +1,9 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Связь Коннект · Услуги</title><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../../shared/architecture.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500&display=swap"><style>
+.ringwrap .rglow{position:absolute;left:-40%;top:0;margin-top:-40%;width:180%;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(closest-side,var(--gc,rgba(42,111,242,.24)),rgba(11,18,26,0) 72%);transition:background .6s ease}
+.ringwrap{isolation:isolate}
+
+.site-header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 :root{--eo:cubic-bezier(.165,.84,.44,1);--eio:cubic-bezier(.8,0,.3,1);--bg:#0b121a;--bg2:#16202b;--ink:#fff;--kick:#5b93ff;--rule:rgba(255,255,255,.16);
       --blue:#2a6ff2;--blue2:#72aaff;--green:#10b981}
 *{box-sizing:border-box}
@@ -276,7 +281,7 @@ a.lrow:hover .go{translate:4px -4px}
   <div class="hin">
     <div><h1 class="mask"><span>Услуги</span></h1><p class="lead ld">Проектирование, строительство и обслуживание линий связи. Выберите направление, чтобы посмотреть состав работ и подготовить исходные данные.</p>
       <div class="kick ld">Пять направлений на разрезе</div><ol class="prog ld"><li data-prog="0" style="--c:#5b93ff"><a href="proektirovanie.html"><b>01</b><span>Проектирование</span></a></li><li data-prog="1" style="--c:#10b981"><a href="stroitelstvo.html"><b>02</b><span>Строительство</span></a></li><li data-prog="2" style="--c:#72aaff"><a href="montazh.html"><b>03</b><span>Монтаж</span></a></li><li data-prog="3" style="--c:#34d399"><a href="obsluzhivanie.html"><b>04</b><span>Обслуживание</span></a></li><li data-prog="4" style="--c:#9cc2ff"><a href="zemlyanye-raboty.html"><b>05</b><span>Земляные работы</span></a></li></ol></div>
-    <div><div class="ringwrap"><svg class="ringsvg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Разрез оптического кабеля: пять направлений работ"><defs><filter id="rgf" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#rgf)"><circle class="draw" cx="180" cy="180" r="136" fill="#0b121a" fill-opacity=".82" stroke="#72aaff" stroke-width="1.6"/></g><circle class="dash" cx="180" cy="180" r="116" fill="none" stroke="#72aaff" stroke-width=".9" stroke-dasharray="3 7" opacity=".6"/><circle class="draw" cx="180" cy="180" r="56" fill="none" stroke="#72aaff" stroke-width="1" opacity=".45"/><g class="pointer"><line x1="180" y1="160" x2="180" y2="118" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M175 124 L180 116 L185 124" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><circle class="core" cx="180" cy="180" r="8" fill="#fff"/><g class="node" data-node="0" tabindex="0" role="button" aria-label="Проектирование" transform="translate(180.0 92.0)" style="--c:#5b93ff"><circle class="halo" r="32" fill="#5b93ff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#5b93ff" stroke-width="2.3"/><circle r="8" fill="#5b93ff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">01</text></g><g class="node" data-node="1" tabindex="0" role="button" aria-label="Строительство" transform="translate(263.7 152.8)" style="--c:#10b981"><circle class="halo" r="32" fill="#10b981" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#10b981" stroke-width="2.3"/><circle r="8" fill="#10b981"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">02</text></g><g class="node" data-node="2" tabindex="0" role="button" aria-label="Монтаж" transform="translate(231.7 251.2)" style="--c:#72aaff"><circle class="halo" r="32" fill="#72aaff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#72aaff" stroke-width="2.3"/><circle r="8" fill="#72aaff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">03</text></g><g class="node" data-node="3" tabindex="0" role="button" aria-label="Обслуживание" transform="translate(128.3 251.2)" style="--c:#34d399"><circle class="halo" r="32" fill="#34d399" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#34d399" stroke-width="2.3"/><circle r="8" fill="#34d399"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">04</text></g><g class="node" data-node="4" tabindex="0" role="button" aria-label="Земляные работы" transform="translate(96.3 152.8)" style="--c:#9cc2ff"><circle class="halo" r="32" fill="#9cc2ff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#9cc2ff" stroke-width="2.3"/><circle r="8" fill="#9cc2ff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">05</text></g></svg><div class="ringcap">Разрез кабеля · пять направлений</div></div></div>
+    <div><div class="ringwrap"><i class="rglow" aria-hidden="true"></i><svg class="ringsvg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Разрез оптического кабеля: пять направлений работ"><circle cx="180" cy="180" r="137" fill="none" stroke="#72aaff" stroke-opacity=".12" stroke-width="14"/><circle cx="180" cy="180" r="137" fill="none" stroke="#72aaff" stroke-opacity=".22" stroke-width="5"/><circle class="draw" cx="180" cy="180" r="136" fill="#0b121a" fill-opacity=".82" stroke="#72aaff" stroke-width="1.6"/><circle class="dash" cx="180" cy="180" r="116" fill="none" stroke="#72aaff" stroke-width=".9" stroke-dasharray="3 7" opacity=".6"/><circle class="draw" cx="180" cy="180" r="56" fill="none" stroke="#72aaff" stroke-width="1" opacity=".45"/><g class="pointer"><line x1="180" y1="160" x2="180" y2="118" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M175 124 L180 116 L185 124" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><circle class="core" cx="180" cy="180" r="8" fill="#fff"/><g class="node" data-node="0" tabindex="0" role="button" aria-label="Проектирование" transform="translate(180.0 92.0)" style="--c:#5b93ff"><circle class="halo" r="32" fill="#5b93ff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#5b93ff" stroke-width="2.3"/><circle r="8" fill="#5b93ff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">01</text></g><g class="node" data-node="1" tabindex="0" role="button" aria-label="Строительство" transform="translate(263.7 152.8)" style="--c:#10b981"><circle class="halo" r="32" fill="#10b981" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#10b981" stroke-width="2.3"/><circle r="8" fill="#10b981"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">02</text></g><g class="node" data-node="2" tabindex="0" role="button" aria-label="Монтаж" transform="translate(231.7 251.2)" style="--c:#72aaff"><circle class="halo" r="32" fill="#72aaff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#72aaff" stroke-width="2.3"/><circle r="8" fill="#72aaff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">03</text></g><g class="node" data-node="3" tabindex="0" role="button" aria-label="Обслуживание" transform="translate(128.3 251.2)" style="--c:#34d399"><circle class="halo" r="32" fill="#34d399" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#34d399" stroke-width="2.3"/><circle r="8" fill="#34d399"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">04</text></g><g class="node" data-node="4" tabindex="0" role="button" aria-label="Земляные работы" transform="translate(96.3 152.8)" style="--c:#9cc2ff"><circle class="halo" r="32" fill="#9cc2ff" opacity="0"/><circle class="ring-o" r="20" fill="#0b121a" stroke="#9cc2ff" stroke-width="2.3"/><circle r="8" fill="#9cc2ff"/><text y="42" text-anchor="middle" fill="#fff" font-size="13" letter-spacing="1.5">05</text></g></svg><div class="ringcap">Разрез кабеля · пять направлений</div></div></div>
     <div class="cards"><div class="card" data-card="0" style="--c:#5b93ff"><div class="no fade">01 · Направление</div><h3 class="mask"><span>Проектирование и изыскания</span></h3><div class="fade"><p>Получение исходных данных, обследование трассы и подготовка проектной документации.</p><ul><li><a href="proektirovanie.html#obsledovanie-trassy">Обследование трассы<i>→</i></a></li><li><a href="proektirovanie.html#tehnicheskie-usloviya">Технические условия<i>→</i></a></li><li><a href="proektirovanie.html#rabochaya-dokumentaciya">Рабочая документация<i>→</i></a></li><li><a href="proektirovanie.html#smeta-i-sroki">Смета и сроки<i>→</i></a></li></ul><a class="alink " href="proektirovanie.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Состав работ</u></a></div></div><div class="card" data-card="1" style="--c:#10b981"><div class="no fade">02 · Направление</div><h3 class="mask"><span>Строительство ВОЛС и медных линий</span></h3><div class="fade"><p>Прокладка кабелей в грунте, городской канализации и коллекторах.</p><ul><li><a href="stroitelstvo.html#kabelnaya-kanalizaciya">Кабельная канализация<i>→</i></a></li><li><a href="stroitelstvo.html#podves-na-oporah">Подвес на опорах<i>→</i></a></li><li><a href="stroitelstvo.html#perehody-gnb">Переходы ГНБ<i>→</i></a></li></ul><a class="alink " href="stroitelstvo.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Состав работ</u></a></div></div><div class="card" data-card="2" style="--c:#72aaff"><div class="no fade">03 · Направление</div><h3 class="mask"><span>Монтаж, наладка и измерения</span></h3><div class="fade"><p>Сборка линии связи, подключение оборудования и проверка результата.</p><ul><li><a href="montazh.html#mufty-i-krossy">Муфты и кроссы<i>→</i></a></li><li><a href="montazh.html#svarka-volokna">Сварка волокна<i>→</i></a></li><li><a href="montazh.html#izmereniya-i-reflektometriya">Измерения и рефлектометрия<i>→</i></a></li></ul><a class="alink " href="montazh.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Состав работ</u></a></div></div><div class="card" data-card="3" style="--c:#34d399"><div class="no fade">04 · Направление</div><h3 class="mask"><span>Обслуживание и восстановление</span></h3><div class="fade"><p>Проверка состояния ВОЛС, профилактика и устранение повреждений.</p><ul><li><a href="obsluzhivanie.html#planovye-raboty">Плановые работы<i>→</i></a></li><li><a href="obsluzhivanie.html#avariynoe-vosstanovlenie">Аварийное восстановление<i>→</i></a></li><li><a href="obsluzhivanie.html#dogovor-obsluzhivaniya">Договор обслуживания<i>→</i></a></li></ul><a class="alink " href="obsluzhivanie.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Состав работ</u></a></div></div><div class="card" data-card="4" style="--c:#9cc2ff"><div class="no fade">05 · Направление</div><h3 class="mask"><span>Канализация и земляные работы</span></h3><div class="fade"><p>Подготовка трассы и устройство кабельной инфраструктуры.</p><ul><li><a href="zemlyanye-raboty.html#transhei-i-kotlovany">Траншеи и котлованы<i>→</i></a></li><li><a href="zemlyanye-raboty.html#vosstanovlenie-pokrytiya">Восстановление покрытия<i>→</i></a></li><li><a href="zemlyanye-raboty.html#soglasovaniya-i-order">Согласования и ордер<i>→</i></a></li></ul><a class="alink " href="zemlyanye-raboty.html"><svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14L14 3M6 3h8v8"/></svg><u>Состав работ</u></a></div></div></div>
   </div>
 </section>
@@ -303,6 +308,42 @@ window.PAGE_STATIC=function(){
     n.addEventListener('click',function(){go(k)});n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(k)}})});
   progs.forEach(function(p,k){p.addEventListener('mouseenter',function(){if(wide()){stop();pick(k)}});p.addEventListener('focusin',function(){stop();pick(k)})});
 };</script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script><script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script><script>
+window.fiberFlow=function(cv,tgt,getColor,o){
+  o=o||{};var ctx=cv.getContext('2d');if(!ctx)return null;
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches,dpr=Math.min(devicePixelRatio||1,1.5),W=0,H=0,F=[],N=o.n||32,
+      bx=0,by=0,vis=true,running=false,cur=null;
+  var hex=function(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]};
+  for(var i=0;i<N;i++)F.push({side:i%2,t:i/(N-1),amp:20+Math.random()*46,ph:Math.random()*6.28,sp:.1+Math.random()*.2,
+    w:.6+Math.random()*1,a:.18+Math.random()*.32,green:(i%5===0)});
+  var gx=function(){return (o.dynamic&&window.gsap)?gsap.getProperty(tgt,'x'):0};
+  function measure(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
+    if(tgt){var t=tgt.getBoundingClientRect();bx=t.left+t.width/2-r.left-gx();by=t.top+t.width/2-r.top}else{bx=W*.7;by=H*.5}
+    if(!running)frame(performance.now())}
+  var paths=new Array(N);
+  function frame(t0){
+    var t=t0/1000,tc=hex(getColor());if(!cur)cur=tc.slice();
+    for(var k=0;k<3;k++)cur[k]+=(tc[k]-cur[k])*.06;
+    var cx=bx+gx(),cy=by,main='rgb('+(cur[0]|0)+','+(cur[1]|0)+','+(cur[2]|0)+')';
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<N;i++){var f=F[i],x0=f.side?W+80:-80,y0=(f.side?-H*.35:H*1.35)+(f.side?1:-1)*f.t*H*1.25,
+        dx=cx-x0,dy=cy-y0,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,p2=new Path2D();
+      for(var s=0;s<=24;s++){var p=s/24,fade=Math.sin(p*Math.PI),off=still?0:Math.sin(t*f.sp+f.ph+p*2.4)*f.amp*fade*(1-p*.55),
+          x=x0+dx*p+nx*off,y=y0+dy*p+ny*off;s?p2.lineTo(x,y):p2.moveTo(x,y)}
+      paths[i]=p2}
+    /* свечение: широкий мягкий проход, затем тонкая жила */
+    for(var i=0;i<N;i++){var f=F[i];ctx.strokeStyle=f.green?'#10b981':main;ctx.globalAlpha=f.a*.2;ctx.lineWidth=f.w*6;ctx.stroke(paths[i])}
+    for(var i=0;i<N;i++){var f=F[i];ctx.strokeStyle=f.green?'#10b981':main;ctx.globalAlpha=Math.min(1,f.a*1.25);ctx.lineWidth=f.w;ctx.stroke(paths[i])}
+    ctx.globalAlpha=1;
+    if(!still&&vis&&!document.hidden){running=true;requestAnimationFrame(frame)}else running=false}
+  function resume(){if(!running&&vis&&!document.hidden&&!still){running=true;requestAnimationFrame(frame)}}
+  if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;resume()}).observe(cv);
+  document.addEventListener('visibilitychange',resume);
+  if(window.ResizeObserver)new ResizeObserver(measure).observe(cv);else addEventListener('resize',measure);
+  measure();resume();
+  return {measure:measure};
+};
+</script><script>
 (function(){
   var root=document.documentElement;
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
@@ -317,30 +358,10 @@ window.PAGE_STATIC=function(){
 
   /* поток волокна сходится в главный образ первого экрана */
   var cv=$('.ph>canvas');
-  if(cv){var tgt=$(cv.dataset.target||'.ringsvg'),ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),F=[],N=+(cv.dataset.n||30);
-    var hex=function(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]};
-    window.fiberColor=cv.dataset.col||'#2a6ff2';var cur=hex(window.fiberColor);
-    for(var i=0;i<N;i++)F.push({side:i%2,t:i/(N-1),amp:20+Math.random()*46,ph:Math.random()*6.28,sp:.1+Math.random()*.2,
-      w:.55+Math.random()*1,a:.14+Math.random()*.3,green:(i%5===0)});
-    var size=function(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};
-    var draw=function(t0){var t=t0/1000,tc=hex(window.fiberColor);ctx.clearRect(0,0,W,H);
-      for(var k=0;k<3;k++)cur[k]+=(tc[k]-cur[k])*0.06;
-      var sb=cv.getBoundingClientRect(),cx=W*.7,cy=H*.5;
-      if(tgt){var rb=tgt.getBoundingClientRect();cx=rb.left+rb.width/2-sb.left;cy=rb.top+rb.height/2-sb.top}
-      var main='rgb('+cur.map(Math.round).join(',')+')';
-      for(var i=0;i<F.length;i++){var f=F[i],x0=f.side?W+80:-80,y0=(f.side?-H*0.35:H*1.35)+(f.side?1:-1)*f.t*H*1.25;
-        var dx=cx-x0,dy=cy-y0,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len;ctx.beginPath();
-        for(var s=0;s<=28;s++){var p=s/28,fade=Math.sin(p*Math.PI),off=still?0:Math.sin(t*f.sp+f.ph+p*2.4)*f.amp*fade*(1-p*.55);
-          var x=x0+dx*p+nx*off,y=y0+dy*p+ny*off;s?ctx.lineTo(x,y):ctx.moveTo(x,y)}
-        ctx.strokeStyle=f.green?'#10b981':main;ctx.globalAlpha=f.a;ctx.lineWidth=f.w;ctx.shadowBlur=9;ctx.shadowColor=ctx.strokeStyle;ctx.stroke()}
-      ctx.globalAlpha=1;ctx.shadowBlur=0;
-      var gr=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.34);
-      gr.addColorStop(0,'rgba('+cur.map(Math.round).join(',')+',.2)');gr.addColorStop(1,'rgba(11,18,26,0)');ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
-      if(!still&&vis)requestAnimationFrame(draw)};
-    var vis=true;
-    if(window.IntersectionObserver)new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!vis){vis=true;requestAnimationFrame(draw)}vis=v}).observe(cv);
-    if(window.ResizeObserver){new ResizeObserver(function(){size();if(still)draw(0)}).observe(cv)}else{addEventListener('resize',size)}
-    size();requestAnimationFrame(draw)}
+  if(cv&&window.fiberFlow){var tgt=$(cv.dataset.target||'.ringsvg'), rw=tgt&&tgt.closest('.ringwrap'), lastC='';
+  var toRgba=function(h,a){return 'rgba('+parseInt(h.slice(1,3),16)+','+parseInt(h.slice(3,5),16)+','+parseInt(h.slice(5,7),16)+','+a+')'};
+    window.fiberColor=cv.dataset.col||'#2a6ff2';
+    window.fiberFlow(cv,tgt,function(){var c=window.fiberColor;if(c!==lastC){lastC=c;rw&&rw.style.setProperty('--gc',toRgba(c,.24))}return c},{n:+(cv.dataset.n||30)})}
 
   window.PAGE_STATIC&&window.PAGE_STATIC();
   if(!window.gsap||!window.ScrollTrigger) return;          // без библиотек остаётся статичная раскладка
@@ -352,7 +373,7 @@ window.PAGE_STATIC=function(){
   gsap.matchMedia().add({motion:'(prefers-reduced-motion:no-preference)',wide:'(min-width:1101px)'},function(c){
     if(!c.conditions.motion) return;
     var lenis=null;
-    if(window.Lenis){lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);
+    if(window.Lenis){lenis=new Lenis({lerp:.14});lenis.on('scroll',ScrollTrigger.update);
       var raf=function(t){lenis.raf(t*1000)};gsap.ticker.add(raf);gsap.ticker.lagSmoothing(0)}
     root.classList.add('motion');
     var ctxp={EO:EO,EIO:EIO,lenis:lenis,wide:c.conditions.wide};
