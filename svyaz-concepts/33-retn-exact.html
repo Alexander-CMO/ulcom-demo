@@ -243,6 +243,19 @@ h1,h2,h3,h4{font-weight:400;margin:0;letter-spacing:0}
   <div class="up d1"><p>Укажите адреса, протяжённость или тип работ. Определим, какие исходные данные нужны для сметы.</p>
     <a class="btn" href="04-fiber-system-pages/kontakty.html">Подготовить запрос <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 8.5h13M10 4l5 4.5-5 4.5"/></svg></a></div>
 </div></section></main><footer class="site-footer"><div><strong>Связь Коннект</strong><a href="tel:+74957481349">+7 495 748-13-49</a><a href="mailto:info@svyazconnect.ru">info@svyazconnect.ru</a><span>Москва, 2-й Кабельный проезд, 1</span><a href="04-fiber-system-pages/kontakty.html">Обсудить работы</a></div></footer><script src="concepts.js"></script><script src="../shared/architecture.js"></script><script>
+window.__loop=function(cv,draw){var vis=true,pend=false;
+  if(cv&&'IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;
+    if(vis&&pend&&!document.hidden){pend=false;requestAnimationFrame(draw)}},{rootMargin:'80px'}).observe(cv);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&pend&&vis){pend=false;requestAnimationFrame(draw)}});
+  return function(){if(vis&&!document.hidden)setTimeout(function(){requestAnimationFrame(draw)},18);else pend=true}};
+window.__onScroll=function(fn){var q=false,ly=null,lw=null;
+  function run(){q=false;if(scrollY===ly&&innerWidth===lw)return;ly=scrollY;lw=innerWidth;fn()}
+  function kick(){if(!q){q=true;requestAnimationFrame(run)}}
+  addEventListener('scroll',kick,{passive:true});addEventListener('resize',function(){ly=null;kick()});kick();
+  return function(){ly=null;kick()}};
+window.__glow=function(ctx,k){var a=ctx.globalAlpha,w=ctx.lineWidth;ctx.globalAlpha=a*(k||.3);ctx.lineWidth=w+4;ctx.stroke();
+  ctx.globalAlpha=a;ctx.lineWidth=w;ctx.stroke()};
+</script><script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var els=[].slice.call(document.querySelectorAll('.up,.mask'));
@@ -254,8 +267,9 @@ h1,h2,h3,h4{font-weight:400;margin:0;letter-spacing:0}
   setTimeout(function(){els.forEach(function(e){e.classList.add('in')})},1700);
 
   var giant=document.querySelector('.giant');
-  if(giant&&!reduce){(function t(){var r=giant.getBoundingClientRect();
-    giant.style.transform='translateX('+((innerHeight/2-r.top)*0.05).toFixed(1)+'px)';requestAnimationFrame(t)})()}
+  if(giant&&!reduce){__onScroll(function(){var r=giant.getBoundingClientRect();
+    if(r.bottom<-200||r.top>innerHeight+200)return;
+    giant.style.transform='translateX('+((innerHeight/2-r.top)*0.05).toFixed(1)+'px)'})}
 
   var slides=[].slice.call(document.querySelectorAll('.slide')),
       numsEl=[].slice.call(document.querySelectorAll('.numwrap .n')),
@@ -275,7 +289,7 @@ h1,h2,h3,h4{font-weight:400;margin:0;letter-spacing:0}
   go(0);
 
   var cv=document.querySelector('.dark canvas');
-  if(cv){var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),F=[],N=26;
+  if(cv){var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,1.5),F=[],N=26;
     for(var i=0;i<N;i++)F.push({y:Math.random(),amp:16+Math.random()*40,ph:Math.random()*6.28,sp:.09+Math.random()*.16,
                                 w:.6+Math.random()*1,a:.1+Math.random()*.3,green:(i%5===0)});
     function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
@@ -285,9 +299,9 @@ h1,h2,h3,h4{font-weight:400;margin:0;letter-spacing:0}
           y=H*(0.1+f.y*0.85)+(reduce?0:Math.sin(t*f.sp+f.ph+p*3)*f.amp)+Math.sin(p*2+f.ph)*22;
           s?ctx.lineTo(x,y):ctx.moveTo(x,y)}
         ctx.strokeStyle=f.green?'#10b981':'#2a6ff2';ctx.globalAlpha=f.a;ctx.lineWidth=f.w;
-        ctx.shadowBlur=8;ctx.shadowColor=ctx.strokeStyle;ctx.stroke()}
-      ctx.globalAlpha=1;ctx.shadowBlur=0;if(!reduce)requestAnimationFrame(draw)}
-    addEventListener('resize',function(){size();if(reduce)draw(0)});size();requestAnimationFrame(draw)}
+        __glow(ctx);}
+      ctx.globalAlpha=1;if(!reduce)next()}
+    addEventListener('resize',function(){size();if(reduce)draw(0)});var next=__loop(cv,draw);size();requestAnimationFrame(draw)}
 
   var hh=document.querySelector('.now b'),hand=document.querySelector('.hand'),mark=document.querySelector('.dial .mark');
   function tick(){var d=new Date(),msk=new Date(d.getTime()+(d.getTimezoneOffset()+180)*60000);
