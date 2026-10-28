@@ -237,6 +237,18 @@ button.btn2{background:transparent;font-family:inherit;cursor:pointer}
 .np dd{margin:0}
 .np .path{font-size:16.3px;line-height:1.5;min-height:48px}
 .np .reset{min-height:44px;margin-top:8px}
+.lat{margin:6px 0 14px;padding:16px 0 0;border-top:1px solid var(--ruled)}
+.lat-v{font-size:clamp(34px,3.4vw,48px);line-height:1.05;white-space:nowrap}
+.lat-v b{font-weight:400;font-variant-numeric:tabular-nums}
+.lat-v small{font-size:16.3px;margin-left:6px}
+.lat-km{font-size:16.3px;margin-top:8px}
+.lat-note{font-size:13px;line-height:1.4;margin:10px 0 0;max-width:38ch}
+.mslbl text{font-size:11px;font-family:"Golos Text",Inter,sans-serif;fill:#fff;stroke:var(--deep);stroke-width:4px;paint-order:stroke;
+            stroke-linejoin:round;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.tnote{font-size:13px;line-height:1.4;margin:16px 0 0;max-width:70ch}
+.tbl td.ms{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:1100px){.mslbl{display:none}}
+@media(max-width:700px){.tbl td.ms:before{content:"До ММТС-9, расчётно*: "}}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .chips button{position:relative;z-index:2;min-height:44px;padding:0 14px;font:inherit;font-size:15px;color:inherit;background:var(--deep);border:1px solid var(--ruled);cursor:pointer;
               transition:background-color .5s ease,border-color .5s ease,color .5s ease}
@@ -374,9 +386,38 @@ button.btn2{background:transparent;font-family:inherit;cursor:pointer}
       $$('.nd',svg).forEach(function(n){var id=n.getAttribute('data-id');n.classList.toggle('sel',id===A||id===B)});
       chips.forEach(function(c){var id=c.getAttribute('data-id');c.classList.toggle('a',id===A);c.classList.toggle('b',id===B);c.setAttribute('aria-pressed',id===A||id===B)});
       var out=$('.path',np);
-      if(A&&B){var p=path(A,B);if(p){var ed=[];for(var k=0;k<p.length-1;k++)ed.push([p[k],p[k+1]].sort().join('-'));focus(svg,ed,p);
+      var km=null;
+      if(A&&B){var p=path(A,B);if(p){var ed=[];km=0;for(var k=0;k<p.length-1;k++){ed.push([p[k],p[k+1]].sort().join('-'));km+=wt(p[k],p[k+1])}
+        focus(svg,ed,p);labels(p);
         out.textContent='Маршрут: '+p.map(function(i){return NM[i]}).join(' → ')+'. Узлов на маршруте: '+p.length+'.'}}
-      else{focus(svg,[],A?[A]:[]);out.textContent=A?'Выберите вторую точку.':'Выберите первую точку на схеме или кнопкой ниже.'}}
+      else{focus(svg,[],A?[A]:[]);labels(null);out.textContent=A?'Выберите вторую точку.':'Выберите первую точку на схеме или кнопкой ниже.'}
+      lat(km)}
+    /* расчётная задержка: 1 мс на 100 км трассы туда и обратно */
+    function wt(a,b){var r=(G[a]||[]).filter(function(v){return v[0]===b})[0];return r?r[1]:0}
+    function fmt(ms){return ms.toFixed(2).replace('.',',')}
+    var latN=$('.lat-n',np),latKm=$('.lat-km .km',np),shown=0,raf=0;
+    function lat(km){cancelAnimationFrame(raf);
+      if(km===null){latN.innerHTML='≈ <b>—</b> мс';latKm.textContent='—';shown=0;return}
+      latKm.textContent=km+' км';var ms=km/100;
+      if(ms<0.1){latN.innerHTML='менее <b>0,1</b> мс';shown=ms;return}
+      latN.innerHTML='≈ <b></b> мс';var b=$('b',latN),from=shown,t0=performance.now(),dur=still?0:700;
+      (function step(now){var q=dur?Math.min(1,(now-t0)/dur):1,e=1-Math.pow(1-q,3);b.textContent=fmt(from+(ms-from)*e);
+        if(q<1)raf=requestAnimationFrame(step);else shown=ms})(t0)}
+    /* подписи мс у середины участков выбранного маршрута */
+    var lg=document.createElementNS('http://www.w3.org/2000/svg','g');lg.setAttribute('class','mslbl');lg.setAttribute('aria-hidden','true');svg.appendChild(lg);
+    function labels(p){while(lg.firstChild)lg.removeChild(lg.firstChild);if(!p)return;
+      var busy=$$('.lb',svg).map(function(n){return n.getBBox()}).concat($$('.nd .dot',svg).map(function(n){return n.getBBox()}));
+      var hit=function(r){return busy.some(function(q){return r.x<q.x+q.width+2&&r.x+r.width+2>q.x&&r.y<q.y+q.height+2&&r.y+r.height+2>q.y})};
+      for(var k=0;k<p.length-1;k++){var key=[p[k],p[k+1]].sort().join('-'),e=$('.e[data-k="'+key+'"]',svg);if(!e)continue;
+        var L=e.getTotalLength();if(L<40)continue;          // короткие участки в центре не подписываем, итог есть в панели
+        var ms=wt(p[k],p[k+1])/100,t=document.createElementNS('http://www.w3.org/2000/svg','text');
+        t.textContent=(ms<0.1?'<0,1':fmt(ms))+' мс';lg.appendChild(t);
+        var ok=false,tries=[[.5,1],[.5,-1],[.36,1],[.64,1],[.36,-1],[.64,-1]];
+        for(var m=0;m<tries.length&&!ok;m++){var f=tries[m][0],sd=tries[m][1],pt=e.getPointAtLength(L*f),p1=e.getPointAtLength(L*f-2),p2=e.getPointAtLength(L*f+2),
+            dx=p2.x-p1.x,dy=p2.y-p1.y,dl=Math.hypot(dx,dy)||1,nx=-dy/dl,ny=dx/dl;if(ny>0){nx=-nx;ny=-ny}   // нормаль вверх, затем вниз
+          t.setAttribute('x',(pt.x+nx*11*sd).toFixed(1));t.setAttribute('y',(pt.y+ny*11*sd).toFixed(1));
+          var bb=t.getBBox();if(!hit(bb)){ok=true;busy.push(bb)}}
+        if(!ok)lg.removeChild(t)}}
     function pick(id){if(!A||(A&&B)){A=id;B=null}else if(id!==A){B=id}draw()}
     $$('.nd',svg).forEach(function(n){n.addEventListener('click',function(){pick(n.getAttribute('data-id'))})});
     chips.forEach(function(c){c.addEventListener('click',function(){pick(c.getAttribute('data-id'))})});
