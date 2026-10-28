@@ -67,6 +67,7 @@ h1,h2,h3,p{margin:0;font-weight:400}
 .net.focus .nd.hot .dot{fill:#fff;stroke:#ff5b45;stroke-opacity:1;stroke-width:2.6}
 .net.focus .nd.hot .halo{opacity:.28}
 .net.focus .lb{opacity:.28}.net.focus .lb.hot{opacity:1}
+.pin .scene .mapwrap{will-change:transform}
 .mapcap{margin-top:12px;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
 .sidenav,.cards,.cue,.modbar,.talk{display:none}
 .msteps{position:relative;z-index:3;padding:10px 30px 0}
@@ -306,20 +307,31 @@ body{color:var(--ink)}
     $$('.clock').forEach(function(e){e.textContent=('0'+m.getHours()).slice(-2)+':'+('0'+m.getMinutes()).slice(-2)})}
   tick();setInterval(tick,20000);
 
-  /* импульсы по трассам: по одной точке на ребро, на активном маршруте красные и быстрее */
-  var nets=$$('svg.net'), hotSet={};
+  /* импульсы по трассам: по одной точке на ребро, на активном маршруте красные и быстрее.
+     Участки прямые, позиция считается по концам отрезка; двигаем только схемы, которые сейчас на экране */
+  var nets=$$('svg.net'), hotSet={}, vis=[], looping=false;
   nets.forEach(function(svg){
     var g=$('.pulses',svg), es=$$('.e',svg).filter(function(e){return !e.classList.contains('build')});
-    svg._p=es.map(function(e,i){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    svg._p=es.map(function(e){var m=(e.getAttribute('d')||'').match(/-?[0-9.]+/g).map(Number),
+      c=document.createElementNS('http://www.w3.org/2000/svg','circle');
       c.setAttribute('r',svg.classList.contains('big')?3:2.6);c.setAttribute('class','pulse');g.appendChild(c);
-      return {e:e,c:c,L:e.getTotalLength(),t:Math.random(),v:.12+Math.random()*.1,k:e.getAttribute('data-k')}});
+      return {c:c,x0:m[0],y0:m[1],dx:m[2]-m[0],dy:m[3]-m[1],t:Math.random(),v:.12+Math.random()*.1,k:e.getAttribute('data-k'),h:false}});
   });
-  function place(t,dt){nets.forEach(function(svg){svg._p.forEach(function(p){
-    var h=!!hotSet[p.k]&&svg.classList.contains('focus'); p.t=(p.t+dt/1000*p.v*(h?2.2:1))%1;
-    var pt=p.e.getPointAtLength(p.t*p.L); p.c.setAttribute('cx',pt.x.toFixed(1));p.c.setAttribute('cy',pt.y.toFixed(1));
-    p.c.classList.toggle('hot',h)})})}
-  if(!still){var last=performance.now();(function loop(now){place(now,Math.min(now-last,50));last=now;requestAnimationFrame(loop)})(last)}
-  else place(0,0);
+  function move(svg,dt){var f=svg.classList.contains('focus');svg._p.forEach(function(p){
+    var h=f&&!!hotSet[p.k]; p.t=(p.t+dt/1000*p.v*(h?2.2:1))%1;
+    p.c.setAttribute('transform','translate('+(p.x0+p.dx*p.t).toFixed(1)+' '+(p.y0+p.dy*p.t).toFixed(1)+')');
+    if(h!==p.h){p.h=h;p.c.classList.toggle('hot',h)}})}
+  nets.forEach(function(svg){move(svg,0)});
+  var last=0;
+  function loop(now){if(!vis.length||document.hidden){looping=false;return}
+    if(now-last<30){requestAnimationFrame(loop);return}          // импульсы медленные: 30 обновлений в секунду хватает
+    var dt=Math.min(now-last,60);last=now;vis.forEach(function(svg){move(svg,dt)});requestAnimationFrame(loop)}
+  function wake(){if(still||looping||!vis.length||document.hidden)return;looping=true;last=performance.now();requestAnimationFrame(loop)}
+  if('IntersectionObserver' in window){var nio=new IntersectionObserver(function(es){es.forEach(function(e){
+      var i=vis.indexOf(e.target);if(e.isIntersecting){if(i<0)vis.push(e.target)}else if(i>=0)vis.splice(i,1)});wake()},{rootMargin:'80px 0px'});
+    nets.forEach(function(svg){nio.observe(svg)})}
+  else{vis=nets.slice();wake()}
+  document.addEventListener('visibilitychange',wake);
 
   var hero=$('.scene .net'), cards=$$('.card'), progs=$$('.prog li'), bars=$$('.modbar b'), active=-1;
   function show(i){
@@ -341,7 +353,7 @@ body{color:var(--ink)}
   var mm=gsap.matchMedia();
   mm.add({wide:'(min-width:1101px)',motion:'(prefers-reduced-motion:no-preference)'},function(c){
     var wide=c.conditions.wide, motion=c.conditions.motion, lenis=null;
-    if(motion&&window.Lenis){lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);
+    if(motion&&window.Lenis){lenis=new Lenis({lerp:.14});lenis.on('scroll',ScrollTrigger.update);
       var raf=function(t){lenis.raf(t*1000)};gsap.ticker.add(raf);gsap.ticker.lagSmoothing(0)}
 
     /* загрузка: шторки заголовка, трассы прочерчиваются, узлы по очереди */
@@ -362,12 +374,12 @@ body{color:var(--ink)}
 
     if(wide&&motion){
       root.classList.add('pin');
-      var scene=$('.scene'), map=$('.scene .mapwrap'), A=.2, SEG=(1-A)/5;
+      var scene=$('.scene'), map=$('.scene .mapwrap'), A=.2, SEG=(1-A)/5, setB=bars.map(function(b){return gsap.quickSetter(b,'scaleX')}), bv=bars.map(function(){return -1});
       gsap.set(map,{xPercent:-50,yPercent:-50,x:function(){return innerWidth*.17}});
       gsap.set(['.sidenav','.cards'],{yPercent:-50});
-      var tl=gsap.timeline({scrollTrigger:{trigger:scene,start:'top top',end:function(){return '+='+innerHeight*2},pin:true,scrub:.8,invalidateOnRefresh:true,
+      var tl=gsap.timeline({scrollTrigger:{trigger:scene,start:'top top',end:function(){return '+='+innerHeight*2},pin:true,scrub:.5,invalidateOnRefresh:true,
         onUpdate:function(s){var p=s.progress,i=p<A?-1:Math.min(4,Math.floor((p-A)/SEG));show(i);
-          bars.forEach(function(b,k){gsap.set(b,{scaleX:Math.min(1,Math.max(0,(p-A-k*SEG)/SEG))})})}}});
+          bars.forEach(function(b,k){var v=Math.min(1,Math.max(0,(p-A-k*SEG)/SEG));if(v!==bv[k]){bv[k]=v;setB[k](v)}})}}});
       tl.to('.intro',{y:-70,autoAlpha:0,duration:A,ease:'none'},0)
         .to(['.cue','.mapcap'],{autoAlpha:0,duration:A*.5,ease:'none'},0)
         .to(map,{x:0,scale:.66,duration:A,ease:'none'},0)
@@ -379,8 +391,9 @@ body{color:var(--ink)}
       var go=function(k){var st=tl.scrollTrigger,y=st.start+(A+SEG*(k+.5))*(st.end-st.start);
         lenis?lenis.scrollTo(y,{duration:1.2}):scrollTo({top:y,behavior:'smooth'})};
       progs.forEach(function(p,k){p.addEventListener('click',function(){go(k)})});
-      var talk=$('.talk'),q=gsap.quickTo(talk,'xPercent',{duration:.6,ease:EO}),r=gsap.quickTo(talk,'yPercent',{duration:.6,ease:EO});
-      addEventListener('mousemove',function(e){var b=talk.getBoundingClientRect(),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2);
+      var talk=$('.talk'),q=gsap.quickTo(talk,'xPercent',{duration:.6,ease:EO}),r=gsap.quickTo(talk,'yPercent',{duration:.6,ease:EO}),tb=null,tinv=function(){tb=null};
+      addEventListener('scroll',tinv,{passive:true});addEventListener('resize',tinv);
+      addEventListener('mousemove',function(e){var b=tb||(tb=talk.getBoundingClientRect()),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2);
         if(Math.hypot(dx,dy)<200){q(dx/b.width*30);r(dy/b.height*30)}else{q(0);r(0)}});
     } else show(-1);
 
@@ -393,12 +406,12 @@ body{color:var(--ink)}
         scrollTrigger:{trigger:rw,start:'top 88%',onEnter:function(){rw.classList.add('in')}}})});
       gsap.fromTo('.ghost',{xPercent:4},{xPercent:-12,ease:'none',scrollTrigger:{trigger:'.who',start:'top bottom',end:'bottom top',scrub:true}});
       $$('.geo2 .e').forEach(function(e,k){var L=e.getTotalLength();gsap.fromTo(e,{strokeDasharray:L,strokeDashoffset:L},{strokeDashoffset:0,ease:'none',
-        scrollTrigger:{trigger:'.geo2',start:'top 80%',end:'center 50%',scrub:.6}})});
+        scrollTrigger:{trigger:'.geo2',start:'top 80%',end:'center 50%',scrub:.5}})});
       $$('.diag').forEach(function(d){gsap.fromTo(d,{clipPath:'polygon(0 14%,100% 0,100% 100%,0 100%)'},{clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)',ease:'none',
         scrollTrigger:{trigger:d,start:'top bottom',end:'top 35%',scrub:true}})});
-      var ul=$('.track ul'),half=0,xx=0,boost=0,dir=1;var meas=function(){half=ul.scrollWidth/2};meas();addEventListener('resize',meas);
-      ScrollTrigger.create({trigger:'.axis',start:'top bottom',end:'bottom top',onUpdate:function(s){boost=Math.min(Math.abs(s.getVelocity())/120,14);dir=s.direction}});
-      var run=function(t,dt){xx-=(0.6+boost)*dir*(dt/16.7);boost*=.94;if(half){xx=((xx%half)-half)%half}gsap.set(ul,{x:xx})};
+      var ul=$('.track ul'),half=0,xx=0,boost=0,dir=1,axOn=false,setX=gsap.quickSetter(ul,'x','px');var meas=function(){half=ul.scrollWidth/2};meas();addEventListener('resize',meas);
+      ScrollTrigger.create({trigger:'.axis',start:'top bottom',end:'bottom top',onToggle:function(s){axOn=s.isActive},onUpdate:function(s){boost=Math.min(Math.abs(s.getVelocity())/120,14);dir=s.direction}});
+      var run=function(t,dt){if(!axOn)return;xx-=(0.6+boost)*dir*(dt/16.7);boost*=.94;if(half){xx=((xx%half)-half)%half}setX(xx)};
       gsap.ticker.add(run);
       gsap.to('.pbar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
     }

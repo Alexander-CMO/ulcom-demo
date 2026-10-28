@@ -67,6 +67,7 @@ h1,h2,h3,p{margin:0;font-weight:400}
 .net.focus .nd.hot .dot{fill:#fff;stroke:#ff5b45;stroke-opacity:1;stroke-width:2.6}
 .net.focus .nd.hot .halo{opacity:.28}
 .net.focus .lb{opacity:.28}.net.focus .lb.hot{opacity:1}
+.pin .scene .mapwrap{will-change:transform}
 .mapcap{margin-top:12px;font-size:12px;letter-spacing:.24px;text-transform:uppercase}
 .sidenav,.cards,.cue,.modbar,.talk{display:none}
 .msteps{position:relative;z-index:3;padding:10px 30px 0}
@@ -408,12 +409,25 @@ button.btn2{background:transparent;font-family:inherit;cursor:pointer}
     $$('.e',svg).forEach(function(e){e.classList.toggle('hot',!!hs[e.getAttribute('data-k')])});
     $$('.nd',svg).forEach(function(n){n.classList.toggle('hot',nodes.indexOf(n.getAttribute('data-id'))>=0)});
     $$('.lb',svg).forEach(function(n){var id=n.getAttribute('data-id');n.classList.toggle('hot',nodes.indexOf(id)>=0||(id==='m9'&&!svg.classList.contains('all')&&(nodes.indexOf('m10')>=0||nodes.indexOf('hq')>=0)))})}
+  /* участки прямые: позиция импульса по концам отрезка, двигаем только схемы на экране */
+  var vis=[],looping=false,last=0;
   nets.forEach(function(svg){svg._hot={};var g=$('.pulses',svg);
-    svg._p=$$('.e',svg).filter(function(e){return !e.classList.contains('build')}).map(function(e){var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      c.setAttribute('r',2.8);c.setAttribute('class','pulse');g.appendChild(c);return {e:e,c:c,L:e.getTotalLength(),t:Math.random(),v:.12+Math.random()*.1,k:e.getAttribute('data-k')}})});
-  function place(dt){nets.forEach(function(svg){svg._p.forEach(function(p){var h=!!svg._hot[p.k];p.t=(p.t+dt/1000*p.v*(h?2.2:1))%1;
-    var pt=p.e.getPointAtLength(p.t*p.L);p.c.setAttribute('cx',pt.x.toFixed(1));p.c.setAttribute('cy',pt.y.toFixed(1));p.c.classList.toggle('hot',h)})})}
-  if(!still){var last=performance.now();(function loop(now){place(Math.min(now-last,50));last=now;requestAnimationFrame(loop)})(last)}else place(0);
+    svg._p=$$('.e',svg).filter(function(e){return !e.classList.contains('build')}).map(function(e){var m=(e.getAttribute('d')||'').match(/-?[0-9.]+/g).map(Number),
+      c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r',2.8);c.setAttribute('class','pulse');g.appendChild(c);
+      return {c:c,x0:m[0],y0:m[1],dx:m[2]-m[0],dy:m[3]-m[1],t:Math.random(),v:.12+Math.random()*.1,k:e.getAttribute('data-k'),h:false}})});
+  function move(svg,dt){svg._p.forEach(function(p){var h=!!svg._hot[p.k];p.t=(p.t+dt/1000*p.v*(h?2.2:1))%1;
+    p.c.setAttribute('transform','translate('+(p.x0+p.dx*p.t).toFixed(1)+' '+(p.y0+p.dy*p.t).toFixed(1)+')');
+    if(h!==p.h){p.h=h;p.c.classList.toggle('hot',h)}})}
+  nets.forEach(function(svg){move(svg,0)});
+  function loop(now){if(!vis.length||document.hidden){looping=false;return}
+    if(now-last<30){requestAnimationFrame(loop);return}          // импульсы медленные: 30 обновлений в секунду хватает
+    var dt=Math.min(now-last,60);last=now;vis.forEach(function(svg){move(svg,dt)});requestAnimationFrame(loop)}
+  function wake(){if(still||looping||!vis.length||document.hidden)return;looping=true;last=performance.now();requestAnimationFrame(loop)}
+  if('IntersectionObserver' in window){var nio=new IntersectionObserver(function(es){es.forEach(function(e){
+      var i=vis.indexOf(e.target);if(e.isIntersecting){if(i<0)vis.push(e.target)}else if(i>=0)vis.splice(i,1)});wake()},{rootMargin:'80px 0px'});
+    nets.forEach(function(svg){nio.observe(svg)})}
+  else{vis=nets.slice();wake()}
+  document.addEventListener('visibilitychange',wake);
 
   /* сеть: выбор двух точек, кратчайший путь по действующим трассам */
   var np=$('.np');
@@ -481,7 +495,7 @@ button.btn2{background:transparent;font-family:inherit;cursor:pointer}
   var mm=gsap.matchMedia();
   mm.add('(prefers-reduced-motion:no-preference)',function(){
     var lenis=null;
-    if(window.Lenis){lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);var raf=function(t){lenis.raf(t*1000)};gsap.ticker.add(raf);gsap.ticker.lagSmoothing(0)}
+    if(window.Lenis){lenis=new Lenis({lerp:.14});lenis.on('scroll',ScrollTrigger.update);var raf=function(t){lenis.raf(t*1000)};gsap.ticker.add(raf);gsap.ticker.lagSmoothing(0)}
     root.classList.add('motion');
     var es=$$('.scene .net .e');
     es.forEach(function(e){var L=e.getTotalLength();gsap.set(e,{strokeDasharray:L,strokeDashoffset:L})});
@@ -503,9 +517,10 @@ button.btn2{background:transparent;font-family:inherit;cursor:pointer}
     $$('.diag').forEach(function(d){gsap.fromTo(d,{clipPath:'polygon(0 14%,100% 0,100% 100%,0 100%)'},{clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)',ease:'none',
       scrollTrigger:{trigger:d,start:'top bottom',end:'top 35%',scrub:true}})});
     $$('.band .net').forEach(function(svg){$$('.e',svg).forEach(function(e){var L=e.getTotalLength();gsap.fromTo(e,{strokeDasharray:L,strokeDashoffset:L},
-      {strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:svg,start:'top 85%',end:'center 55%',scrub:.6,onLeave:function(){e.style.strokeDasharray=e.classList.contains('build')?'5 6':''}}})})});
-    var rd=$('.round');if(rd){var q=gsap.quickTo(rd,'x',{duration:.6,ease:EO}),r=gsap.quickTo(rd,'y',{duration:.6,ease:EO});
-      addEventListener('mousemove',function(e){var b=rd.getBoundingClientRect(),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2);
+      {strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:svg,start:'top 85%',end:'center 55%',scrub:.5,onLeave:function(){e.style.strokeDasharray=e.classList.contains('build')?'5 6':''}}})})});
+    var rd=$('.round');if(rd){var q=gsap.quickTo(rd,'x',{duration:.6,ease:EO}),r=gsap.quickTo(rd,'y',{duration:.6,ease:EO}),rb=null,rinv=function(){rb=null};
+      addEventListener('scroll',rinv,{passive:true});addEventListener('resize',rinv);
+      addEventListener('mousemove',function(e){var b=rb||(rb=rd.getBoundingClientRect()),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2);
         if(Math.hypot(dx,dy)<200){q(dx*.2);r(dy*.2)}else{q(0);r(0)}})}
     gsap.to('.pbar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
     return function(){root.classList.remove('motion');if(lenis)lenis.destroy()}
