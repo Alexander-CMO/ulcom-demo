@@ -104,5 +104,5 @@
     "section_clip_path_replaced": "static triangle with scaleY transform",
     "lifecycle_cleanup": "Lenis ticker, main marquee ticker, resize and mousemove handlers"
   },
-  "map_refinement": "Geography map CSS, viewport and label positions updated; point coordinates preserved."
+  "map_refinement": "RETN network-map reference: light basemap, 10 original nodes, 12 illustrative links, selected-node incident links highlighted. Keyboard selection passed for all 10 nodes; layer toggle, zoom/reset, 390px overflow check passed."
 }
