@@ -1,0 +1,35 @@
+document.querySelector('.menu-toggle')?.addEventListener('click',function(){const n=document.querySelector('.header nav');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',String(open));this.textContent=open?'Закрыть':'Меню';});
+const services=[
+['Проектирование','Обследуем трассу, собираем исходные данные и готовим проектную документацию.','proektirovanie.html',['Обследование трассы','Проектная документация']],
+['Строительство','Прокладываем линию по согласованному проекту. Координируем земляные работы и переходы.','stroitelstvo.html',['Прокладка кабеля','Земляные работы и переходы']],
+['Монтаж','Монтируем муфты и кроссы, свариваем волокна и проводим измерения.','montazh.html',['Монтаж и сварка','Измерения линии']],
+['Обслуживание','Плановые работы на действующих линиях и восстановление повреждённых участков.','obsluzhivanie.html',['Техническое обслуживание','Восстановление линии']],
+['Совместные проекты','Рассматриваем совместное строительство трасс и использование инфраструктуры.','sovmestnoe-stroitelstvo.html',['Совместное строительство','Обсудить участие']]
+];
+function selectService(i){const s=services[i],panel=document.getElementById('service-panel');if(!panel)return;document.querySelectorAll('[data-service]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.service===i)));panel.innerHTML=`<h2>${s[0]}</h2><p>${s[1]}</p><div><a class="text-link" href="${s[2]}">${s[3][0]} ↗</a><br><a class="text-link" href="${s[2]}">${s[3][1]} ↗</a></div>`;const scene=document.querySelector('.cable-scene');let preview=scene.querySelector('.scene-preview');if(!preview){preview=document.createElement('div');preview.className='scene-preview';scene.append(preview);}preview.innerHTML=`<a href="${s[2]}">${s[0]} <span>↗</span></a>`;}
+document.querySelectorAll('[data-service]').forEach(b=>{b.addEventListener('click',()=>selectService(+b.dataset.service));b.addEventListener('focus',()=>selectService(+b.dataset.service));b.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches)selectService(+b.dataset.service);});});
+document.querySelectorAll('[data-city]').forEach(b=>{const choose=()=>{document.querySelectorAll('[data-city]').forEach(x=>x.classList.toggle('active',x===b));const a=document.querySelector('[name="from"]');if(a)a.value=b.dataset.city;const task=document.querySelector('[name="task"]');if(task)task.value='Подключение: '+b.dataset.city;document.querySelector('.map-tag').textContent=b.dataset.city+' · запрос подключения';};b.addEventListener('click',choose);b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});
+document.querySelectorAll('.map-mobile-choice select').forEach(s=>s.addEventListener('change',()=>{const city=[...document.querySelectorAll('[data-city]')].find(x=>x.dataset.city===s.value);city?.dispatchEvent(new Event('click'));}));
+document.querySelectorAll('.request-form').forEach(form=>{
+  const q=new URLSearchParams(location.search);
+  const service=q.get('service')||form.dataset.service||'';
+  const lines=[];
+  if(service)lines.push('Услуга: '+service);
+  if(q.get('from')||q.get('to'))lines.push('Точка А: '+(q.get('from')||'уточняется')+'. Точка Б: '+(q.get('to')||'уточняется')+'.');
+  if(form.elements.task&&lines.length)form.elements.task.value=lines.join('\n');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const d=new FormData(form);
+    const body=`Контакт: ${d.get('contact')}\nЗадача: ${d.get('task')}`;
+    const box=form.querySelector('.form-result');
+    box.hidden=false;
+    box.textContent='Текст готов. Откройте письмо и отправьте его из своей почты. ';
+    const link=document.createElement('a');link.className='text-link';link.textContent='Открыть письмо →';
+    link.href=`mailto:${form.dataset.email}?subject=${encodeURIComponent(service||'Запрос с сайта')}&body=${encodeURIComponent(body)}`;
+    box.append(link);
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-filter]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  document.querySelectorAll('[data-kind]').forEach(card=>{card.hidden=button.dataset.filter!=='all'&&card.dataset.kind!==button.dataset.filter;});
+}));
