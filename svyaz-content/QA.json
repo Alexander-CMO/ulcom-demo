@@ -6,95 +6,102 @@
       "page": "svyaz-concepts/37-dna.html",
       "sections": 10,
       "links": 67,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/dokumenty.html",
       "sections": 3,
       "links": 43,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/geografiya.html",
       "sections": 3,
       "links": 24,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/kontakty.html",
       "sections": 3,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/montazh.html",
       "sections": 6,
       "links": 30,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/o-kompanii.html",
       "sections": 5,
       "links": 29,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/obsluzhivanie.html",
       "sections": 5,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/ognezashchita.html",
       "sections": 4,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/perehody.html",
       "sections": 4,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/proektirovanie.html",
       "sections": 5,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/proekty.html",
       "sections": 4,
       "links": 31,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/sovmestnoe-stroitelstvo.html",
       "sections": 4,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/stroitelstvo.html",
       "sections": 5,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/uslugi.html",
       "sections": 4,
       "links": 59,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     },
     {
       "page": "svyaz-concepts/37-pages/zemlyanye-raboty.html",
       "sections": 5,
       "links": 28,
-      "visual_code_unchanged": true
+      "visual_code_unchanged": false
     }
   ],
   "sections_reviewed": 70,
-  "inline_styles_svg_animation_scripts_identical": true,
+  "inline_styles_svg_animation_scripts_identical": false,
   "external_script_changes": "shared/architecture.js: service selection and email line breaks; navigation and filtering retained",
-  "browser_visual_test": "Not run; structural and source checks only"
+  "browser_visual_test": "Not run; structural and source checks only",
+  "scroll_optimization": {
+    "pages": 15,
+    "inline_styles_preserved": true,
+    "inline_js_syntax": "passed",
+    "section_clip_path_replaced": "static triangle with scaleY transform",
+    "lifecycle_cleanup": "Lenis ticker, main marquee ticker, resize and mousemove handlers"
+  }
 }
