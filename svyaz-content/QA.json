@@ -96,12 +96,13 @@
   "sections_reviewed": 70,
   "inline_styles_svg_animation_scripts_identical": false,
   "external_script_changes": "shared/architecture.js: service selection and email line breaks; navigation and filtering retained",
-  "browser_visual_test": "Not run; structural and source checks only",
+  "browser_visual_test": "Geography page inspected at 1280px and 390px; all 10 selections synchronize with detail card; no horizontal mobile overflow. Resize 1280/1000/1280 keeps 3 ticker listeners and 1 edge. Scroll progress 0/0.5/1/0.5 produces scale 1/0.5/0/0.5 with no section clip-path.",
   "scroll_optimization": {
     "pages": 15,
     "inline_styles_preserved": true,
     "inline_js_syntax": "passed",
     "section_clip_path_replaced": "static triangle with scaleY transform",
     "lifecycle_cleanup": "Lenis ticker, main marquee ticker, resize and mousemove handlers"
-  }
+  },
+  "map_refinement": "Geography map CSS, viewport and label positions updated; point coordinates preserved."
 }
